@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Teacher</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="login_txtusername">Username</string>
+    <string name="login_txtpassword">Password</string>
+    <string name="login_btnlogin">Login</string>
+    <string name="login_btncancel">Cancel</string>
+    <string name="menu_btncheck">Check</string>
+    <string name="menu_btncreatequestion">Create Question</string>
+    <string name="title_activity_teacher_menu">TeacherMenu</string>
+    <string name="title_activity_teacher__check">Teacher_Check</string>
+    <string name="check_txtidnamecourse">IDcourse-Namecouse</string>
+    <string name="check_txtpasscode">Passcode</string>
+    <string name="check_btnaccept">Accept</string>
+    <string name="check_btncancel">Cancel</string>
+    <string name="title_activity_teaxher_question">TeaxherQuestion</string>
+    <string name="ques_txtques">Question</string>
+    <string name="ques_txtans">Answer</string>
+    <string name="ques_rdoans">Answer</string>
+    <string name="ques_txttime">Time</string>
+    <string name="ques_btnsave">Save</string>
+    <string name="ques_btncancel">Cancel</string>
+    <string name="title_activity_teacher_view_report">TeacherViewReport</string>
+    <string name="view_txtidnamecoures">ID Course - Name Course</string>
+    <string name="view_count">Count</string>
+    <string name="view_btnedit">Edit</string>
+    <string name="view_btnaccept">Accept</string>
+    <string name="view_btncancel">Cancel</string>
+
+</resources>
