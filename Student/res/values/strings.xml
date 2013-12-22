@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Student</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="login_txtusername">Username</string>
+    <string name="login_txtpassword">Password</string>
+    <string name="login_btnlogin">Login</string>
+    <string name="login_btncancel">Cancel</string>
+    <string name="title_activity_student_check">Student_Check</string>
+    <string name="check_txtidCourse">Course</string>
+    <string name="check_txtcount">Count</string>
+    <string name="check_btncheck">Check</string>
+    <string name="check_btncancel">Cancel</string>
+    <string name="title_activity_passcode">PasscodeActivity</string>
+    <string name="passcode_txtpasscode">Enter Passcode</string>
+    <string name="passcode_btnenterpc">Enter</string>
+    <string name="passcode_btncancelpc">Cancel</string>
+    <string name="title_activity_student_menu">StudentMenuActivity</string>
+    <string name="menu_btncheck">Check</string>
+    <string name="menu_btnquestion">Question</string>
+    <string name="menu_btnlogout">Logout</string>
+    <string name="title_activity_student_question">StudentQuestionActivity</string>
+    <string name="question_txtquestion">Question</string>
+    <string name="question_txtans1">ANS1</string>
+    <string name="question_txtans2">ANS2</string>
+    <string name="question_txtans3">ANS3</string>
+    <string name="question_txtans4">ANS4</string>
+    <string name="question_btnsubmit">Submit</string>
+    <string name="title_activity_student_passcode">StudentPasscode</string>
+
+</resources>
