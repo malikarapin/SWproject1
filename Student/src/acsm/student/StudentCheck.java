@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,17 @@ public class StudentCheck extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_check);
+		
+		Button login = (Button)findViewById(R.id.button1);
+		login.setOnClickListener(new OnClickListener() {
+			
+			@Override
+		public void onClick(View v) {
+		Intent i = new Intent(getApplicationContext(),StudentPasscode.class);
+		startActivity(i);
+		}
+});
+		
 		
 		text1 = (TextView)findViewById(R.id.textView3);
 		text2 = (TextView)findViewById(R.id.textView4);
@@ -116,3 +129,4 @@ public class StudentCheck extends Activity {
     };
 
 }
+

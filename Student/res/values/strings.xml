@@ -8,26 +8,26 @@
     <string name="login_txtpassword">Password</string>
     <string name="login_btnlogin">Login</string>
     <string name="login_btncancel">Cancel</string>
-    <string name="title_activity_student_check">Student_Check</string>
+    <string name="title_activity_student_check">Student-Check</string>
     <string name="check_txtidCourse">Course</string>
     <string name="check_txtcount">Count</string>
     <string name="check_btncheck">Check</string>
     <string name="check_btncancel">Cancel</string>
-    <string name="title_activity_passcode">PasscodeActivity</string>
+    <string name="title_activity_passcode">Student-Passcode</string>
     <string name="passcode_txtpasscode">Enter Passcode</string>
     <string name="passcode_btnenterpc">Enter</string>
     <string name="passcode_btncancelpc">Cancel</string>
-    <string name="title_activity_student_menu">StudentMenuActivity</string>
+    <string name="title_activity_student_menu">Student-Menu</string>
     <string name="menu_btncheck">Check</string>
     <string name="menu_btnquestion">Question</string>
     <string name="menu_btnlogout">Logout</string>
-    <string name="title_activity_student_question">StudentQuestionActivity</string>
+    <string name="title_activity_student_question">Student-Question</string>
     <string name="question_txtquestion">Question</string>
     <string name="question_txtans1">ANS1</string>
     <string name="question_txtans2">ANS2</string>
     <string name="question_txtans3">ANS3</string>
     <string name="question_txtans4">ANS4</string>
     <string name="question_btnsubmit">Submit</string>
-    <string name="title_activity_student_passcode">StudentPasscode</string>
+    <string name="title_activity_student_passcode">Student-Passcode</string>
 
 </resources>
