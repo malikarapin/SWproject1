@@ -84,16 +84,16 @@ public class StudentCheck extends Activity {
         Location networkLocation = requestUpdatesFromProvider(
                 LocationManager.NETWORK_PROVIDER, "Network not supported");
         if(networkLocation != null) {
-        	strlat = String.format("%.7f", networkLocation.getLatitude());
-        	strlog = String.format("%.7f", networkLocation.getLongitude());
+        	strlat = String.format("%.6f", networkLocation.getLatitude());
+        	strlog = String.format("%.6f", networkLocation.getLongitude());
         }
         
         Location gpsLocation = requestUpdatesFromProvider(
                 LocationManager.GPS_PROVIDER, "GPS not supported");
         
         if(gpsLocation != null) {
-        	strlat = String.format("%.7f", gpsLocation.getLatitude());
-        	strlog = String.format("%.7f", gpsLocation.getLongitude());
+        	strlat = String.format("%.6f", gpsLocation.getLatitude());
+        	strlog = String.format("%.6f", gpsLocation.getLongitude());
         }
         
         text1.setText(strlat);
