@@ -25,8 +25,6 @@ public class StudentLogin extends Activity {
 		startActivity(i);
 		}
 });
-		
-		
 	}
 
 	@Override
