@@ -34,24 +34,23 @@
         </activity>
         <activity
             android:name="acsm.student.StudentCheck"
-            android:label="@string/title_activity_student_check" 
-            android:screenOrientation="nosensor"
+            android:label="@string/title_activity_student_check" >
+            
             >
         </activity>
         <activity
             android:name="acsm.student.StudentPasscode"
-            android:label="@string/title_activity_student_passcode" 
-            android:screenOrientation="nosensor">
+            android:label="@string/title_activity_student_passcode" >
+            
         </activity>
         <activity
             android:name="acsm.student.StudentMenu"
-            android:label="@string/title_activity_student_menu" 
-            android:screenOrientation="nosensor">
+            android:label="@string/title_activity_student_menu" >
+            
         </activity>
         <activity
             android:name="acsm.student.StudentQuestion"
-            android:label="@string/title_activity_student_question" 
-            android:screenOrientation="nosensor">
+            android:label="@string/title_activity_student_question" >
         </activity>
     </application>
 
