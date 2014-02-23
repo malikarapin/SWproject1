@@ -23,11 +23,18 @@
     <string name="ques_txttime">Time</string>
     <string name="ques_btnsave">Save</string>
     <string name="ques_btncancel">Cancel</string>
+    <string name="ques_txtans1">Ans 1.</string>
+    <string name="ques_txtans2">Ans 2.</string>
+    <string name="ques_txtans3">Ans 3.</string>
+    <string name="ques_txtans4">Ans 4.</string>
+    <string name="ques_txttime1">Time</string>
     <string name="title_activity_teacher_view_report">TeacherViewReport</string>
     <string name="view_txtidnamecoures">ID Course - Name Course</string>
     <string name="view_count">Count</string>
     <string name="view_btnedit">Edit</string>
     <string name="view_btnaccept">Accept</string>
     <string name="view_btncancel">Cancel</string>
+    
+    
 
 </resources>
