@@ -2,6 +2,8 @@ package acsm.student;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -15,7 +17,7 @@ public class StudentMenu extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_menu);
 		
-		Button checkm = (Button)findViewById(R.id.button1);
+		Button checkm = (Button)findViewById(R.id.submit);
 		checkm.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -45,13 +47,37 @@ public class StudentMenu extends Activity {
 		}
 });
 		
+	
 	}
+	//Detect Back Button
+    @Override
+    public void onBackPressed() {
+ 
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
+ 
+        alertDialog.setTitle("Confirm Exit...");
+        alertDialog.setMessage("คุณต้องการออกจากโปรแกรมหรือไม่ ?");
+        alertDialog.setIcon(R.drawable.ic_launcher);
+ 
+        alertDialog.setPositiveButton("ใช่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        //คลิกใช่ ออกจากโปรแกรม
+                        finish();
+                        StudentMenu.super.finishAffinity();
+                    }
+                });
+ 
+        alertDialog.setNegativeButton("ไม่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,    int which) {
+                        //คลิกไม่ cancel dialog
+                        dialog.cancel();
+                    }
+                });
+ 
+        alertDialog.show();
+}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.student_menu, menu);
-		return true;
-	}
 
 }

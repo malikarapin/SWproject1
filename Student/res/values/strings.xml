@@ -22,12 +22,13 @@
     <string name="menu_btnquestion">Question</string>
     <string name="menu_btnlogout">Logout</string>
     <string name="title_activity_student_question">Student-Question</string>
-    <string name="question_txtquestion">Question</string>
-    <string name="question_txtans1">ANS1</string>
-    <string name="question_txtans2">ANS2</string>
-    <string name="question_txtans3">ANS3</string>
-    <string name="question_txtans4">ANS4</string>
+    <string name="question_txtquestion">What is Your Name</string>
+    <string name="question_txtans1">My name is mali</string>
+    <string name="question_txtans2">my name kub</string>
+    <string name="question_txtans3">My fel</string>
+    <string name="question_txtans4"></string>
     <string name="question_btnsubmit">Submit</string>
     <string name="title_activity_student_passcode">Student-Passcode</string>
+    <string name="title_activity_studentspl">Spl</string>
 
 </resources>

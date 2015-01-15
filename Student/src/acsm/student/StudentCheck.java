@@ -1,129 +1,137 @@
 package acsm.student;
 
+import java.io.BufferedReader;
+
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.view.Menu;
+import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class StudentCheck extends Activity {
 
-	private TextView text1, text2;
-
-	private LocationManager lm;
+	TextView text1;
+	TextView text2;
+	Intent i;
+	GPSTracker gps;
+	
+	// url to create new product
+    //public String url_create_product = "http://192.168.208.230/test.php";
+    private static final String TAG_SUCCESS = "success";
+	
+	private ProgressDialog pDialog;
+	private double latitude = 0;
+	private double longitude = 0;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_check);
 
-		Button check = (Button) findViewById(R.id.button1);
-		check.setOnClickListener(new OnClickListener() {
+		text1 = (TextView) findViewById(R.id.lat);
+		text2 = (TextView) findViewById(R.id.lon);
 
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy); 
+
+		gps = new GPSTracker(StudentCheck.this);
+		
+		if (gps.canGetLocation()) {
+
+			latitude = gps.getLatitude();
+			longitude = gps.getLongitude();
+
+			text1.setText("latitude :"+latitude);
+			text2.setText("longitude :"+longitude);
+
+		} else {
+			text1.setText("อุปกรณ์์ของคุณ ปิด GPS");
+		}
+		Button check = (Button) findViewById(R.id.submit);
+		check.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(),StudentPasscode.class);
-					startActivity(i);
-				
+				try{
+					
+		            String latitude1 = String.valueOf(latitude);
+		            String longitude2 =  String.valueOf(longitude);
+		            String link="http://172.19.13.207/db_create.php";
+		            String data  = URLEncoder.encode("latitude", "UTF-8") 
+		            + "=" + URLEncoder.encode(latitude1, "UTF-8");
+		            data += "&" + URLEncoder.encode("longitude", "UTF-8") 
+		            + "=" + URLEncoder.encode(longitude2, "UTF-8");
+		            URL url = new URL(link);
+		            URLConnection conn = url.openConnection(); 
+		            conn.setDoOutput(true); 
+		            OutputStreamWriter wr = new OutputStreamWriter
+		            (conn.getOutputStream()); 
+		            wr.write( data ); 
+		            wr.flush(); 
+		            BufferedReader reader = new BufferedReader
+		            (new InputStreamReader(conn.getInputStream()));
+		            StringBuilder sb = new StringBuilder();
+		            String line = null;
+		            // Read Server Response
+		            while((line = reader.readLine()) != null)
+		            {
+		               sb.append(line);
+		               break;
+		            }
+		            String aa = sb.toString();
+		           
+		            //
+		            //Toast.makeText(getApplicationContext(),latitude1 , Toast.LENGTH_SHORT).show();
+		            
+		         }catch(Exception e){
+		        	 e.getMessage();
+		         }
+				Intent tomenu = new Intent(getApplicationContext(), StudentMenu.class);
+
+				startActivity(tomenu);
+
 			}
 		});
-
-		text1 = (TextView) findViewById(R.id.textView3);
-		text2 = (TextView) findViewById(R.id.textView4);
-
-		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);
-		criteria.setAltitudeRequired(false);
-		criteria.setBearingRequired(false);
-	}
-
-	public void onResume() {
-		super.onResume();
-		setup();
-	}
-
-	public void onStart() {
-		super.onStart();
-	
-	}
-
-	public void onStop() {
-		super.onStop();
 		
+		
+		List < String > list = new ArrayList < String > ( );
+		 
+		list.add ( "ProjectI" );
+		 
+		list.add ( "SW VERIFICATION &VALIDATION" );
+		
+		 
+		list.add ( "WORKSHOP IN IT III(WEB JAVA)" );
+		
+		list.add ( "HUMAN COMPUTER INTERACTION" );
+		
+		list.add ( "SOFTWARE PROJECT MANAGEMENT" );
+		
+		list.add ( "SOFTWARE ARCHITECTURE" );
+		ArrayAdapter < String > dataAdapter = new ArrayAdapter < String > ( this, android.R.layout.simple_spinner_item, list );
+		 
+		 
+		Spinner spinner = ( Spinner ) this.findViewById ( R.id.spinner1 );
+		 
+		spinner.setAdapter ( dataAdapter );
+
+		
+
 	}
-
-	public void setup() {
-
-		String strlat = "Unknown";
-		String strlog = "Unknown";
-
-		Location networkLocation = requestUpdatesFromProvider(
-				LocationManager.NETWORK_PROVIDER, "Network not supported");
-		if (networkLocation != null) {
-			strlat = String.format("%.6f", networkLocation.getLatitude());
-			strlog = String.format("%.6f", networkLocation.getLongitude());
-		}
-
-		Location gpsLocation = requestUpdatesFromProvider(
-				LocationManager.GPS_PROVIDER, "GPS not supported");
-
-		if (gpsLocation != null) {
-			strlat = String.format("%.6f", gpsLocation.getLatitude());
-			strlog = String.format("%.6f", gpsLocation.getLongitude());
-		}
-
-		text1.setText(strlat);
-		text2.setText(strlog);
-	}
-
-	public Location requestUpdatesFromProvider(final String provider,
-			String error) {
-		Location location = null;
-		if (lm.isProviderEnabled(provider)) {
-			lm.requestLocationUpdates(provider, 1000, 10, listener);
-			location = lm.getLastKnownLocation(provider);
-		} else {
-			Toast.makeText(this, error, Toast.LENGTH_LONG).show();
-		}
-		return location;
-	}
-
-	@SuppressLint("DefaultLocale")
-	public final LocationListener listener = new LocationListener() {
-		public void onLocationChanged(Location location) {
-			text1.setText(String.format("%.6f", location.getLatitude()));
-			text2.setText(String.format("%.6f", location.getLongitude()));
-		}
-
-		public void onProviderDisabled(String provider) {
-		}
-
-		public void onProviderEnabled(String provider) {
-		}
-
-		public void onStatusChanged(String provider, int status, Bundle extras) {
-		}
-	};
-
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.student_check, menu);
-		return true;
-	}
-
 }

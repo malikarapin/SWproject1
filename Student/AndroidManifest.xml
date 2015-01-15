@@ -7,14 +7,13 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="17" />
-    	<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name
-            ="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -22,10 +21,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="acsm.student.StudentLogin"
-            android:label="@string/app_name" 
-            
-            >
+            android:name="acsm.student.Studentspl"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,22 +33,22 @@
         <activity
             android:name="acsm.student.StudentCheck"
             android:label="@string/title_activity_student_check" >
-            
-            
         </activity>
         <activity
             android:name="acsm.student.StudentPasscode"
             android:label="@string/title_activity_student_passcode" >
-            
         </activity>
         <activity
             android:name="acsm.student.StudentMenu"
             android:label="@string/title_activity_student_menu" >
-            
         </activity>
         <activity
             android:name="acsm.student.StudentQuestion"
             android:label="@string/title_activity_student_question" >
+        </activity>
+        <activity
+            android:name="acsm.student.StudentLogin"
+            android:label="@string/app_name" >
         </activity>
     </application>
 

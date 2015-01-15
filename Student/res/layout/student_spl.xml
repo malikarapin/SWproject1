@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Studentspl" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/spl"
+        android:layout_marginBottom="@dimen/spl"
+        android:src="@drawable/bg_spl1"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

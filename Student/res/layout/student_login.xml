@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/rdiog1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:gravity="top|bottom"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -24,34 +25,37 @@
             tools:ignore="ScrollViewSize" >
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/userlog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:ems="10"
-                android:text="@string/login_txtusername"
+                android:hint="Username"
+                android:maxLength="10"
                 android:textColor="@color/Black"
-                tools:ignore="TextFields" >
+                tools:ignore="TextFields,HardcodedText" >
 
                 <requestFocus />
             </EditText>
 
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/passlog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"
                 android:ems="10"
-                android:text="@string/login_txtpassword"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLength="10"
                 android:textColor="@color/Black"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields,HardcodedText" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
-                android:background="@color/Gainsboro"
+                android:background="@drawable/custom_btn_shakespeare"
                 android:text="@string/login_btnlogin"
                 android:textColor="@color/Black" />
 
