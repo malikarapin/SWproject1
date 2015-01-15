@@ -1,7 +1,6 @@
 package acsm.teacher;
 
 import acsm.teacher.R;
-import acsm.teacher.TeacherCheck;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

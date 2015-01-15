@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="14" />
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
     	<uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -36,7 +36,7 @@
             android:name="acsm.student.StudentCheck"
             android:label="@string/title_activity_student_check" >
             
-            >
+            
         </activity>
         <activity
             android:name="acsm.student.StudentPasscode"
