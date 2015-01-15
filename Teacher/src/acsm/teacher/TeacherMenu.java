@@ -1,9 +1,11 @@
 package acsm.teacher;
 
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,7 +28,7 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
-		Button check = (Button)findViewById(R.id.button1);
+		Button check = (Button)findViewById(R.id.login);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -35,13 +37,44 @@ public class TeacherMenu extends Activity {
 		startActivity(i);
 		}
 });
+		Button logout = (Button)findViewById(R.id.button1);
+		logout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+		public void onClick(View v) {
+		Intent i = new Intent(getApplicationContext(),TeacherLogin.class);
+		startActivity(i);
+		}
+});
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.teacher_menu, menu);
-		return true;
-	}
+	//Detect Back Button
+    @Override
+    public void onBackPressed() {
+ 
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(TeacherMenu.this);
+ 
+        alertDialog.setTitle("Confirm Exit...");
+        alertDialog.setMessage("คุณต้องการออกจากโปรแกรมหรือไม่ ?");
+        alertDialog.setIcon(R.drawable.ic_launcher);
+ 
+        alertDialog.setPositiveButton("ใช่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        //คลิกใช่ ออกจากโปรแกรม
+                        finish();
+                        TeacherMenu.super.finishAffinity();
+                    }
+                });
+ 
+        alertDialog.setNegativeButton("ไม่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,    int which) {
+                        //คลิกไม่ cancel dialog
+                        dialog.cancel();
+                    }
+                });
+ 
+        alertDialog.show();
+}
 
 }

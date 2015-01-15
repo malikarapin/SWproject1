@@ -3,6 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -60,6 +61,10 @@
                 android:layout_alignBottom="@+id/EditText01"
                 android:layout_alignLeft="@+id/textView2"
                 android:ems="10"
+                android:inputType="text"
+                android:maxLength="1"
+                android:singleLine="true"
+                android:textSize="@dimen/testsize25"
                 tools:ignore="TextFields" />
 
             <EditText
@@ -70,6 +75,10 @@
                 android:layout_marginTop="22dp"
                 android:layout_toLeftOf="@+id/textView1"
                 android:ems="10"
+                android:inputType="text"
+                android:maxLength="1"
+                android:singleLine="true"
+                android:textSize="@dimen/testsize25"
                 tools:ignore="TextFields" >
 
                 <requestFocus />
@@ -83,6 +92,10 @@
                 android:layout_alignBottom="@+id/EditText02"
                 android:layout_alignRight="@+id/textView2"
                 android:ems="10"
+                android:inputType="text"
+                android:maxLength="1"
+                android:singleLine="true"
+                android:textSize="@dimen/testsize25"
                 tools:ignore="TextFields" />
 
             <EditText
@@ -93,27 +106,31 @@
                 android:layout_alignBottom="@+id/EditText03"
                 android:layout_toRightOf="@+id/textView1"
                 android:ems="10"
+                android:inputType="text"
+                android:maxLength="1"
+                android:singleLine="true"
+                android:textSize="@dimen/testsize25"
                 tools:ignore="TextFields" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/EditText02"
                 android:layout_marginTop="38dp"
-                android:background="@color/Gainsboro"
+                android:background="@drawable/custom_btn_whiskey"
                 android:text="@string/check_btnaccept"
                 android:textColor="@color/Black" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/button1"
+                android:layout_below="@+id/login"
                 android:layout_marginTop="23dp"
-                android:background="@color/Gainsboro"
+                android:background="@drawable/custom_btn_orange"
                 android:text="@string/check_btncancel"
                 android:textColor="@color/Black" />
 

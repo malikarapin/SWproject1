@@ -1,12 +1,18 @@
 package acsm.teacher;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 public class TeacherViewReport extends Activity {
 
@@ -35,13 +41,11 @@ public class TeacherViewReport extends Activity {
 		startActivity(i);
 		}
 });
+		
+
+		
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.teacher_view_report, menu);
-		return true;
-	}
+
 
 }
