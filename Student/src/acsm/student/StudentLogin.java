@@ -52,6 +52,8 @@ public class StudentLogin extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_login);
+		
+		final AlertDialog.Builder ad = new AlertDialog.Builder(this);
 
 		final EditText etUsername = (EditText) findViewById(R.id.userlog);
 		final EditText etPassword = (EditText) findViewById(R.id.passlog);
@@ -59,7 +61,7 @@ public class StudentLogin extends Activity {
 		final Button btnlogin = (Button) findViewById(R.id.submit);
 		btnlogin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v){
-				String url = "http://www.thaicreate.com/android/checkLogin.php";
+				String url = "192.168.208.237/PHPContodatabase/checkLogin.php";
         		List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("strUser", etUsername.getText().toString()));
                 params.add(new BasicNameValuePair("strPass", etPassword.getText().toString()));
@@ -103,8 +105,8 @@ public class StudentLogin extends Activity {
 					ad.setPositiveButton("Close", null);
 					ad.setMessage(strError);
 					ad.show();
-					txtUser.setText("");
-					txtPass.setText("");
+					etUsername.setText("");
+					etPassword.setText("");
 				}
 				else
 				{
