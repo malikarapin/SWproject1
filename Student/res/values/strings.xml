@@ -8,6 +8,7 @@
     <string name="login_txtpassword">Password</string>
     <string name="login_btnlogin">Login</string>
     <string name="login_btncancel">Cancel</string>
+    <string name="login_txtforgetpassword">Forget password</string>
     <string name="title_activity_student_check">Student-Check</string>
     <string name="check_txtidCourse">Course</string>
     <string name="check_txtcount">Count</string>
@@ -21,14 +22,17 @@
     <string name="menu_btncheck">Check</string>
     <string name="menu_btnquestion">Question</string>
     <string name="menu_btnlogout">Logout</string>
+    <string name="menu_btnviewcount">View Count</string>
     <string name="title_activity_student_question">Student-Question</string>
-    <string name="question_txtquestion">What is Your Name</string>
-    <string name="question_txtans1">My name is mali</string>
-    <string name="question_txtans2">my name kub</string>
-    <string name="question_txtans3">My fel</string>
-    <string name="question_txtans4"></string>
+    <string name="question_txtquestion">1gb is equal to how much kb</string>
+    <string name="question_txtans1">1024</string>
+    <string name="question_txtans2">100,000</string>
+    <string name="question_txtans3">1,000,000</string>
+    <string name="question_txtans4">10,000,000</string>
+    <string name="question_txttimecount">3  minute</string>
     <string name="question_btnsubmit">Submit</string>
     <string name="title_activity_student_passcode">Student-Passcode</string>
     <string name="title_activity_studentspl">Spl</string>
+    <string name="title_activity_student_viewattend">StudentViewattend</string>
 
 </resources>

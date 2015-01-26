@@ -25,7 +25,7 @@
             tools:ignore="ScrollViewSize,UselessLeaf" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/timecount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/linkFG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView1"
+                android:layout_below="@+id/linkFG"
                 android:layout_marginTop="18dp" />
 
             <DigitalClock
@@ -76,7 +76,7 @@
                 android:id="@+id/txtviewcount2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView2"
+                android:layout_below="@+id/timecount"
                 android:layout_marginTop="16dp"
                 android:layout_toLeftOf="@+id/digitalClock1"
                 android:text="12"

@@ -42,12 +42,44 @@ public class StudentMenu extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),StudentLogin.class);
-		startActivity(i);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
+		alertDialog.setTitle("Confirm Logout...");
+        alertDialog.setMessage("คุณต้องการลงชื่อออกการใช้งานใช่หรือไม่");
+        alertDialog.setIcon(R.drawable.ic_launcher);
+        alertDialog.setPositiveButton("ใช่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        //คลิกใช่ ออกจากโปรแกรม
+                        //finish();
+                        Intent i = new Intent(getApplicationContext(),StudentLogin.class);
+                		startActivity(i);
+                        StudentMenu.super.finishAffinity();
+                    }
+                });
+ 
+        alertDialog.setNegativeButton("ไม่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,    int which) {
+                        //คลิกไม่ cancel dialog
+                        dialog.cancel();
+                    }
+                });
+ 
+        alertDialog.show();
+				
+		//Intent i = new Intent(getApplicationContext(),StudentLogin.class);
+		//startActivity(i);
 		}
 });
-		
-	
+		Button viewcount = (Button)findViewById(R.id.viewcount);
+		viewcount.setOnClickListener(new OnClickListener() {
+			
+			@Override
+		public void onClick(View v) {
+		Intent i = new Intent(getApplicationContext(),StudentViewattend.class);
+		startActivity(i);
+		}
+});	
 	}
 	//Detect Back Button
     @Override

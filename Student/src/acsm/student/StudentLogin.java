@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.AlertDialog;
 
 import org.apache.http.HttpEntity;
@@ -27,11 +28,14 @@ import android.os.StrictMode;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class StudentLogin extends Activity {
@@ -44,7 +48,7 @@ public class StudentLogin extends Activity {
         setContentView(R.layout.student_login);
 
         // Permission StrictMode
-        if (android.os.Build.VERSION.SDK_INT > 9) {
+        if (android.os.Build.VERSION.SDK_INT > 14) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
@@ -62,7 +66,7 @@ public class StudentLogin extends Activity {
             public void onClick(View v) {
             	
             	
-            	String url = "http://192.168.208.253/PHPContodatabase/checkLogin.php";
+            	String url = "http://192.168.208.205/PHPContodatabase/checkLogin.php";
         		List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("strUser", txtUser.getText().toString()));
                 params.add(new BasicNameValuePair("strPass", txtPass.getText().toString()));
@@ -120,6 +124,12 @@ public class StudentLogin extends Activity {
            	            
             }
         });
+        
+        TextView t3 = (TextView) findViewById(R.id.linkFG);
+        t3.setText(
+            Html.fromHtml(
+                "<a href=\"http://web52.phuket.psu.ac.th/registra\">Forget Password</a> "));
+        t3.setMovementMethod(LinkMovementMethod.getInstance());
         
     }
     

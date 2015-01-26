@@ -171,12 +171,18 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        public static final int forget1=0x7f050003;
         public static final int spl=0x7f050002;
     }
     public static final class drawable {
@@ -194,30 +200,34 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f090002;
-        public static final int action_settings=0x7f090018;
+        public static final int Space1=0x7f09001a;
+        public static final int TableLayout1=0x7f090019;
+        public static final int action_settings=0x7f09001c;
         public static final int button2=0x7f090009;
-        public static final int button3=0x7f09000f;
+        public static final int button3=0x7f090010;
         public static final int digitalClock1=0x7f090006;
-        public static final int editText3=0x7f090010;
-        public static final int editText4=0x7f090011;
-        public static final int imageView1=0x7f090017;
+        public static final int editText3=0x7f090011;
+        public static final int editText4=0x7f090012;
+        public static final int gridView1=0x7f09001b;
+        public static final int imageView1=0x7f090018;
         public static final int lat=0x7f090008;
+        public static final int linkFG=0x7f090005;
         public static final int lon=0x7f090007;
         public static final int passlog=0x7f09000e;
-        public static final int radioButton1=0x7f090013;
-        public static final int radioButton2=0x7f090014;
-        public static final int radioButton3=0x7f090015;
-        public static final int radioButton4=0x7f090016;
-        public static final int radioG1=0x7f090012;
+        public static final int radioButton1=0x7f090014;
+        public static final int radioButton2=0x7f090015;
+        public static final int radioButton3=0x7f090016;
+        public static final int radioButton4=0x7f090017;
+        public static final int radioG1=0x7f090013;
         public static final int rdiog1=0x7f090000;
         public static final int scrollView1=0x7f090001;
         public static final int spinner1=0x7f090004;
         public static final int submit=0x7f09000c;
-        public static final int textView1=0x7f090005;
-        public static final int textView2=0x7f090003;
+        public static final int timecount=0x7f090003;
         public static final int txtviewcount1=0x7f09000b;
         public static final int txtviewcount2=0x7f09000a;
         public static final int userlog=0x7f09000d;
+        public static final int viewcount=0x7f09000f;
     }
     public static final class layout {
         public static final int student_check=0x7f030000;
@@ -226,6 +236,7 @@ public final class R {
         public static final int student_passcode=0x7f030003;
         public static final int student_question=0x7f030004;
         public static final int student_spl=0x7f030005;
+        public static final int student_viewatten=0x7f030006;
     }
     public static final class menu {
         public static final int student_check=0x7f080000;
@@ -233,38 +244,43 @@ public final class R {
         public static final int student_menu=0x7f080002;
         public static final int student_passcode=0x7f080003;
         public static final int student_question=0x7f080004;
-        public static final int studentspl=0x7f080005;
+        public static final int student_viewattend=0x7f080005;
+        public static final int studentspl=0x7f080006;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int check_btncancel=0x7f06000b;
-        public static final int check_btncheck=0x7f06000a;
-        public static final int check_txtcount=0x7f060009;
-        public static final int check_txtidCourse=0x7f060008;
+        public static final int check_btncancel=0x7f06000c;
+        public static final int check_btncheck=0x7f06000b;
+        public static final int check_txtcount=0x7f06000a;
+        public static final int check_txtidCourse=0x7f060009;
         public static final int hello_world=0x7f060002;
         public static final int login_btncancel=0x7f060006;
         public static final int login_btnlogin=0x7f060005;
+        public static final int login_txtforgetpassword=0x7f060007;
         public static final int login_txtpassword=0x7f060004;
         public static final int login_txtusername=0x7f060003;
-        public static final int menu_btncheck=0x7f060011;
-        public static final int menu_btnlogout=0x7f060013;
-        public static final int menu_btnquestion=0x7f060012;
-        public static final int passcode_btncancelpc=0x7f06000f;
-        public static final int passcode_btnenterpc=0x7f06000e;
-        public static final int passcode_txtpasscode=0x7f06000d;
-        public static final int question_btnsubmit=0x7f06001a;
-        public static final int question_txtans1=0x7f060016;
-        public static final int question_txtans2=0x7f060017;
-        public static final int question_txtans3=0x7f060018;
-        public static final int question_txtans4=0x7f060019;
-        public static final int question_txtquestion=0x7f060015;
-        public static final int title_activity_passcode=0x7f06000c;
-        public static final int title_activity_student_check=0x7f060007;
-        public static final int title_activity_student_menu=0x7f060010;
-        public static final int title_activity_student_passcode=0x7f06001b;
-        public static final int title_activity_student_question=0x7f060014;
-        public static final int title_activity_studentspl=0x7f06001c;
+        public static final int menu_btncheck=0x7f060012;
+        public static final int menu_btnlogout=0x7f060014;
+        public static final int menu_btnquestion=0x7f060013;
+        public static final int menu_btnviewcount=0x7f060015;
+        public static final int passcode_btncancelpc=0x7f060010;
+        public static final int passcode_btnenterpc=0x7f06000f;
+        public static final int passcode_txtpasscode=0x7f06000e;
+        public static final int question_btnsubmit=0x7f06001d;
+        public static final int question_txtans1=0x7f060018;
+        public static final int question_txtans2=0x7f060019;
+        public static final int question_txtans3=0x7f06001a;
+        public static final int question_txtans4=0x7f06001b;
+        public static final int question_txtquestion=0x7f060017;
+        public static final int question_txttimecount=0x7f06001c;
+        public static final int title_activity_passcode=0x7f06000d;
+        public static final int title_activity_student_check=0x7f060008;
+        public static final int title_activity_student_menu=0x7f060011;
+        public static final int title_activity_student_passcode=0x7f06001e;
+        public static final int title_activity_student_question=0x7f060016;
+        public static final int title_activity_student_viewattend=0x7f060020;
+        public static final int title_activity_studentspl=0x7f06001f;
     }
     public static final class style {
         /** 

@@ -37,7 +37,7 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/linkFG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/digitalClock1"
@@ -47,13 +47,13 @@
                 android:textColor="@color/Black" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/timecount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView1"
-                android:layout_below="@+id/textView1"
+                android:layout_alignLeft="@+id/linkFG"
+                android:layout_below="@+id/linkFG"
                 android:layout_marginTop="22dp"
-                android:text="TextView"
+                android:text="@string/question_txttimecount"
                 tools:ignore="HardcodedText" />
 
             <Button
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/textView2" >
+                android:layout_below="@+id/timecount" >
 
                 <RadioButton
                     android:id="@+id/radioButton1"

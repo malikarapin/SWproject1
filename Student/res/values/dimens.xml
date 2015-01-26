@@ -4,5 +4,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="spl">0dp</dimen>
+    <dimen name="forget1">22dp</dimen>
 
 </resources>

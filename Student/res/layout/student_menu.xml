@@ -20,7 +20,7 @@
         <RelativeLayout
             android:id="@+id/RelativeLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="422dp"
             android:orientation="vertical"
             tools:ignore="ScrollViewSize" >
 
@@ -30,7 +30,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="46dp"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/custom_btn_shakespeare"
                 android:text="@string/menu_btncheck"
                 android:textColor="@color/Black" />
@@ -40,8 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/submit"
-                android:layout_marginTop="56dp"
+                android:layout_below="@+id/viewcount"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/custom_btn_sandrift"
                 android:text="@string/menu_btnquestion"
                 android:textColor="@color/Black" />
@@ -52,9 +52,20 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button2"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="36dp"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/menu_btnlogout"
+                android:textColor="@color/Black" />
+
+            <Button
+                android:id="@+id/viewcount"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/submit"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/custom_btn_lemon_chiffon"
+                android:text="@string/menu_btnviewcount"
                 android:textColor="@color/Black" />
 
         </RelativeLayout>

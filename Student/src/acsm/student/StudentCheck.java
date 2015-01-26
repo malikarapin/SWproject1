@@ -67,7 +67,7 @@ public class StudentCheck extends Activity {
 		check.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try{
+				/*try{
 					
 		            String latitude1 = String.valueOf(latitude);
 		            String longitude2 =  String.valueOf(longitude);
@@ -100,8 +100,8 @@ public class StudentCheck extends Activity {
 		            
 		         }catch(Exception e){
 		        	 e.getMessage();
-		         }
-				Intent tomenu = new Intent(getApplicationContext(), StudentMenu.class);
+		         }*/
+				Intent tomenu = new Intent(getApplicationContext(), StudentPasscode.class);
 
 				startActivity(tomenu);
 
