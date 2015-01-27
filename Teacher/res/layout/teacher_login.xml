@@ -50,7 +50,7 @@
                 tools:ignore="TextFields,HardcodedText" />
 
             <Button
-                android:id="@+id/login"
+                android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"

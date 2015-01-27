@@ -1,6 +1,7 @@
 package acsm.teacher;
 
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +19,7 @@ public class TeacherMenu extends Activity {
 		setContentView(R.layout.teacher_menu);
 		
 		
-		Button quize = (Button)findViewById(R.id.button2);
+		Button quize = (Button)findViewById(R.id.btncancelchpw);
 		quize.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -28,7 +29,7 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
-		Button check = (Button)findViewById(R.id.login);
+		Button check = (Button)findViewById(R.id.add);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -37,15 +38,53 @@ public class TeacherMenu extends Activity {
 		startActivity(i);
 		}
 });
-		Button logout = (Button)findViewById(R.id.button1);
+		Button logout = (Button)findViewById(R.id.logout);
 		logout.setOnClickListener(new OnClickListener() {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeacherLogin.class);
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(TeacherMenu.this);
+		alertDialog.setTitle("Confirm Logout...");
+        alertDialog.setMessage("คุณต้องการลงชื่อออกการใช้งานใช่หรือไม่");
+        alertDialog.setIcon(R.drawable.ic_launcher);
+        alertDialog.setPositiveButton("ใช่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        //คลิกใช่ ออกจากโปรแกรม
+                        //finish();
+                        Intent i = new Intent(getApplicationContext(),TeacherLogin.class);
+                		startActivity(i);
+                        TeacherMenu.super.finishAffinity();
+                    }
+                });
+ 
+        alertDialog.setNegativeButton("ไม่",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,    int which) {
+                        //คลิกไม่ cancel dialog
+                        dialog.cancel();
+                    }
+                });
+ 
+        alertDialog.show();
+				
+		//Intent i = new Intent(getApplicationContext(),StudentLogin.class);
+		//startActivity(i);
+		}
+});
+		
+		Button chpw = (Button)findViewById(R.id.chpassword);
+		chpw.setOnClickListener(new OnClickListener() {
+			
+			@Override
+		public void onClick(View v) {
+		Intent i = new Intent(getApplicationContext(),TeacherChangePassword.class);
 		startActivity(i);
 		}
 });
+		
+		
+		
 	}
 	//Detect Back Button
     @Override

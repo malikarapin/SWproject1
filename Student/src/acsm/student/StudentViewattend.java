@@ -38,7 +38,9 @@ public class StudentViewattend extends Activity {
 		
 		list.add ( "SOFTWARE ARCHITECTURE" );
 		ArrayAdapter < String > dataAdapter = new ArrayAdapter < String > ( this, android.R.layout.simple_spinner_item, list );
+		Spinner spinner = ( Spinner ) this.findViewById ( R.id.spinner1 );
 		 
+		spinner.setAdapter ( dataAdapter );
 		 
 		Calendar c = Calendar.getInstance();
         System.out.println("Current time => "+c.getTime());
@@ -52,9 +54,7 @@ public class StudentViewattend extends Activity {
     	        formattedDate, "Check In", formattedDate, "Check In", formattedDate, "Check In"};
 		
 		
-		Spinner spinner = ( Spinner ) this.findViewById ( R.id.spinner1 );
-		 
-		spinner.setAdapter ( dataAdapter );
+		
 		
 		 final GridView gView1 = (GridView)findViewById(R.id.gridView1); 
      	

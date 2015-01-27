@@ -11,6 +11,7 @@
     <string name="menu_btncheck">Check</string>
     <string name="menu_btncreatequestion">Create Question</string>
     <string name="menu_btnlogout">Logout</string>
+    <string name="menu_btnchpassword">Change password</string>
     <string name="title_activity_teacher_menu">TeacherMenu</string>
     <string name="title_activity_teacher__check">Teacher_Check</string>
     <string name="check_txtidnamecourse">IDcourse-Namecouse</string>
@@ -37,5 +38,12 @@
     <string name="view_btnaccept">Accept</string>
     <string name="view_btncancel">Cancel</string>
     <string name="title_activity_teacherspl">Teacherspl</string>
-
+    <string name="cview_btnviewadd">Add</string>
+    <string name="title_activity_teacher_change_password">TeacherChangePassword</string>
+    <string name="chpw_txtexterpass">Enter Password</string>
+    <string name="chpw_txtreexterpass">Enter Password again</string>
+    <string name="chpw_btnaccept">accept</string>
+    <string name="chpw_btncancel">cancel</string>
+    
+    
 </resources>

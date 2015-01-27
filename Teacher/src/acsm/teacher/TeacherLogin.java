@@ -28,7 +28,7 @@ public class TeacherLogin extends Activity {
 		etUsername = (EditText) findViewById(R.id.usertlog);
 		etPassword = (EditText) findViewById(R.id.passtlog);
 
-		Button login = (Button) findViewById(R.id.login);
+		Button login = (Button) findViewById(R.id.add);
 		login.setOnClickListener(new OnClickListener() {
 
 			@Override

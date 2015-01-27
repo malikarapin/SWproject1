@@ -113,7 +113,7 @@
                 tools:ignore="TextFields" />
 
             <Button
-                android:id="@+id/login"
+                android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
@@ -124,11 +124,11 @@
                 android:textColor="@color/Black" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btncancelchpw"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/login"
+                android:layout_below="@+id/add"
                 android:layout_marginTop="23dp"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/check_btncancel"

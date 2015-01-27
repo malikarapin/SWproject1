@@ -6,5 +6,6 @@
     <dimen name="spl">0dp</dimen>
     <dimen name="textsize20">20dp</dimen>
     <dimen name="testsize25">25dp</dimen>
+    <dimen name="addtetf">50dp</dimen>
 
 </resources>

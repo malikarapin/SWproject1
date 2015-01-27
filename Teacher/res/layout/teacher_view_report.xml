@@ -25,17 +25,6 @@
             tools:ignore="ScrollViewSize" >
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="22dp"
-                android:text="Project I"
-                android:textColor="@color/black"
-                tools:ignore="HardcodedText" />
-
-            <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,49 +34,94 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView1"
-                android:layout_below="@+id/textView2"
-                android:layout_marginTop="26dp"
-                android:text="@string/view_count"
-                android:textColor="@color/black" />
-
-            <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView3"
                 android:layout_alignRight="@+id/textView1"
-                android:text="TextView"
+                android:text="10"
                 android:textColor="@color/Black"
                 tools:ignore="HardcodedText" />
 
+            <GridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textView3"
+                android:layout_marginTop="18dp"
+                android:numColumns="2" >
+
+            </GridView>
+
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btncancelchpw"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/textView3"
+                android:layout_below="@+id/gridView1"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/custom_btn_whiskey"
                 android:text="@string/view_btnaccept" />
 
-            <Button
-                android:id="@+id/login"
-                android:layout_width="85dp"
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/textView3"
-                android:background="@drawable/custom_btn_shakespeare"
-                android:text="@string/view_btnedit" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/textView2"
+                android:layout_below="@+id/btncancelchpw"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="10"
+                android:maxLines="10"
+                android:paddingTop="30dp"
+                android:width="50dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:text="Project I"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="16dp"
+                android:text="@string/view_count"
+                android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/add"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="14dp"
+                android:background="@drawable/custom_btn_shakespeare"
+                android:text="@string/cview_btnviewadd" />
+
+            <Button
+                android:id="@+id/chpassword"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/btncancelchpw"
+                android:layout_alignBottom="@+id/btncancelchpw"
+                android:layout_alignRight="@+id/add"
+                android:layout_toRightOf="@+id/editText1"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/view_btncancel" />
 

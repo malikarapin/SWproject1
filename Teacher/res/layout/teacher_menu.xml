@@ -25,37 +25,47 @@
             tools:ignore="ScrollViewSize" >
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/login"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/custom_btn_shakespeare"
-                android:text="@string/menu_btncreatequestion"
-                android:textColor="@color/Black" />
-
-            <Button
-                android:id="@+id/login"
+                android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="86dp"
+                android:layout_marginTop="34dp"
                 android:background="@drawable/custom_btn_whiskey"
                 android:text="@string/menu_btncheck"
                 android:textColor="@color/Black" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/chpassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/add"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="33dp"
+                android:background="@drawable/custom_btn_lemon_chiffon"
+                android:text="@string/menu_btnchpassword" />
+
+            <Button
+                android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/button2"
-                android:layout_marginTop="32dp"
+                android:layout_below="@+id/btncancelchpw"
+                android:layout_marginTop="49dp"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/menu_btnlogout"
                 tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btncancelchpw"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/chpassword"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/custom_btn_shakespeare"
+                android:text="@string/menu_btncreatequestion"
+                android:textColor="@color/Black" />
 
         </RelativeLayout>
     </ScrollView>
