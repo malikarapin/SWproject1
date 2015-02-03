@@ -7,9 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.AlertDialog;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -22,7 +20,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -40,7 +37,9 @@ import android.widget.Toast;
 
 public class StudentLogin extends Activity {
 	
-    
+	
+	
+	
     @SuppressLint("NewApi")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class StudentLogin extends Activity {
         setContentView(R.layout.student_login);
 
         // Permission StrictMode
-        if (android.os.Build.VERSION.SDK_INT > 14) {
+        if (android.os.Build.VERSION.SDK_INT > 12) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
@@ -66,10 +65,11 @@ public class StudentLogin extends Activity {
             public void onClick(View v) {
             	
             	
-            	String url = "http://192.168.208.205/PHPContodatabase/checkLogin.php";
+            	String url = "http://acsm.ictte-project.com/checkLogin.php";
         		List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("strUser", txtUser.getText().toString()));
-                params.add(new BasicNameValuePair("strPass", txtPass.getText().toString()));
+                params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
+                params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
+                
                 Log.e("Log error", "error params");
                 
                 /** Get result from Server (Return the JSON Code)
@@ -82,18 +82,21 @@ public class StudentLogin extends Activity {
                  */
                 
             	String resultServer  = getHttpPost(url,params);
-                
+                /***
                 /*** Default Value ***/
             	String strStatusID = "0";
             	String strMemberID = "0";
             	String strError = "Unknow Status!";
             	
+            	
+            	
+            	
             	JSONObject c;
 				try {
 					c = new JSONObject(resultServer);
-	            	strStatusID = c.getString("StatusID");
-	            	strMemberID = c.getString("MemberID");
-	            	strError = c.getString("Error");
+					 strStatusID = c.getString("std_id");
+					 strMemberID = c.getString("std_pwd");
+					 strError = c.getString("Error");
 	            	
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -137,11 +140,11 @@ public class StudentLogin extends Activity {
 	public String getHttpPost(String url,List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost(url);
+		HttpPost httpGet = new HttpPost(url);
 		
 		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpPost);
+			httpGet.setEntity(new UrlEncodedFormEntity(params));
+			HttpResponse response = client.execute(httpGet);
 			StatusLine statusLine = response.getStatusLine();
 			int statusCode = statusLine.getStatusCode();
 			if (statusCode == 200) { // Status OK

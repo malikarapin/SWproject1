@@ -54,6 +54,7 @@
             android:name=".StudentViewattend"
             android:label="@string/title_activity_student_viewattend" >
         </activity>
+     
     </application>
 
 </manifest>
