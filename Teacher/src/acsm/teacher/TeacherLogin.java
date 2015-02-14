@@ -81,9 +81,7 @@ public class TeacherLogin extends Activity {
 	            	String strStatusID = "0";
 	            	String strMemberID = "0";
 	            	String strError = "Unknow Status!";
-	            	
-	            	
-	            	
+
 	            	
 	            	JSONObject c;
 					try {
