@@ -65,7 +65,7 @@ public class StudentLogin extends Activity {
             public void onClick(View v) {
             	
             	
-            	String url = "http://acsm.ictte-project.com/checkLogin.php";
+            	String url = "http://acsm.ictte-project.com/checkLoginStudent.php";
         		List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
                 params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));

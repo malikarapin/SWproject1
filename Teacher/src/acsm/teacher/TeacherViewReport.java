@@ -72,7 +72,7 @@ public class TeacherViewReport extends Activity {
 		
 	        
 	        
-	        Button add = (Button)findViewById(R.id.add);
+	        Button add = (Button)findViewById(R.id.submit);
 	        add.setOnClickListener(new OnClickListener() {
 				
 				@Override

@@ -1,110 +1,162 @@
 package acsm.teacher;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 import acsm.teacher.R;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class TeacherLogin extends Activity {
 
-	EditText etUsername, etPassword;
-	String sUsername, sPassword;
-	public static int agID;
-	Toast toast;
+	 @SuppressLint("NewApi")
+		@Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.teacher_login);
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.teacher_login);
+	        // Permission StrictMode
+	        if (android.os.Build.VERSION.SDK_INT > 12) {
+	            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	            StrictMode.setThreadPolicy(policy);
+	        }
+	        
+	        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+	        
+	        // txtUsername & txtPassword
+	        final EditText txtUser = (EditText)findViewById(R.id.usertlog); 
+	        final EditText txtPass = (EditText)findViewById(R.id.passtlog); 
+	        
+	        // btnLogin
+	        final Button btnLogin = (Button) findViewById(R.id.submit);
+	        // Perform action on click
+	        btnLogin.setOnClickListener(new View.OnClickListener() {
+	            public void onClick(View v) {
+	            	
+	            	
+	            	String url = "http://acsm.ictte-project.com/checkLoginTeacher.php";
+	        		List<NameValuePair> params = new ArrayList<NameValuePair>();
+	                params.add(new BasicNameValuePair("teacher_id", txtUser.getText().toString()));
+	                params.add(new BasicNameValuePair("teacher_pwd", txtPass.getText().toString()));
+	                
+	                Log.e("Log error", "error params");
+	                
+	                /** Get result from Server (Return the JSON Code)
+	                 * StatusID = ? [0=Failed,1=Complete]
+	                 * MemberID = ? [Eg : 1]
+	                 * Error	= ?	[On case error return custom error message]
+	                 * 
+	                 * Eg Login Failed = {"StatusID":"0","MemberID":"0","Error":"Incorrect Username and Password"}
+	                 * Eg Login Complete = {"StatusID":"1","MemberID":"2","Error":""}
+	                 */
+	                
+	            	String resultServer  = getHttpPost(url,params);
+	                /***
+	                /*** Default Value ***/
+	            	String strStatusID = "0";
+	            	String strMemberID = "0";
+	            	String strError = "Unknow Status!";
+	            	
+	            	
+	            	
+	            	
+	            	JSONObject c;
+					try {
+						c = new JSONObject(resultServer);
+						 strStatusID = c.getString("teacher_id");
+						 strMemberID = c.getString("teacher_pwd");
+						 strError = c.getString("Error");
+		            	
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+					
+					// Prepare Login
+					if(strStatusID.equals("0"))
+					{
+						// Dialog
+						ad.setTitle("Error! ");
+						ad.setIcon(android.R.drawable.btn_star_big_on); 
+						ad.setPositiveButton("Close", null);
+						ad.setMessage(strError);
+						ad.show();
+						txtUser.setText("");
+						txtPass.setText("");
+					}
+					else
+					{
+						Toast.makeText(TeacherLogin.this, "Login OK", Toast.LENGTH_SHORT).show();
+						Intent newActivity = new Intent(TeacherLogin.this,TeacherMenu.class);
+						newActivity.putExtra("MemberID", strMemberID);
+						startActivity(newActivity);
+					}
+	           	            
+	            }
+	        });
+	        /**
+	        TextView t3 = (TextView) findViewById(R.id.linkFG);
+	        t3.setText(
+	            Html.fromHtml(
+	                "<a href=\"http://web52.phuket.psu.ac.th/registra\">Forget Password</a> "));
+	        t3.setMovementMethod(LinkMovementMethod.getInstance());
+	        */
+	    }
+	    
 
-		etUsername = (EditText) findViewById(R.id.usertlog);
-		etPassword = (EditText) findViewById(R.id.passtlog);
-
-		Button login = (Button) findViewById(R.id.add);
-		login.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				checkUserPassword();
-
+		public String getHttpPost(String url,List<NameValuePair> params) {
+			StringBuilder str = new StringBuilder();
+			HttpClient client = new DefaultHttpClient();
+			HttpPost httpGet = new HttpPost(url);
+			
+			try {
+				httpGet.setEntity(new UrlEncodedFormEntity(params));
+				HttpResponse response = client.execute(httpGet);
+				StatusLine statusLine = response.getStatusLine();
+				int statusCode = statusLine.getStatusCode();
+				if (statusCode == 200) { // Status OK
+					HttpEntity entity = response.getEntity();
+					InputStream content = entity.getContent();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+					String line;
+					while ((line = reader.readLine()) != null) {
+						str.append(line);
+					}
+				} else {
+					Log.e("Log", "Failed to download result..");
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		});
-
-	}
-
-	// Detect Back Button
-	@Override
-	public void onBackPressed() {
-
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-				TeacherLogin.this);
-
-		alertDialog.setTitle("Confirm Exit...");
-		alertDialog.setMessage("คุณต้องการออกจากโปรแกรมหรือไม่ ?");
-		alertDialog.setIcon(R.drawable.ic_launcher);
-
-		alertDialog.setPositiveButton("ใช่",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						// คลิกใช่ ออกจากโปรแกรม
-						finish();
-						TeacherLogin.super.finishAffinity();
-					}
-				});
-
-		alertDialog.setNegativeButton("ไม่",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						// คลิกไม่ cancel dialog
-						dialog.cancel();
-					}
-				});
-
-		alertDialog.show();
-	}
-
-	public void checkUserPassword() {
-
-		// TODO Auto-generated method stub
-		sUsername = etUsername.getText().toString();
-		sPassword = etPassword.getText().toString();
-		toast = Toast.makeText(getApplicationContext(),
-				"ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT);
-
-		if (sUsername.equals("5430213054") && sPassword.equals("5430213054")) {
-			this.agID = 10;
-			beginLogin();
-		} else if (sUsername.equals("5430213019")
-				&& sPassword.equals("5430213019")) {
-			this.agID = 20;
-			beginLogin();
-		} else if (sUsername.equals("5430213025")
-				&& sPassword.equals("5430213025")) {
-			this.agID = 30;
-			beginLogin();
-		}else if (sUsername.equals("")
-				&& sPassword.equals("")) {
-			this.agID = 30;
-			beginLogin();
+			return str.toString();
 		}
-		else
-			toast.show();
-
-	}
-
-	public void beginLogin() {
-		// TODO Auto-generated method stub
-		Intent tomenu = new Intent(getApplicationContext(), TeacherMenu.class);
-
-		startActivity(tomenu);
-		finish();
-	}
 }

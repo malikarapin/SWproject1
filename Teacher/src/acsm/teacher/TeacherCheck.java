@@ -22,7 +22,7 @@ public class TeacherCheck extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher__check);
 
-		Button login = (Button) findViewById(R.id.add);
+		Button login = (Button) findViewById(R.id.submit);
 		login.setOnClickListener(new OnClickListener() {
 
 			@Override

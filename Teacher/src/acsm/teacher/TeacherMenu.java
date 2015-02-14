@@ -29,7 +29,7 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
-		Button check = (Button)findViewById(R.id.add);
+		Button check = (Button)findViewById(R.id.submit);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override

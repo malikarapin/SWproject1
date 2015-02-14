@@ -15,7 +15,7 @@ public class TeaxherQuestion extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teaxher_question);
 		
-		Button save = (Button)findViewById(R.id.add);
+		Button save = (Button)findViewById(R.id.submit);
 		save.setOnClickListener(new OnClickListener() {
 			
 			@Override

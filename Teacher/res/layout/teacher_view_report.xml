@@ -105,7 +105,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/add"
+                android:id="@+id/submit"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/btncancelchpw"
                 android:layout_alignBottom="@+id/btncancelchpw"
-                android:layout_alignRight="@+id/add"
+                android:layout_alignRight="@+id/submit"
                 android:layout_toRightOf="@+id/editText1"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/view_btncancel" />
