@@ -1,7 +1,6 @@
 package acsm.student;
 
 import java.io.BufferedReader;
-
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -11,11 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -67,15 +68,19 @@ public class StudentCheck extends Activity {
 		check.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/*try{
+				try{
 					
 		            String latitude1 = String.valueOf(latitude);
 		            String longitude2 =  String.valueOf(longitude);
-		            String link="http://172.19.13.207/db_create.php";
+		            Log.e("Log error", "lat&lon");
+		            String link="http://acsm.ictte-project.com/insertlatlon.php";
+		            Log.e("Log error", "link");
 		            String data  = URLEncoder.encode("latitude", "UTF-8") 
 		            + "=" + URLEncoder.encode(latitude1, "UTF-8");
+		            Log.e("Log error", "convertlat");
 		            data += "&" + URLEncoder.encode("longitude", "UTF-8") 
 		            + "=" + URLEncoder.encode(longitude2, "UTF-8");
+		            Log.e("Log error", "convertlon");
 		            URL url = new URL(link);
 		            URLConnection conn = url.openConnection(); 
 		            conn.setDoOutput(true); 
@@ -87,6 +92,7 @@ public class StudentCheck extends Activity {
 		            (new InputStreamReader(conn.getInputStream()));
 		            StringBuilder sb = new StringBuilder();
 		            String line = null;
+		            Log.e("Log error", "test");
 		            // Read Server Response
 		            while((line = reader.readLine()) != null)
 		            {
@@ -100,7 +106,7 @@ public class StudentCheck extends Activity {
 		            
 		         }catch(Exception e){
 		        	 e.getMessage();
-		         }*/
+		         }
 				Intent tomenu = new Intent(getApplicationContext(), StudentPasscode.class);
 
 				startActivity(tomenu);

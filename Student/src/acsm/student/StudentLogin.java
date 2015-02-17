@@ -7,7 +7,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.AlertDialog;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -20,6 +22,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -65,7 +69,7 @@ public class StudentLogin extends Activity {
             public void onClick(View v) {
             	
             	
-            	String url = "http://acsm.ictte-project.com/checkLoginStudent.php";
+            	String url = "http://acsm.ictte-project.com/testconnectservicewithchecklogin.php";
         		List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
                 params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
@@ -84,20 +88,26 @@ public class StudentLogin extends Activity {
             	String resultServer  = getHttpPost(url,params);
                 /***
                 /*** Default Value ***/
+            
             	String strStatusID = "0";
             	String strMemberID = "0";
             	String strError = "Unknow Status!";
             	
             	
+            	//String strStatusID,strMemberID,strError;
             	
             	
             	JSONObject c;
 				try {
 					c = new JSONObject(resultServer);
+					/***
 					 strStatusID = c.getString("std_id");
 					 strMemberID = c.getString("std_pwd");
 					 strError = c.getString("Error");
-	            	
+	            	*/
+					
+					
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
