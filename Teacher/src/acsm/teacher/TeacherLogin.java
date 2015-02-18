@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.HttpEntity;
@@ -19,6 +20,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import acsm.teacher.R;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -33,6 +37,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class TeacherLogin extends Activity {
+	List<String> result;
 
 	 @SuppressLint("NewApi")
 		@Override
@@ -59,45 +64,46 @@ public class TeacherLogin extends Activity {
 	            public void onClick(View v) {
 	            	
 	            	
-	            	String url = "http://acsm.ictte-project.com/checkLoginTeacher.php";
+	            	String url = "http://acsm.ictte-project.com/loginpsupassport.php";
 	        		List<NameValuePair> params = new ArrayList<NameValuePair>();
-	                params.add(new BasicNameValuePair("teacher_id", txtUser.getText().toString()));
-	                params.add(new BasicNameValuePair("teacher_pwd", txtPass.getText().toString()));
+	                params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
+	                Log.d("Username", ""+txtUser.getText().toString());
+	                params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
+	                Log.d("Password", ""+txtPass.getText().toString());
 	                
 	                Log.e("Log error", "error params");
 	                
-	                /** Get result from Server (Return the JSON Code)
-	                 * StatusID = ? [0=Failed,1=Complete]
-	                 * MemberID = ? [Eg : 1]
-	                 * Error	= ?	[On case error return custom error message]
-	                 * 
-	                 * Eg Login Failed = {"StatusID":"0","MemberID":"0","Error":"Incorrect Username and Password"}
-	                 * Eg Login Complete = {"StatusID":"1","MemberID":"2","Error":""}
-	                 */
 	                
-	            	String resultServer  = getHttpPost(url,params);
-	                /***
-	                /*** Default Value ***/
-	            	String strStatusID = "0";
-	            	String strMemberID = "0";
-	            	String strError = "Unknow Status!";
-
-	            	
-	            	JSONObject c;
+	                String resultServer;
 					try {
-						c = new JSONObject(resultServer);
-						 strStatusID = c.getString("teacher_id");
-						 strMemberID = c.getString("teacher_pwd");
-						 strError = c.getString("Error");
-		            	
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
+						resultServer = getHttpPost(url,params);
+						Gson gson = new Gson();
+						Type listType = new TypeToken<List<String>>() {}.getType();
+						result = (List<String>) gson.fromJson(resultServer, listType);
+						if(resultServer != null){
+							
+							Toast.makeText(TeacherLogin.this, "Login OK", Toast.LENGTH_SHORT).show();
+
+							Intent intentMain = new Intent(TeacherLogin.this , 
+									 TeacherMenu.class);
+					    		startActivity(intentMain);
+						}
+						else{
+							// Dialog
+							ad.setTitle("Incorrect Username and Password! ");
+							ad.setIcon(android.R.drawable.btn_star_big_on); 
+							ad.setPositiveButton("Close", null);
+							ad.show();
+							txtUser.setText("");
+							txtPass.setText("");
+							}
+					} catch (JsonSyntaxException e) {
+						Toast.makeText(TeacherLogin.this, "Incorrect Username and Password!", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
 					
 					
-					
-					// Prepare Login
+					/*// Prepare Login
 					if(strStatusID.equals("0"))
 					{
 						// Dialog
@@ -115,17 +121,11 @@ public class TeacherLogin extends Activity {
 						Intent newActivity = new Intent(TeacherLogin.this,TeacherMenu.class);
 						newActivity.putExtra("MemberID", strMemberID);
 						startActivity(newActivity);
-					}
+					}*/
 	           	            
 	            }
 	        });
-	        /**
-	        TextView t3 = (TextView) findViewById(R.id.linkFG);
-	        t3.setText(
-	            Html.fromHtml(
-	                "<a href=\"http://web52.phuket.psu.ac.th/registra\">Forget Password</a> "));
-	        t3.setMovementMethod(LinkMovementMethod.getInstance());
-	        */
+	        
 	    }
 	    
 
