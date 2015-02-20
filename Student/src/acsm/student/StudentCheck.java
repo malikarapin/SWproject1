@@ -1,44 +1,29 @@
 package acsm.student;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
-public class StudentCheck extends Activity {
+public class StudentCheck extends Activity implements LocationListener {
 
 	TextView text1;
 	TextView text2;
-	Intent i;
-	GPSTracker gps;
-	
-	// url to create new product
-    //public String url_create_product = "http://192.168.208.230/test.php";
-    private static final String TAG_SUCCESS = "success";
-	
-	private ProgressDialog pDialog;
-	private double latitude = 0;
-	private double longitude = 0;
+	LocationManager locationManager;
+	String provider;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,97 +32,92 @@ public class StudentCheck extends Activity {
 
 		text1 = (TextView) findViewById(R.id.lat);
 		text2 = (TextView) findViewById(R.id.lon);
+		Button check = (Button) findViewById(R.id.submit);
 
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-		StrictMode.setThreadPolicy(policy); 
+		// Getting LocationManager object
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-		gps = new GPSTracker(StudentCheck.this);
-		
-		if (gps.canGetLocation()) {
+		// Creating an empty criteria object
+		Criteria criteria = new Criteria();
 
-			latitude = gps.getLatitude();
-			longitude = gps.getLongitude();
+		// Getting the name of the provider that meets the criteria
+		provider = locationManager.getBestProvider(criteria, false);
 
-			text1.setText("latitude :"+latitude);
-			text2.setText("longitude :"+longitude);
+		if (provider != null && !provider.equals("")) {
+
+			// Get the location from the given provider
+			Location location = locationManager.getLastKnownLocation(provider);
+
+			locationManager.requestLocationUpdates(provider, 1000, 1, this);
+
+			if (location != null)
+				onLocationChanged(location);
+			else
+				Toast.makeText(getBaseContext(), "Location can't be retrieved",
+						Toast.LENGTH_SHORT).show();
 
 		} else {
-			text1.setText("อุปกรณ์์ของคุณ ปิด GPS");
+			Toast.makeText(getBaseContext(), "No Provider Found",
+					Toast.LENGTH_SHORT).show();
 		}
-		Button check = (Button) findViewById(R.id.submit);
+
 		check.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try{
-					
-		            String latitude1 = String.valueOf(latitude);
-		            String longitude2 =  String.valueOf(longitude);
-		            Log.e("Log error", "lat&lon");
-		            String link="http://acsm.ictte-project.com/insertlatlon.php";
-		            Log.e("Log error", "link");
-		            String data  = URLEncoder.encode("latitude", "UTF-8") 
-		            + "=" + URLEncoder.encode(latitude1, "UTF-8");
-		            Log.e("Log error", "convertlat");
-		            data += "&" + URLEncoder.encode("longitude", "UTF-8") 
-		            + "=" + URLEncoder.encode(longitude2, "UTF-8");
-		            Log.e("Log error", "convertlon");
-		            URL url = new URL(link);
-		            URLConnection conn = url.openConnection(); 
-		            conn.setDoOutput(true); 
-		            OutputStreamWriter wr = new OutputStreamWriter
-		            (conn.getOutputStream()); 
-		            wr.write( data ); 
-		            wr.flush(); 
-		            BufferedReader reader = new BufferedReader
-		            (new InputStreamReader(conn.getInputStream()));
-		            StringBuilder sb = new StringBuilder();
-		            String line = null;
-		            Log.e("Log error", "test");
-		            // Read Server Response
-		            while((line = reader.readLine()) != null)
-		            {
-		               sb.append(line);
-		               break;
-		            }
-		            String aa = sb.toString();
-		           
-		            //
-		            //Toast.makeText(getApplicationContext(),latitude1 , Toast.LENGTH_SHORT).show();
-		            
-		         }catch(Exception e){
-		        	 e.getMessage();
-		         }
-				Intent tomenu = new Intent(getApplicationContext(), StudentPasscode.class);
-
-				startActivity(tomenu);
 
 			}
 		});
-		
-		
-		List < String > list = new ArrayList < String > ( );
-		 
-		list.add ( "ProjectI" );
-		 
-		list.add ( "SW VERIFICATION &VALIDATION" );
-		
-		 
-		list.add ( "WORKSHOP IN IT III(WEB JAVA)" );
-		
-		list.add ( "HUMAN COMPUTER INTERACTION" );
-		
-		list.add ( "SOFTWARE PROJECT MANAGEMENT" );
-		
-		list.add ( "SOFTWARE ARCHITECTURE" );
-		ArrayAdapter < String > dataAdapter = new ArrayAdapter < String > ( this, android.R.layout.simple_spinner_item, list );
-		 
-		 
-		Spinner spinner = ( Spinner ) this.findViewById ( R.id.spinner1 );
-		 
-		spinner.setAdapter ( dataAdapter );
 
-		
+		List<String> list = new ArrayList<String>();
+
+		list.add("ProjectI");
+
+		list.add("SW VERIFICATION &VALIDATION");
+
+		list.add("WORKSHOP IN IT III(WEB JAVA)");
+
+		list.add("HUMAN COMPUTER INTERACTION");
+
+		list.add("SOFTWARE PROJECT MANAGEMENT");
+
+		list.add("SOFTWARE ARCHITECTURE");
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, list);
+
+		Spinner spinner = (Spinner) this.findViewById(R.id.spinner1);
+
+		spinner.setAdapter(dataAdapter);
 
 	}
-	
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+
+		text2.setText("Longitude: "
+				+ String.format("%.9f", location.getLongitude()));
+
+		text1.setText("Latitude: "
+				+ String.format("%.9f", location.getLatitude()));
+
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
