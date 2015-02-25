@@ -38,7 +38,7 @@ public class StudentViewattend extends Activity {
 		
 		list.add ( "SOFTWARE ARCHITECTURE" );
 		ArrayAdapter < String > dataAdapter = new ArrayAdapter < String > ( this, android.R.layout.simple_spinner_item, list );
-		Spinner spinner = ( Spinner ) this.findViewById ( R.id.spinner1 );
+		Spinner spinner = ( Spinner ) this.findViewById ( R.id.subject );
 		 
 		spinner.setAdapter ( dataAdapter );
 		 

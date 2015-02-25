@@ -31,7 +31,7 @@
                 android:layout_marginTop="26dp"
                 android:ems="10"
                 android:hint="Username"
-                android:maxLength="10"
+                android:maxLength="30"
                 android:textColor="@color/Black"
                 tools:ignore="TextFields,HardcodedText" >
 
@@ -46,7 +46,7 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:maxLength="10"
+                android:maxLength="30"
                 android:textColor="@color/Black"
                 tools:ignore="TextFields,HardcodedText" />
 

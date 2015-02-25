@@ -1,18 +1,13 @@
 package acsm.student;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -23,24 +18,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
-
-
-
-
-
-
-
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -57,111 +37,96 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class StudentLogin extends Activity {
-	
-	
+
+	// private static final String TAG = StudentLogin.class.getSimpleName();
 	List<String> result;
-	
-    @SuppressLint("NewApi")
+
+	@SuppressLint("NewApi")
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_login);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.student_login);
 
-        // Permission StrictMode
-        if (android.os.Build.VERSION.SDK_INT > 12) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-        
-        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
-        
-        // txtUsername & txtPassword
-        final EditText txtUser = (EditText)findViewById(R.id.userlog); 
-        final EditText txtPass = (EditText)findViewById(R.id.passlog); 
-        
-        // btnLogin
-        final Button btnLogin = (Button) findViewById(R.id.submit);
-        // Perform action on click
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	
-            	
-            	String url = "http://acsm.ictte-project.com/loginpsupassport.php";
-        		List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
-                Log.d("Username", ""+txtUser.getText().toString());
-                params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
-                Log.d("Password", ""+txtPass.getText().toString());
-                
-                Log.e("Log error", "error params");
-                
+		// Permission StrictMode
+		if (android.os.Build.VERSION.SDK_INT > 12) {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+					.permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
 
-            	String resultServer;
+		final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+
+		// txtUsername & txtPassword
+		final EditText txtUser = (EditText) findViewById(R.id.userlog);
+		final EditText txtPass = (EditText) findViewById(R.id.passlog);
+
+		// btnLogin
+		final Button btnLogin = (Button) findViewById(R.id.submit);
+		// Perform action on click
+		btnLogin.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				String url = "http://acsm.ictte-project.com/loginpsupassport.php";
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+				params.add(new BasicNameValuePair("std_id", txtUser.getText()
+						.toString()));
+				Log.d("Username", "" + txtUser.getText().toString());
+				params.add(new BasicNameValuePair("std_pwd", txtPass.getText()
+						.toString()));
+				Log.d("Password", "" + txtPass.getText().toString());
+
+				Log.e("Log error", "error params");
+
+				String resultServer;
 				try {
-					resultServer = getHttpPost(url,params);
-					Gson gson = new Gson();
-					Type listType = new TypeToken<List<String>>() {}.getType();
-					result = (List<String>) gson.fromJson(resultServer, listType);
-					if(resultServer != null){
-						
-						Toast.makeText(StudentLogin.this, "Login OK", Toast.LENGTH_SHORT).show();
+					resultServer = getHttpPost(url, params);
 
-						Intent intentMain = new Intent(StudentLogin.this , 
-								 StudentMenu.class);
-				    		startActivity(intentMain);
-					}
-					else{
+					Gson gson = new Gson();
+					Type listType = new TypeToken<List<String>>() {
+					}.getType();
+					result = (List<String>) gson.fromJson(resultServer,
+							listType);
+					if (resultServer != null) {
+
+						Toast.makeText(StudentLogin.this, "Login OK",
+								Toast.LENGTH_SHORT).show();
+
+						Intent intentMain = new Intent(StudentLogin.this,
+								StudentMenu.class);
+						startActivity(intentMain);
+					} else {
 						// Dialog
-						ad.setTitle("Incorrect Username and Password! ");
-						ad.setIcon(android.R.drawable.btn_star_big_on); 
+						ad.setTitle("Incorrect Username and Password!");
+						ad.setIcon(android.R.drawable.btn_star_big_on);
 						ad.setPositiveButton("Close", null);
 						ad.show();
 						txtUser.setText("");
 						txtPass.setText("");
-						}
+					}
 				} catch (JsonSyntaxException e) {
-					Toast.makeText(StudentLogin.this, "Incorrect Username and Password!", Toast.LENGTH_LONG).show();
+					Toast.makeText(StudentLogin.this,
+							"Incorrect Username and Password!",
+							Toast.LENGTH_LONG).show();
 					e.printStackTrace();
 				}
-                
-				
-				// Prepare Login
-				/*if(Username.equals("0"))
-				{
-					// Dialog
-					ad.setTitle("Incorrect Username and Password! ");
-					ad.setIcon(android.R.drawable.btn_star_big_on); 
-					ad.setPositiveButton("Close", null);
-					ad.setMessage(strError);
-					ad.show();
-					txtUser.setText("");
-					txtPass.setText("");
-				}
-				else
-				{
-					Toast.makeText(StudentLogin.this, "Login OK", Toast.LENGTH_SHORT).show();
-					Intent newActivity = new Intent(StudentLogin.this,StudentMenu.class);
-					newActivity.putExtra("Username", Username);
-					startActivity(newActivity);
-				}*/
-           	            
-                }
-        });
-        
-        TextView t3 = (TextView) findViewById(R.id.linkFG);
-        t3.setText(
-            Html.fromHtml(
-                "<a href=\"http://web52.phuket.psu.ac.th/registra\">Forget Password</a> "));
-        t3.setMovementMethod(LinkMovementMethod.getInstance());
-        
-    }
-    
 
-	public String getHttpPost(String url,List<NameValuePair> params) {
+			}
+		}
+
+		);
+
+		TextView t3 = (TextView) findViewById(R.id.linkFG);
+		t3.setText(Html
+				.fromHtml("<a href=\"https://passport.psu.ac.th/index.php?content=forgetpass\">Forget Password</a> "));
+		t3.setMovementMethod(LinkMovementMethod.getInstance());
+
+	}
+
+	public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpPost httpGet = new HttpPost(url);
-		
+
 		try {
 			httpGet.setEntity(new UrlEncodedFormEntity(params));
 			HttpResponse response = client.execute(httpGet);
@@ -170,7 +135,8 @@ public class StudentLogin extends Activity {
 			if (statusCode == 200) { // Status OK
 				HttpEntity entity = response.getEntity();
 				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+				BufferedReader reader = new BufferedReader(
+						new InputStreamReader(content));
 				String line;
 				while ((line = reader.readLine()) != null) {
 					str.append(line);
@@ -185,12 +151,11 @@ public class StudentLogin extends Activity {
 		}
 		return str.toString();
 	}
-	
-	
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.student_login, menu);
-        return true;
-    }
-    
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.student_login, menu);
+		return true;
+	}
+
 }

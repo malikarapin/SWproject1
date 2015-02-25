@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/spinner1"
+                android:layout_below="@+id/subject"
                 android:layout_marginTop="43dp"
                 android:text="@string/check_txtcount"
                 android:textColor="@color/Black"
@@ -46,7 +46,7 @@
                 android:textSize="18sp" />
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"

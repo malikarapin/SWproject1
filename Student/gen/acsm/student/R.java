@@ -221,7 +221,7 @@ public final class R {
         public static final int radioG1=0x7f090013;
         public static final int rdiog1=0x7f090000;
         public static final int scrollView1=0x7f090001;
-        public static final int spinner1=0x7f090004;
+        public static final int subject=0x7f090004;
         public static final int submit=0x7f09000c;
         public static final int timecount=0x7f090003;
         public static final int txtviewcount1=0x7f09000b;
