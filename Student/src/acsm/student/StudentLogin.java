@@ -61,39 +61,54 @@ public class StudentLogin extends Activity {
 		final EditText txtPass = (EditText) findViewById(R.id.passlog);
 
 		// btnLogin
-		final Button btnLogin = (Button) findViewById(R.id.submit);
+		final Button btnLogin = (Button) findViewById(R.id.btnsubmitcheck);
 		// Perform action on click
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
 				String url = "http://acsm.ictte-project.com/loginpsupassport.php";
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
-				params.add(new BasicNameValuePair("std_id", txtUser.getText()
-						.toString()));
-				Log.d("Username", "" + txtUser.getText().toString());
-				params.add(new BasicNameValuePair("std_pwd", txtPass.getText()
-						.toString()));
-				Log.d("Password", "" + txtPass.getText().toString());
-
-				Log.e("Log error", "error params");
+				
+				
+				params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
+				
+				
+				
+				params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
+				
+				
 
 				String resultServer;
+				
+				
+				
 				try {
+					
 					resultServer = getHttpPost(url, params);
+					
+
 
 					Gson gson = new Gson();
 					Type listType = new TypeToken<List<String>>() {
 					}.getType();
-					result = (List<String>) gson.fromJson(resultServer,
-							listType);
+					result = (List<String>) gson.fromJson(resultServer,listType);
+					
+					
+					
 					if (resultServer != null) {
-
-						Toast.makeText(StudentLogin.this, "Login OK",
-								Toast.LENGTH_SHORT).show();
-
-						Intent intentMain = new Intent(StudentLogin.this,
-								StudentMenu.class);
+						Toast.makeText(StudentLogin.this, "Login OK",Toast.LENGTH_SHORT).show();
+						
+						Intent intentMain = new Intent(StudentLogin.this,StudentMenu.class);
+						
+						String Username = txtUser.getText().toString();
+						
+						intentMain.putExtra("Username", Username);
+						
+						Log.e("send data to","Username");
+						
 						startActivity(intentMain);
+						
+						
 					} else {
 						// Dialog
 						ad.setTitle("Incorrect Username and Password!");
@@ -122,6 +137,7 @@ public class StudentLogin extends Activity {
 
 	}
 
+	
 	public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
@@ -151,11 +167,4 @@ public class StudentLogin extends Activity {
 		}
 		return str.toString();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.student_login, menu);
-		return true;
-	}
-
 }

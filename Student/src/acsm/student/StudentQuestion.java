@@ -20,7 +20,7 @@ public class StudentQuestion extends Activity {
 		
 		
 		
-		Button save = (Button)findViewById(R.id.submit);
+		Button save = (Button)findViewById(R.id.btnsubmitcheck);
 		save.setOnClickListener(new OnClickListener() {
 			
 		@Override

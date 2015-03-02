@@ -57,7 +57,7 @@
                 tools:ignore="HardcodedText" />
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/btnsubmitcheck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

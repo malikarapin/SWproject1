@@ -86,7 +86,7 @@
                 android:maxLength="1"/>
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/btnsubmitcheck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -100,7 +100,7 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/submit"
+                android:layout_below="@+id/btnsubmitcheck"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="44dp"
                 android:background="@drawable/custom_btn_orange"

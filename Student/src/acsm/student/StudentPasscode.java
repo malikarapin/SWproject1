@@ -15,7 +15,7 @@ public class StudentPasscode extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_passcode);
 		
-		Button enter = (Button)findViewById(R.id.submit);
+		Button enter = (Button)findViewById(R.id.btnsubmitcheck);
 		enter.setOnClickListener(new OnClickListener() {
 			
 			@Override
