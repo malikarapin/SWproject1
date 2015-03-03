@@ -32,6 +32,7 @@ public class StudentCheck extends Activity {
 
 		String showdatauser = getIntent().getStringExtra("Username");
 		final TextView txtuser = (TextView)findViewById(R.id.lat);
+		final TextView txtpass = (TextView)findViewById(R.id.lon);
 		final Spinner spinner = (Spinner)findViewById(R.id.subject);
 
         
@@ -94,6 +95,23 @@ public class StudentCheck extends Activity {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String formattedDate = df.format(c.getTime());
 			txtuser.setText(" Current : " + formattedDate);
+			
+			
+			GPSTracker gps;
+			
+			gps = new GPSTracker(StudentCheck.this);
+			 
+            // check if GPS enabled     
+            if(gps.canGetLocation()){
+                 
+                double latitude = gps.getLatitude();
+                double longitude = gps.getLongitude();
+                 
+                txtpass.setText("lat&lon"+latitude+" " + longitude);
+                // \n is for new line
+                //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+			
+            }
 	}
 	
 	
