@@ -59,15 +59,13 @@ public class StudentMenu extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),StudentCheck.class);
-		
-		
+
 		
 		String showdatauser = getIntent().getStringExtra("Username");
-		i.putExtra("Username", showdatauser);
+
 		
 		
-/*		String url = "http://acsm.ictte-project.com/spinner.php";
+		String url = "http://acsm.ictte-project.com/spinner.php";
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		
 		
@@ -86,27 +84,19 @@ public class StudentMenu extends Activity {
 			
 			Log.e("value in resultServer",resultServer.toString());
 
-
-			Gson gson = new Gson();
-			Type listType = new TypeToken<List<String>>() {
-			}.getType();
-			result = (List<String>) gson.fromJson(resultServer,listType);
-			
-			
+				
 			
 			if (resultServer != null) {
 				Toast.makeText(StudentMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
 				
 				Intent intentMain = new Intent(StudentMenu.this,StudentCheck.class);
 				
-				//String Username = txtUser.getText().toString();
 				
 				intentMain.putExtra("Username", resultServer);
 				
 				
 				
 				startActivity(intentMain);
-				Log.e("send data to","Username");
 				
 				
 			} else {
@@ -115,8 +105,8 @@ public class StudentMenu extends Activity {
 				ad.setIcon(android.R.drawable.btn_star_big_on);
 				ad.setPositiveButton("Close", null);
 				ad.show();
-				txtUser.setText("");
-				txtPass.setText("");
+				/*txtUser.setText("");
+				txtPass.setText("");*/
 			}
 		} catch (JsonSyntaxException e) {
 			Toast.makeText(StudentMenu.this,
@@ -124,11 +114,9 @@ public class StudentMenu extends Activity {
 					Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
-		*/
 		
 		
-		
-		startActivity(i);
+	
 		}
 });
 		

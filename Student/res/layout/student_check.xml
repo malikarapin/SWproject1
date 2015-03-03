@@ -25,17 +25,6 @@
             tools:ignore="ScrollViewSize,UselessLeaf" >
 
             <TextView
-                android:id="@+id/timecount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/subject"
-                android:layout_marginTop="43dp"
-                android:text="@string/check_txtcount"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-            <TextView
                 android:id="@+id/linkFG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,6 +36,7 @@
 
             <Spinner
                 android:id="@+id/subject"
+                style="@style/SpinnerItem.DropDownItem"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
@@ -73,38 +63,6 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/txtviewcount2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/timecount"
-                android:layout_marginTop="16dp"
-                android:layout_toLeftOf="@+id/digitalClock1"
-                android:text="12"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/txtviewcount1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/txtviewcount2"
-                android:layout_alignBottom="@+id/txtviewcount2"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="38dp"
-                android:text="10"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:id="@+id/btnsubmitcheck"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/txtviewcount2"
-                android:layout_marginTop="29dp"
-                android:background="@drawable/custom_btn_shakespeare"
-                android:text="@string/check_btncheck"
-                android:textColor="@color/Black" />
-
-            <TextView
                 android:id="@+id/lon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,12 +73,23 @@
                 tools:ignore="HardcodedText" />
 
             <Button
+                android:id="@+id/btnsubmitcheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/subject"
+                android:layout_marginTop="91dp"
+                android:background="@drawable/custom_btn_shakespeare"
+                android:text="@string/check_btncheck"
+                android:textColor="@color/Black" />
+
+            <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/btnsubmitcheck"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="33dp"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/check_btncancel"
                 android:textColor="@color/Black" />
