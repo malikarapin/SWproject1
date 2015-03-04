@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,11 +16,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
@@ -30,7 +24,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -53,7 +46,7 @@ public class StudentMenu extends Activity {
 							.permitAll().build();
 					StrictMode.setThreadPolicy(policy);
 				}
-				final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+				
 		Button checkm = (Button)findViewById(R.id.btnsubmitcheck);
 		checkm.setOnClickListener(new OnClickListener() {
 			
@@ -92,22 +85,14 @@ public class StudentMenu extends Activity {
 				Intent intentMain = new Intent(StudentMenu.this,StudentCheck.class);
 				
 				
-				intentMain.putExtra("Username", resultServer);
+				intentMain.putExtra("Subject", resultServer);
 				
-				
+				intentMain.putExtra("Username", showdatauser);
 				
 				startActivity(intentMain);
 				
 				
-			} else {
-				// Dialog
-				ad.setTitle("Incorrect Username and Password!");
-				ad.setIcon(android.R.drawable.btn_star_big_on);
-				ad.setPositiveButton("Close", null);
-				ad.show();
-				/*txtUser.setText("");
-				txtPass.setText("");*/
-			}
+			} 
 		} catch (JsonSyntaxException e) {
 			Toast.makeText(StudentMenu.this,
 					"Incorrect Username and Password!",

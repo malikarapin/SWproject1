@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class StudentPasscode extends Activity {
 
@@ -14,6 +15,15 @@ public class StudentPasscode extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_passcode);
+		
+		String showdatauser = getIntent().getStringExtra("latitude");
+		
+		Toast.makeText(getApplicationContext(), "Your Location is - \nLat: "+showdatauser , Toast.LENGTH_LONG).show();
+
+		
+		
+		
+		
 		
 		Button enter = (Button)findViewById(R.id.btnsubmitcheck);
 		enter.setOnClickListener(new OnClickListener() {
