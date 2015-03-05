@@ -36,22 +36,12 @@
                 android:textColor="@color/Black" />
 
             <Button
-                android:id="@+id/chpassword"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_below="@+id/submit"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="33dp"
-                android:background="@drawable/custom_btn_lemon_chiffon"
-                android:text="@string/menu_btnchpassword" />
-
-            <Button
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/btncancelchpw"
-                android:layout_marginTop="49dp"
+                android:layout_marginTop="68dp"
                 android:background="@drawable/custom_btn_orange"
                 android:text="@string/menu_btnlogout"
                 tools:ignore="HardcodedText" />
@@ -61,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/chpassword"
-                android:layout_marginTop="30dp"
+                android:layout_below="@+id/submit"
+                android:layout_marginTop="71dp"
                 android:background="@drawable/custom_btn_shakespeare"
                 android:text="@string/menu_btncreatequestion"
                 android:textColor="@color/Black" />
