@@ -73,16 +73,6 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
-		Button chpw = (Button)findViewById(R.id.chpassword);
-		chpw.setOnClickListener(new OnClickListener() {
-			
-			@Override
-		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeacherChangePassword.class);
-		startActivity(i);
-		}
-});
-		
 		
 		
 	}

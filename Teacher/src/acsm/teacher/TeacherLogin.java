@@ -83,13 +83,13 @@ public class TeacherLogin extends Activity {
 						
 						resultServer = getHttpPost(url, params);
 						
-						/*
+						
 						Gson gson = new Gson();
 						Type listType = new TypeToken<List<String>>() {
 						}.getType();
-						result = (List<String>) gson.fromJson(resultServer,listType);*/
+						result = (List<String>) gson.fromJson(resultServer,listType);
 						 
-						Log.d("resultServer",resultServer.toString());
+						Log.d("resultServer",result.toString());
 
 
 						if (resultServer != null) {
