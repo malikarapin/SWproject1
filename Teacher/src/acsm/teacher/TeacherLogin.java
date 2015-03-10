@@ -97,11 +97,11 @@ public class TeacherLogin extends Activity {
 							
 							Intent intentMain = new Intent(TeacherLogin.this,TeacherMenu.class);
 							
-							/*String Username = txtUser.getText().toString();
+							String Username = txtUser.getText().toString();
 							
-							intentMain.putExtra("Username", Username);*/
+							intentMain.putExtra("Username", Username);
 							
-							Log.e("send data to","Username");
+							Log.e("send data to",Username.toString());
 							
 							startActivity(intentMain);
 							

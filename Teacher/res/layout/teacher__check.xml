@@ -20,7 +20,7 @@
         <RelativeLayout
             android:id="@+id/RelativeLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="382dp"
             android:orientation="vertical"
             tools:ignore="ScrollViewSize" >
 
@@ -28,7 +28,6 @@
                 android:id="@+id/spinner1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
                 android:layout_marginTop="17dp" />
 
@@ -54,85 +53,36 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/EditText02"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/EditText01"
-                android:layout_alignBottom="@+id/EditText01"
-                android:layout_alignLeft="@+id/textView2"
-                android:ems="10"
-                android:inputType="text"
-                android:maxLength="1"
-                android:singleLine="true"
-                android:textSize="@dimen/testsize25"
-                tools:ignore="TextFields" />
-
-            <EditText
-                android:id="@+id/EditText01"
-                android:layout_width="50dp"
+                android:id="@+id/passcode"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
-                android:layout_marginTop="22dp"
-                android:layout_toLeftOf="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
                 android:ems="10"
-                android:inputType="text"
-                android:maxLength="1"
-                android:singleLine="true"
-                android:textSize="@dimen/testsize25"
-                tools:ignore="TextFields" >
-
-                <requestFocus />
-            </EditText>
-
-            <EditText
-                android:id="@+id/EditText03"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/EditText02"
-                android:layout_alignBottom="@+id/EditText02"
-                android:layout_alignRight="@+id/textView2"
-                android:ems="10"
-                android:inputType="text"
-                android:maxLength="1"
-                android:singleLine="true"
-                android:textSize="@dimen/testsize25"
-                tools:ignore="TextFields" />
-
-            <EditText
-                android:id="@+id/EditText04"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/EditText03"
-                android:layout_alignBottom="@+id/EditText03"
-                android:layout_toRightOf="@+id/textView1"
-                android:ems="10"
-                android:inputType="text"
-                android:maxLength="1"
-                android:singleLine="true"
-                android:textSize="@dimen/testsize25"
-                tools:ignore="TextFields" />
+                android:gravity="center"
+                android:maxLength="4"
+                android:textSize="22dp" />
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/EditText02"
-                android:layout_marginTop="38dp"
+                android:layout_below="@+id/passcode"
+                android:layout_marginTop="35dp"
                 android:background="@drawable/custom_btn_whiskey"
                 android:text="@string/check_btnaccept"
                 android:textColor="@color/Black" />
 
-            <Button
-                android:id="@+id/btncancelchpw"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
+            <DigitalClock
+                android:id="@+id/digitalClock1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/passcode"
                 android:layout_below="@+id/submit"
-                android:layout_marginTop="23dp"
-                android:background="@drawable/custom_btn_orange"
-                android:text="@string/check_btncancel"
-                android:textColor="@color/Black" />
+                android:layout_marginTop="22dp"
+                android:text="DigitalClock" />
 
         </RelativeLayout>
     </ScrollView>
