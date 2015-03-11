@@ -7,9 +7,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.AlertDialog;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -20,11 +18,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
@@ -34,7 +30,6 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;

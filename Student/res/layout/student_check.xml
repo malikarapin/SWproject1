@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/button2"
+                android:layout_below="@+id/btnsubmitcheck"
                 android:layout_marginTop="20dp"
                 android:text="TextView"
                 tools:ignore="HardcodedText" />
@@ -78,21 +78,33 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/subject"
-                android:layout_marginTop="91dp"
+                android:layout_marginTop="147dp"
                 android:background="@drawable/custom_btn_shakespeare"
                 android:text="@string/check_btncheck"
                 android:textColor="@color/Black" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/passcode"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/btnsubmitcheck"
-                android:layout_marginTop="33dp"
-                android:background="@drawable/custom_btn_orange"
-                android:text="@string/check_btncancel"
-                android:textColor="@color/Black" />
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/subject"
+                android:layout_marginTop="78dp"
+                android:ems="10"
+                android:gravity="center"
+                android:maxLength="4"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subject"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:text="Passcode"
+                android:textSize="21dp" />
 
         </RelativeLayout>
     </ScrollView>

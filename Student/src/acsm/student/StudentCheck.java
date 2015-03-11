@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -23,7 +24,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.google.gson.JsonSyntaxException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +36,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -61,6 +65,7 @@ public class StudentCheck extends Activity {
 		final TextView txtuser = (TextView)findViewById(R.id.lat);
 		final TextView txtpass = (TextView)findViewById(R.id.lon);
 		final Spinner spinner = (Spinner)findViewById(R.id.subject);
+		final EditText passcode = (EditText)findViewById(R.id.passcode);
 
         
 		try {
@@ -154,7 +159,7 @@ public class StudentCheck extends Activity {
     		//Intent i = new Intent(getApplicationContext(),StudentPasscode.class);
     		
     		
-    		String url = "http://acsm.ictte-project.com/insertcheck.php";
+    		String url = "http://acsm.ictte-project.com/insertcheckStudent.php";
     		List<NameValuePair> params = new ArrayList<NameValuePair>(4);
     		
     		
@@ -163,6 +168,8 @@ public class StudentCheck extends Activity {
     		params.add(new BasicNameValuePair("longitude", longitude.toString()));
     		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
     		params.add(new BasicNameValuePair("subject", item.toString()));
+    		
+    		params.add(new BasicNameValuePair("pass_code", passcode.getText().toString()));
     		
     		
 
