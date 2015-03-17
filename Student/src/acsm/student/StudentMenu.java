@@ -75,7 +75,7 @@ public class StudentMenu extends Activity {
 			resultServer = getHttpPost(url, params);
 			
 			
-			Log.e("value in resultServer",resultServer.toString());
+			Log.e("value in resultServer",params.toString());
 
 				
 			
@@ -89,8 +89,14 @@ public class StudentMenu extends Activity {
 				
 				intentMain.putExtra("Username", showdatauser);
 				
+				
+				
+				
 				startActivity(intentMain);
 				
+				
+				Log.e("inrent to check", resultServer.toString());
+				Log.e("submit", showdatauser.toString());
 				
 			} 
 		} catch (JsonSyntaxException e) {

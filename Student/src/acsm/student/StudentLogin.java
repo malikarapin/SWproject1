@@ -66,7 +66,7 @@ public class StudentLogin extends Activity {
 			
 
 			public void onClick(View v) {
-
+				
 				String url = "http://acsm.ictte-project.com/loginpsupassport.php";
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
@@ -89,7 +89,7 @@ public class StudentLogin extends Activity {
 					}.getType();
 					result = (List<String>) gson.fromJson(resultServer,listType);
 					 
-					Log.d("resultServer",result.toString());
+					//Log.d("resultServer",result.toString());
 
 
 					if (resultServer != null) {

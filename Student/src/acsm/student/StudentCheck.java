@@ -171,7 +171,7 @@ public class StudentCheck extends Activity {
     		
     		params.add(new BasicNameValuePair("pass_code", passcode.getText().toString()));
     		
-    		
+    		Log.e("param", params.toString());
 
     		String resultServer;
     		
@@ -182,11 +182,13 @@ public class StudentCheck extends Activity {
     			resultServer = getHttpPost(url, params);
     			
     			
-    			Log.e("value in resultServer",resultServer.toString());
+    			Log.e("value in resultServer",resultServer);
 
-    				
+    			String pass = "Check successful";
+    			String unpass = "Check unsuccessful";
     			
-    			if (resultServer != null) {
+    			if (resultServer.equals("Check successful")) {
+    				
     				Toast.makeText(StudentCheck.this, "Stand By",Toast.LENGTH_SHORT).show();
     				
     				Intent intentMain = new Intent(StudentCheck.this,StudentMenu.class);
@@ -199,6 +201,9 @@ public class StudentCheck extends Activity {
     				startActivity(intentMain);
     				
     				
+    			}else{
+    				
+    				Toast.makeText(StudentCheck.this, resultServer.toString(),Toast.LENGTH_SHORT).show();
     			}
     					
     		} catch (JsonSyntaxException e) {
@@ -212,13 +217,14 @@ public class StudentCheck extends Activity {
     		
     		
     		
-    		//startActivity(i);
+
     		}
     });
             
     		
     		
 	}	
+	
 	public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
