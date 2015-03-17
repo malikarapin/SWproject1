@@ -172,7 +172,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     		params.add(new BasicNameValuePair("passcode", passcode.getText().toString()));
     		
     		
-    		Log.e("String Passcode",passcode.getText().toString());
+    		Log.e("Param",params.toString());
     		
     		
 
@@ -215,7 +215,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     		
     		
     		
-    		//startActivity(i);
+
     		}
     });
             
