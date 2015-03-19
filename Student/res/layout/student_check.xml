@@ -36,13 +36,12 @@
 
             <Spinner
                 android:id="@+id/subject"
-                style="@style/SpinnerItem.DropDownItem"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
+                style="@style/btnStyleopal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_below="@+id/linkFG"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/custom_btn_opal" />
+                android:layout_marginTop="17dp"
+                />
 
             <DigitalClock
                 android:id="@+id/digitalClock1"
@@ -88,8 +87,7 @@
             <EditText
                 android:id="@+id/passcode"
                 android:layout_width="wrap_content"
-                android:layout_height="35dip"
-                android:paddingLeft="10dip"
+                android:layout_height="42dip"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/subject"
@@ -97,7 +95,9 @@
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="Passcode 0-4 characters"
                 android:maxLength="4"
+                android:paddingLeft="10dip"
                 android:textSize="20dp" />
 
             <TextView

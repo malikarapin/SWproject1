@@ -75,7 +75,7 @@ public class StudentMenu extends Activity {
 			resultServer = getHttpPost(url, params);
 			
 			
-			Log.e("value in resultServer",params.toString());
+			Log.e("value in resultServer",String.valueOf(params));
 
 				
 			
@@ -95,8 +95,8 @@ public class StudentMenu extends Activity {
 				startActivity(intentMain);
 				
 				
-				Log.e("inrent to check", resultServer.toString());
-				Log.e("submit", showdatauser.toString());
+				Log.e("inrent to check", String.valueOf(resultServer));
+				Log.e("submit", String.valueOf(showdatauser));
 				
 			} 
 		} catch (JsonSyntaxException e) {
@@ -128,9 +128,9 @@ public class StudentMenu extends Activity {
 		public void onClick(View v) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
 		alertDialog.setTitle("Confirm Logout...");
-        alertDialog.setMessage("คุณต้องการลงชื่อออกการใช้งานใช่หรือไม่");
+        alertDialog.setMessage("Do you want to quit");
         alertDialog.setIcon(R.drawable.ic_launcher);
-        alertDialog.setPositiveButton("ใช่",
+        alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         //คลิกใช่ ออกจากโปรแกรม
@@ -141,7 +141,7 @@ public class StudentMenu extends Activity {
                     }
                 });
  
-        alertDialog.setNegativeButton("ไม่",
+        alertDialog.setNegativeButton("NO",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,    int which) {
                         //คลิกไม่ cancel dialog
@@ -172,10 +172,10 @@ public class StudentMenu extends Activity {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
  
         alertDialog.setTitle("Confirm Exit...");
-        alertDialog.setMessage("คุณต้องการออกจากโปรแกรมหรือไม่ ?");
+        alertDialog.setMessage("Do you want to quit");
         alertDialog.setIcon(R.drawable.ic_launcher);
  
-        alertDialog.setPositiveButton("ใช่",
+        alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         //คลิกใช่ ออกจากโปรแกรม
@@ -184,7 +184,7 @@ public class StudentMenu extends Activity {
                     }
                 });
  
-        alertDialog.setNegativeButton("ไม่",
+        alertDialog.setNegativeButton("NO",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,    int which) {
                         //คลิกไม่ cancel dialog

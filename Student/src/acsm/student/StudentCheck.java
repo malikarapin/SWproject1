@@ -45,6 +45,7 @@ import android.widget.Toast;
 public class StudentCheck extends Activity {
 
 	String item;
+	String selected, spinner_item;
 
 	protected Object latitude;
 	protected Object longitude;
@@ -86,14 +87,19 @@ public class StudentCheck extends Activity {
         	
         	for(int i=0;i<str2.length;i++)
         	{
+        		
         		list.add(str2[i]);
+        		//str2[i]= "Please select Subject";
         	}
         	
         	Collections.sort(list);
         	
         	ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
-			(getApplicationContext(), android.R.layout.simple_spinner_item, list);
-        	dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, list);
+        	dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+        	
+        	
+        	
         	sp.setAdapter(dataAdapter);
         	
         	
@@ -103,11 +109,18 @@ public class StudentCheck extends Activity {
         		{
         			// TODO Auto-generated method stub
 
+        			
+        			
         			item=sp.getSelectedItem().toString();
+        			
+        			
+        		
+        			
+        			
 
-        			//Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
+        			Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
 
-        			Log.e("Item",item);
+        			Log.e("Item",String.valueOf(item));
         			
         			
         			
@@ -171,7 +184,7 @@ public class StudentCheck extends Activity {
     		
     		params.add(new BasicNameValuePair("pass_code", passcode.getText().toString()));
     		
-    		Log.e("param", params.toString());
+    		Log.e("param",String.valueOf(params));
 
     		String resultServer;
     		
@@ -182,7 +195,7 @@ public class StudentCheck extends Activity {
     			resultServer = getHttpPost(url, params);
     			
     			
-    			Log.e("value in resultServer",resultServer);
+    			Log.e("value in resultServer",String.valueOf(resultServer));
 
     			String pass = "Check successful";
     			String unpass = "Check unsuccessful";
@@ -249,5 +262,6 @@ public class StudentCheck extends Activity {
 		return str.toString();
 		
 	}
+	
 	
 }

@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Studentspl"
-            android:label="@string/title_activity_studentspl"
+            android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

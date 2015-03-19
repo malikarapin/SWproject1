@@ -27,7 +27,7 @@
             <EditText
                 android:id="@+id/userlog"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/rounded_edittext"
                 android:paddingLeft="10dp"
@@ -45,7 +45,7 @@
             <EditText
                 android:id="@+id/passlog"
                 android:layout_width="match_parent"
-                android:layout_height="35dip"
+                android:layout_height="42dip"
                 android:layout_marginTop="31dp"
                 android:ems="10"
                 android:hint="Password"

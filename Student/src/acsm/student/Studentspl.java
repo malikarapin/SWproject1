@@ -33,6 +33,7 @@ public class Studentspl extends Activity {
 		delay_time = time;
 		handler.postDelayed(runnable, delay_time);
 		time = System.currentTimeMillis();
+		
 	}
 
 	public void onPause() {

@@ -238,13 +238,14 @@ public final class R {
         public static final int viewcount=0x7f09000e;
     }
     public static final class layout {
-        public static final int student_check=0x7f030000;
-        public static final int student_login=0x7f030001;
-        public static final int student_menu=0x7f030002;
-        public static final int student_passcode=0x7f030003;
-        public static final int student_question=0x7f030004;
-        public static final int student_spl=0x7f030005;
-        public static final int student_viewatten=0x7f030006;
+        public static final int simple_spinner_dropdown_item=0x7f030000;
+        public static final int student_check=0x7f030001;
+        public static final int student_login=0x7f030002;
+        public static final int student_menu=0x7f030003;
+        public static final int student_passcode=0x7f030004;
+        public static final int student_question=0x7f030005;
+        public static final int student_spl=0x7f030006;
+        public static final int student_viewatten=0x7f030007;
     }
     public static final class menu {
         public static final int student_check=0x7f080000;
@@ -282,6 +283,7 @@ public final class R {
         public static final int question_txtans4=0x7f06001b;
         public static final int question_txtquestion=0x7f060017;
         public static final int question_txttimecount=0x7f06001c;
+        public static final int spinnerTextHint=0x7f060021;
         public static final int title_activity_passcode=0x7f06000d;
         public static final int title_activity_student_check=0x7f060008;
         public static final int title_activity_student_menu=0x7f060011;

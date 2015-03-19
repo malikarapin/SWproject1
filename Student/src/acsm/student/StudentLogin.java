@@ -89,7 +89,7 @@ public class StudentLogin extends Activity {
 					}.getType();
 					result = (List<String>) gson.fromJson(resultServer,listType);
 					 
-					//Log.d("resultServer",result.toString());
+					Log.d("resultServer",String.valueOf(result));
 
 
 					if (resultServer != null) {

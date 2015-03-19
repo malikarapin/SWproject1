@@ -34,5 +34,6 @@
     <string name="title_activity_student_passcode">Student-Passcode</string>
     <string name="title_activity_studentspl">Spl</string>
     <string name="title_activity_student_viewattend">StudentViewattend</string>
+    <string name="spinnerTextHint">Please select Subject</string>
 
 </resources>
