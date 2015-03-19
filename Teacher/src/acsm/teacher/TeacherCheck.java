@@ -26,9 +26,11 @@ import org.json.JSONObject;
 
 import com.google.gson.JsonSyntaxException;
 
+import android.R.anim;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +39,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -78,6 +81,10 @@ String subjectdata = getIntent().getStringExtra("Subject");
         		str2[i]=json.getString("Subject_Name_Eng");
         	}
         	final Spinner sp = (Spinner) findViewById(R.id.spinner1);
+        	
+        	
+        	
+        	
         	List<String> list = new ArrayList<String>();
         	
         	for(int i=0;i<str2.length;i++)
@@ -87,9 +94,11 @@ String subjectdata = getIntent().getStringExtra("Subject");
         	
         	Collections.sort(list);
         	
+        	
+        	
         	ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
-			(getApplicationContext(), android.R.layout.simple_spinner_item, list);
-        	dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item, list);
+        	dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
         	sp.setAdapter(dataAdapter);
         	
         	
@@ -150,7 +159,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
 
             
             
-            Button check = (Button)findViewById(R.id.submit);
+            Button check = (Button)findViewById(R.id.addstudentid);
     		check.setOnClickListener(new OnClickListener() {
     			
     			@Override
@@ -192,7 +201,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     			if (resultServer != null) {
     				Toast.makeText(TeacherCheck.this, "Stand By",Toast.LENGTH_SHORT).show();
     				
-    				Intent intentMain = new Intent(TeacherCheck.this,TeacherMenu.class);
+    				Intent intentMain = new Intent(TeacherCheck.this,TeacherViewReport.class);
     				
     				
     				intentMain.putExtra("Username", resultServer);

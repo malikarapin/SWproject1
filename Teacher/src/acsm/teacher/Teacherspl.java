@@ -11,7 +11,7 @@ public class Teacherspl extends Activity {
 	Handler handler;
 	Runnable runnable;
 	Long delay_time;
-	Long time = 3500L;
+	Long time = 2000L;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

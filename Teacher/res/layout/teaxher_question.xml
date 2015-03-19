@@ -32,36 +32,31 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
                 android:text="@string/ques_txtques"
-                android:textColor="@color/Black" />
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textsize18dip" />
 
             <EditText
                 android:id="@+id/usertlog"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
                 android:layout_marginTop="14dp"
                 android:ems="10"
-                tools:ignore="TextFields" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/usertlog"
-                android:layout_marginTop="20dp"
-                android:text="@string/ques_txtans"
-                android:textColor="@color/Black" />
+                tools:ignore="TextFields" 
+                android:background="@drawable/rounded_edittext"
+                 android:paddingLeft="@dimen/panding5"/>
 
             <EditText
                 android:id="@+id/passtlog"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/textView2"
                 android:ems="10"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields" 
+                android:background="@drawable/rounded_edittext"
+                 android:paddingLeft="@dimen/panding5"/>
 
             <TextView
                 android:id="@+id/textView3"
@@ -69,37 +64,44 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/passtlog"
                 android:layout_alignParentLeft="true"
-                android:text="@string/ques_txtans1" />
+                android:text="@string/ques_txtans1"
+                android:textSize="@dimen/textsize15dip" />
 
             <EditText
                 android:id="@+id/editText5"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dip"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/editText4"
                 android:layout_marginTop="18dp"
                 android:ems="10"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields"
+                android:background="@drawable/rounded_edittext"
+                 android:paddingLeft="@dimen/panding5" />
 
             <EditText
                 android:id="@+id/editText4"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/editText3"
                 android:layout_marginTop="14dp"
                 android:ems="10"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields"
+                android:background="@drawable/rounded_edittext"
+                 android:paddingLeft="@dimen/panding5" />
 
             <EditText
                 android:id="@+id/editText3"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/passtlog"
                 android:layout_marginTop="14dp"
                 android:ems="10"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields"
+                android:background="@drawable/rounded_edittext"
+                 android:paddingLeft="@dimen/panding5" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -107,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/editText3"
                 android:layout_alignParentLeft="true"
-                android:text="@string/ques_txtans2" />
+                android:text="@string/ques_txtans2"
+                android:textSize="@dimen/textsize15dip" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -115,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/editText5"
                 android:layout_alignParentLeft="true"
-                android:text="@string/ques_txtans3" />
+                android:text="@string/ques_txtans3"
+                android:textSize="@dimen/textsize15dip" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -123,20 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/editText5"
                 android:layout_alignParentLeft="true"
-                android:text="@string/ques_txtans4" />
-
-            <EditText
-                android:id="@+id/editText6"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText5"
-                android:layout_toRightOf="@+id/textView6"
-                android:ems="10"
-                android:inputType="number"
-                android:maxLength="2" >
-
-                <requestFocus />
-            </EditText>
+                android:text="@string/ques_txtans4"
+                android:textSize="@dimen/textsize15dip" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -144,28 +136,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/editText6"
                 android:layout_alignParentLeft="true"
-                android:text="@string/ques_txttime1" />
-
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText6"
-                android:layout_marginTop="18dp"
-                android:layout_toRightOf="@+id/textView7"
-                android:background="@drawable/custom_btn_whiskey"
-                android:text="@string/ques_btnsave" />
-
-            <Button
-                android:id="@+id/btncancelchpw"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/submit"
-                android:layout_alignBottom="@+id/submit"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="27dp"
-                android:background="@drawable/custom_btn_orange"
-                android:text="@string/ques_btncancel" />
+                android:text="@string/ques_txttime1"
+                android:textSize="@dimen/textsize15dip" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -174,7 +146,53 @@
                 android:layout_alignBottom="@+id/editText6"
                 android:layout_marginLeft="24dp"
                 android:layout_toRightOf="@+id/editText6"
-                android:text="@string/ques_txtminute" />
+                android:text="@string/ques_txtminute"
+                android:textSize="@dimen/textsize15dip" />
+
+            <Button
+                android:id="@+id/savequstion"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText6"
+                android:layout_marginTop="42dp"
+                android:layout_toRightOf="@+id/textView7"
+                android:background="@drawable/custom_btn_seagull"
+                android:text="@string/ques_btnsave" />
+
+            <Button
+                android:id="@+id/btncancelchpw"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/savequstion"
+                android:layout_alignBottom="@+id/savequstion"
+                android:layout_alignLeft="@+id/textView8"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/custom_btn_orange"
+                android:text="@string/ques_btncancel" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText5"
+                android:layout_marginTop="22dp"
+                android:layout_toRightOf="@+id/textView6"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2" 
+                 android:paddingLeft="@dimen/panding5"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/usertlog"
+                android:layout_marginTop="14dp"
+                android:text="@string/ques_txtans"
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textsize18dip" />
 
         </RelativeLayout>
     </ScrollView>

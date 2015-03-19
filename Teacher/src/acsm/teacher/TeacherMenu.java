@@ -26,8 +26,10 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,11 +37,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class TeacherMenu extends Activity {
-
+	String showdatauser;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher_menu);
+		
 		
 		
 		// Permission StrictMode
@@ -53,6 +56,9 @@ public class TeacherMenu extends Activity {
 		Button quize = (Button)findViewById(R.id.btncancelchpw);
 		quize.setOnClickListener(new OnClickListener() {
 			
+			
+			
+			
 			@Override
 		public void onClick(View v) {
 		Intent i = new Intent(getApplicationContext(),TeaxherQuestion.class);
@@ -60,7 +66,10 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
-		Button check = (Button)findViewById(R.id.submit);
+			
+		
+		
+		Button check = (Button)findViewById(R.id.savequstion);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -68,9 +77,18 @@ public class TeacherMenu extends Activity {
 		Intent i = new Intent(getApplicationContext(),TeacherCheck.class);
 		
 		
-			String showdatauser = getIntent().getStringExtra("Username");
+	
+
+		
+		
+		
+		
+		
+			showdatauser = getIntent().getStringExtra("Username");
 			
-			Log.e("value Intren",showdatauser);
+			
+			
+			Log.e("value Intren",String.valueOf(showdatauser));
 
 		
 		
@@ -80,7 +98,7 @@ public class TeacherMenu extends Activity {
 		
 		params.add(new BasicNameValuePair("Teacher_Name_Thai", showdatauser.toString()));
 		
-		
+		Log.d("params", params.toString());
 
 		String resultServer;
 		

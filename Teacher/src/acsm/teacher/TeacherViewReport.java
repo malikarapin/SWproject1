@@ -37,7 +37,7 @@ public class TeacherViewReport extends Activity {
 		}
 });
 		
-		Button cancle = (Button)findViewById(R.id.chpassword);
+		/*Button cancle = (Button)findViewById(R.id.chpassword);
 		cancle.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -45,7 +45,7 @@ public class TeacherViewReport extends Activity {
 		Intent i = new Intent(getApplicationContext(),TeacherMenu.class);
 		startActivity(i);
 		}
-});
+});*/
 		
 
 		Calendar c = Calendar.getInstance();
@@ -72,7 +72,7 @@ public class TeacherViewReport extends Activity {
 		
 	        
 	        
-	        Button add = (Button)findViewById(R.id.submit);
+	        Button add = (Button)findViewById(R.id.addstudentid);
 	        add.setOnClickListener(new OnClickListener() {
 				
 				@Override

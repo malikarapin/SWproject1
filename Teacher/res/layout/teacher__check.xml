@@ -3,8 +3,8 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     android:orientation="vertical"
+    android:background="@color/LightGrey"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -26,6 +26,7 @@
 
             <Spinner
                 android:id="@+id/spinner1"
+                style="@style/btnStyleopal"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@+id/textView1"
@@ -39,7 +40,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="22dp"
                 android:text="@string/check_txtidnamecourse"
-                android:textColor="@color/Black" />
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textsixe18" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -54,34 +56,37 @@
 
             <EditText
                 android:id="@+id/passcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_below="@+id/textView2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="Passcode 0-4 characters"
                 android:maxLength="4"
-                android:textSize="22dp" />
+                android:paddingLeft="@dimen/panding5"
+                android:singleLine="true"
+                android:textSize="@dimen/textsize20" />
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/addstudentid"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/passcode"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/custom_btn_whiskey"
-                android:text="@string/check_btnaccept"
+                android:layout_marginTop="43dp"
+                android:background="@drawable/custom_btn_seagull"
+                android:text="OK"
                 android:textColor="@color/Black" />
 
             <DigitalClock
                 android:id="@+id/digitalClock1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_alignRight="@+id/passcode"
-                android:layout_below="@+id/submit"
-                android:layout_marginTop="22dp"
                 android:text="DigitalClock" />
 
         </RelativeLayout>
