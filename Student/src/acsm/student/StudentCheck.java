@@ -212,12 +212,6 @@ public class StudentCheck extends Activity {
     					Toast.LENGTH_LONG).show();
     			e.printStackTrace();
     		}
-    		
-    		
-    		
-    		
-    		
-
     		}
     });
             

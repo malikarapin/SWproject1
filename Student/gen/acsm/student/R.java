@@ -169,6 +169,12 @@ public final class R {
         public static final int yellow=0x7f040001;
     }
     public static final class dimen {
+        public static final int TextSize15dip=0x7f050004;
+        public static final int TextSize18dip=0x7f050005;
+        public static final int TextSize22dip=0x7f050007;
+        public static final int TextSize23dip=0x7f050009;
+        public static final int Textsize20dip=0x7f050006;
+        public static final int Textsize25dip=0x7f050008;
         /**  Default screen margins, per the Android Design guidelines. 
 
          Example customization of dimensions originally defined in res/values/dimens.xml
@@ -194,9 +200,11 @@ public final class R {
         public static final int custom_btn_opal=0x7f020005;
         public static final int custom_btn_orange=0x7f020006;
         public static final int custom_btn_sandrift=0x7f020007;
-        public static final int custom_btn_shakespeare=0x7f020008;
-        public static final int custom_btn_whiskey=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
+        public static final int custom_btn_seagull=0x7f020008;
+        public static final int custom_btn_shakespeare=0x7f020009;
+        public static final int custom_btn_whiskey=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int rounded_edittext=0x7f02000c;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f090002;
