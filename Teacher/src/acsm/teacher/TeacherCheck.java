@@ -59,7 +59,7 @@ public class TeacherCheck extends Activity {
 		
 String subjectdata = getIntent().getStringExtra("Subject");
 		
-		
+		 
 		final String studentid = getIntent().getStringExtra("Username");
 		
 
