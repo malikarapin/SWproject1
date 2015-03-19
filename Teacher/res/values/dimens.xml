@@ -7,8 +7,8 @@
     <dimen name="textsize20">20dp</dimen>
     <dimen name="testsize25">25dp</dimen>
     <dimen name="addtetf">50dp</dimen>
-    <dimen name="textsize15">15sp</dimen>
-    <dimen name="textsixe18">18sp</dimen>
+    <dimen name="textsize15">15dip</dimen>
+    <dimen name="textsixe18">18dip</dimen>
     <dimen name="panding5">5dp</dimen>
     <dimen name="textsize18dip">18dip</dimen>
     <dimen name="textsize15dip">15dip</dimen>

@@ -80,10 +80,6 @@ public class TeacherMenu extends Activity {
 	
 
 		
-		
-		
-		
-		
 			showdatauser = getIntent().getStringExtra("Username");
 			
 			
@@ -98,7 +94,7 @@ public class TeacherMenu extends Activity {
 		
 		params.add(new BasicNameValuePair("Teacher_Name_Thai", showdatauser.toString()));
 		
-		Log.d("params", params.toString());
+		Log.d("params", String.valueOf(params));
 
 		String resultServer;
 		
@@ -109,7 +105,7 @@ public class TeacherMenu extends Activity {
 			resultServer = getHttpPost(url, params);
 			
 			
-			Log.e("value in resultServer",resultServer.toString());
+			Log.e("value in resultServer", String.valueOf(resultServer));
 
 				
 			
@@ -153,9 +149,9 @@ public class TeacherMenu extends Activity {
 		public void onClick(View v) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(TeacherMenu.this);
 		alertDialog.setTitle("Confirm Logout...");
-        alertDialog.setMessage("คุณต้องการลงชื่อออกการใช้งานใช่หรือไม่");
+        alertDialog.setMessage("Do you want to quit");
         alertDialog.setIcon(R.drawable.ic_launcher);
-        alertDialog.setPositiveButton("ใช่",
+        alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         //คลิกใช่ ออกจากโปรแกรม
@@ -166,7 +162,7 @@ public class TeacherMenu extends Activity {
                     }
                 });
  
-        alertDialog.setNegativeButton("ไม่",
+        alertDialog.setNegativeButton("NO",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,    int which) {
                         //คลิกไม่ cancel dialog
@@ -191,10 +187,10 @@ public class TeacherMenu extends Activity {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(TeacherMenu.this);
  
         alertDialog.setTitle("Confirm Exit...");
-        alertDialog.setMessage("คุณต้องการออกจากโปรแกรมหรือไม่ ?");
+        alertDialog.setMessage("Do you want to quit");
         alertDialog.setIcon(R.drawable.ic_launcher);
  
-        alertDialog.setPositiveButton("ใช่",
+        alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         //คลิกใช่ ออกจากโปรแกรม
@@ -203,7 +199,7 @@ public class TeacherMenu extends Activity {
                     }
                 });
  
-        alertDialog.setNegativeButton("ไม่",
+        alertDialog.setNegativeButton("NO",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,    int which) {
                         //คลิกไม่ cancel dialog

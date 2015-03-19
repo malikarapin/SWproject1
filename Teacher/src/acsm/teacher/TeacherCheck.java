@@ -89,6 +89,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
         	
         	for(int i=0;i<str2.length;i++)
         	{
+        	
         		list.add(str2[i]);
         	}
         	
@@ -102,6 +103,8 @@ String subjectdata = getIntent().getStringExtra("Subject");
         	sp.setAdapter(dataAdapter);
         	
         	
+        	
+        	
         	sp.setOnItemSelectedListener(new OnItemSelectedListener() 
         	{
         		public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long id) 
@@ -109,6 +112,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
         			// TODO Auto-generated method stub
 
         			item=sp.getSelectedItem().toString();
+        			
 
         			Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
 
