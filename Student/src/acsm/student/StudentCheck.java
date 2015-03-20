@@ -113,10 +113,6 @@ public class StudentCheck extends Activity {
         			
         			item=sp.getSelectedItem().toString();
         			
-        			
-        		
-        			
-        			
 
         			Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
 

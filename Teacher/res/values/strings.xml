@@ -44,6 +44,6 @@
     <string name="chpw_txtreexterpass">Enter Password again</string>
     <string name="chpw_btnaccept">accept</string>
     <string name="chpw_btncancel">cancel</string>
-    
-    
+    <string name="title_activity_teacher_view_check">TeacherViewCheck</string>
+
 </resources>

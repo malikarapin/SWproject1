@@ -128,7 +128,7 @@ public class StudentMenu extends Activity {
 		public void onClick(View v) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
 		alertDialog.setTitle("Confirm Logout...");
-        alertDialog.setMessage("Do you want to quit");
+        alertDialog.setMessage("Do you want to Logout");
         alertDialog.setIcon(R.drawable.ic_launcher);
         alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
@@ -160,9 +160,65 @@ public class StudentMenu extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),StudentViewattend.class);
-		startActivity(i);
+		//Intent i = new Intent(getApplicationContext(),StudentViewattend.class);
+		
+			String showdatauser = getIntent().getStringExtra("Username");
+
+		
+		
+		String url = "http://acsm.ictte-project.com/spinner.php";
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		
+		
+		params.add(new BasicNameValuePair("student", showdatauser.toString()));
+		
+		
+
+		String resultServer;
+		
+		
+		
+		try {
+			
+			resultServer = getHttpPost(url, params);
+			
+			
+			Log.e("value in resultServer",String.valueOf(params));
+
+				
+			
+			if (resultServer != null) {
+				Toast.makeText(StudentMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
+				
+				Intent intentMain2 = new Intent(StudentMenu.this,StudentViewattend.class);
+				
+				
+				intentMain2.putExtra("Subject", resultServer);
+				
+				intentMain2.putExtra("Username", showdatauser);
+				
+				
+				
+				
+				startActivity(intentMain2);
+				
+				
+				Log.e("inrent to check", String.valueOf(resultServer));
+				Log.e("submit", String.valueOf(showdatauser));
+				
+			} 
+		} catch (JsonSyntaxException e) {
+			Toast.makeText(StudentMenu.this,
+					"Incorrect Username and Password!",
+					Toast.LENGTH_LONG).show();
+			e.printStackTrace();
 		}
+		
+		
+	
+		}
+		
+
 });	
 	}
 	//Detect Back Button

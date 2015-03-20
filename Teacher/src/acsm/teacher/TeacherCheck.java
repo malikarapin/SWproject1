@@ -63,7 +63,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
 		final String studentid = getIntent().getStringExtra("Username");
 		
 
-		final Spinner spinner = (Spinner)findViewById(R.id.spinner1);
+		final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);
 		final EditText passcode = (EditText) findViewById(R.id.passcode);
 
         
@@ -80,7 +80,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
         		str1[i] = json.getString("Subject_Code");
         		str2[i]=json.getString("Subject_Name_Eng");
         	}
-        	final Spinner sp = (Spinner) findViewById(R.id.spinner1);
+        	final Spinner sp = (Spinner) findViewById(R.id.spnviewteac);
         	
         	
         	
@@ -116,7 +116,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
 
         			Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
 
-        			Log.e("Item",item);
+        			Log.e("Item",String.valueOf(item));
         			
         			
         			
@@ -151,8 +151,8 @@ String subjectdata = getIntent().getStringExtra("Subject");
                latitude = gps.getLatitude();
                longitude = gps.getLongitude();
                
-               Log.e("Lat&Lon",latitude.toString());
-               Log.e("Lat&Lon",longitude.toString());
+               Log.e("Lat&Lon",String.valueOf(latitude));
+               Log.e("Lat&Lon",String.valueOf(longitude));
                  
                 //txtpass.setText("lat&lon"+latitude+" " + longitude);
                 // \n is for new line
@@ -185,7 +185,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     		params.add(new BasicNameValuePair("passcode", passcode.getText().toString()));
     		
     		
-    		Log.e("Param",params.toString());
+    		Log.e("Param",String.valueOf(params));
     		
     		
 
@@ -198,7 +198,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     			resultServer = getHttpPost(url, params);
     			
     			
-    			Log.e("value in resultServer",resultServer.toString());
+    			Log.e("value in resultServer",String.valueOf(resultServer));
 
     				
     			

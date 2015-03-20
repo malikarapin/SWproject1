@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.AlertDialog;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -18,13 +20,16 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -162,4 +167,34 @@ public class StudentLogin extends Activity {
 		}
 		return str.toString();
 	}
+	
+	//Detect Back Button
+    @Override
+    public void onBackPressed() {
+ 
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentLogin.this);
+ 
+        alertDialog.setTitle("Confirm Exit...");
+        alertDialog.setMessage("Do you want to quit");
+        alertDialog.setIcon(R.drawable.ic_launcher);
+ 
+        alertDialog.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        //คลิกใช่ ออกจากโปรแกรม
+                        finish();
+                        StudentLogin.super.finishAffinity();
+                    }
+                });
+ 
+        alertDialog.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,    int which) {
+                        //คลิกไม่ cancel dialog
+                        dialog.cancel();
+                    }
+                });
+ 
+        alertDialog.show();
+}
 }

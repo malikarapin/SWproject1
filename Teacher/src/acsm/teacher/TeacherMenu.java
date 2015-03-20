@@ -38,6 +38,7 @@ import android.widget.Toast;
 
 public class TeacherMenu extends Activity {
 	String showdatauser;
+	String resultServer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ public class TeacherMenu extends Activity {
 		}
 });
 		
+		
 			
 		
 		
@@ -74,7 +76,7 @@ public class TeacherMenu extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeacherCheck.class);
+		
 		
 		
 	
@@ -92,11 +94,11 @@ public class TeacherMenu extends Activity {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		
 		
-		params.add(new BasicNameValuePair("Teacher_Name_Thai", showdatauser.toString()));
+		params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
 		
 		Log.d("params", String.valueOf(params));
 
-		String resultServer;
+		
 		
 		
 		
@@ -134,14 +136,80 @@ public class TeacherMenu extends Activity {
 					Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
-		
-		
+		}
 	
-
+			
+			
+});
 		
-		//startActivity(i);
+		//Button to ViewCheck Teacher
+		Button viewcheck1 = (Button)findViewById(R.id.btnviewcheck);
+		viewcheck1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+		public void onClick(View v) {
+
+				
+				showdatauser = getIntent().getStringExtra("Username");
+				
+				
+				
+				Log.e("value Intren",String.valueOf(showdatauser));
+
+			
+			
+			String url = "http://acsm.ictte-project.com/spinnerTeacher.php";
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			
+			
+			params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
+			
+			Log.d("params", String.valueOf(params));
+
+			
+			
+			
+			
+			try {
+				
+				resultServer = getHttpPost(url, params);
+				
+				
+				Log.e("value in resultServer", String.valueOf(resultServer));
+
+					
+				
+				if (resultServer != null) {
+					Toast.makeText(TeacherMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
+					
+					Intent ii = new Intent(TeacherMenu.this,TeacherViewCheck.class);
+					
+					
+					ii.putExtra("Subject", resultServer);
+					
+					ii.putExtra("Username", showdatauser);
+					
+					startActivity(ii);
+					
+					
+				}else {
+					Log.d("test bug", "Not pass");
+					Toast.makeText(TeacherMenu.this, "Error",Toast.LENGTH_SHORT).show();
+					
+				} 
+				
+			} catch (JsonSyntaxException e) {
+				Toast.makeText(TeacherMenu.this,
+						"Incorrect Username and Password!",
+						Toast.LENGTH_LONG).show();
+				e.printStackTrace();
+			}
+			
 		}
 });
+		
+		
+		
 		Button logout = (Button)findViewById(R.id.logout);
 		logout.setOnClickListener(new OnClickListener() {
 			
@@ -149,7 +217,7 @@ public class TeacherMenu extends Activity {
 		public void onClick(View v) {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(TeacherMenu.this);
 		alertDialog.setTitle("Confirm Logout...");
-        alertDialog.setMessage("Do you want to quit");
+        alertDialog.setMessage("Do you want to Logout");
         alertDialog.setIcon(R.drawable.ic_launcher);
         alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
@@ -207,7 +275,7 @@ public class TeacherMenu extends Activity {
                     }
                 });
  
-        alertDialog.show();
+        alertDialog.show();     
 }
 	public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();

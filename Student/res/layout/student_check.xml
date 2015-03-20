@@ -40,8 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@+id/linkFG"
-                android:layout_marginTop="17dp"
-                />
+                android:layout_marginTop="17dp" />
 
             <DigitalClock
                 android:id="@+id/digitalClock1"
@@ -101,7 +100,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/subject"
