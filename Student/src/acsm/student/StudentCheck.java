@@ -182,13 +182,15 @@ public class StudentCheck extends Activity {
     		
     		Log.e("param",String.valueOf(params));
 
-    		String resultServer;
+    		//String resultServer;
     		
     		
     		
     		try {
     			
-    			resultServer = getHttpPost(url, params);
+    			String resultServer = httpconnect.getHttpPost(url, params);
+    			
+    			//resultServer = getHttpPost(url, params);
     			
     			
     			Log.e("value in resultServer",String.valueOf(resultServer));
@@ -228,7 +230,7 @@ public class StudentCheck extends Activity {
     		
 	}	
 	
-	public String getHttpPost(String url, List<NameValuePair> params) {
+	/*public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpPost httpGet = new HttpPost(url);
@@ -257,7 +259,7 @@ public class StudentCheck extends Activity {
 		}
 		return str.toString();
 		
-	}
+	}*/
 	
 	
 }

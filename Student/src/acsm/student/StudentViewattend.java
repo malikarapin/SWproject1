@@ -125,17 +125,18 @@ public class StudentViewattend extends Activity {
 				String url = "http://acsm.ictte-project.com/viewcheckStudent.php";
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-				params.add(new BasicNameValuePair("student", showdatauser
-						.toString()));
+				params.add(new BasicNameValuePair("student", showdatauser.toString()));
 				params.add(new BasicNameValuePair("subject", item.toString()));
 
-				String resultServer;
+				//String resultServer;
 
 				txtview = (TextView) findViewById(R.id.txtview);
 
 				try {
 
-					resultServer = getHttpPost(url, params);
+					String resultServer = httpconnect.getHttpPost(url, params);
+					
+					//resultServer = getHttpPost(url, params);
 
 					Log.e("value in resultServer", String.valueOf(resultServer));
 
@@ -164,7 +165,7 @@ public class StudentViewattend extends Activity {
 		});
 	}
 
-	public String getHttpPost(String url, List<NameValuePair> params) {
+	/*public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpPost httpGet = new HttpPost(url);
@@ -193,6 +194,6 @@ public class StudentViewattend extends Activity {
 		}
 		return str.toString();
 
-	}
+	}*/
 
 }

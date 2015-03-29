@@ -20,6 +20,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -77,16 +78,16 @@ public class StudentLogin extends Activity {
 				params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
 				params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
 
-				String resultServer;
+				//String resultServer;
 				
 				
 				
 				try {
 					
 					
+					String resultServer = httpconnect.getHttpPost(url, params);
 					
-					
-					resultServer = getHttpPost(url, params);
+					//resultServer  = getHttpPost(url, params);
 					
 					
 					Gson gson = new Gson();
@@ -138,7 +139,7 @@ public class StudentLogin extends Activity {
 		t3.setMovementMethod(LinkMovementMethod.getInstance());
 
 	}
-	public String getHttpPost(String url, List<NameValuePair> params) {
+	/*public String getHttpPost(String url, List<NameValuePair> params) {
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpPost httpGet = new HttpPost(url);
@@ -166,7 +167,7 @@ public class StudentLogin extends Activity {
 			e.printStackTrace();
 		}
 		return str.toString();
-	}
+	}*/
 	
 	//Detect Back Button
     @Override
