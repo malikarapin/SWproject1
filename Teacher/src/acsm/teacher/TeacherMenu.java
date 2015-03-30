@@ -38,13 +38,14 @@ import android.widget.Toast;
 
 public class TeacherMenu extends Activity {
 	String showdatauser;
+	
 	String resultServer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher_menu);
 		
-		
+		showdatauser = getIntent().getStringExtra("Username");
 		
 		// Permission StrictMode
 		if (android.os.Build.VERSION.SDK_INT > 12) {
@@ -56,13 +57,13 @@ public class TeacherMenu extends Activity {
 		
 		Button quize = (Button)findViewById(R.id.btncancelchpw);
 		quize.setOnClickListener(new OnClickListener() {
-			
-			
-			
-			
+
 			@Override
 		public void onClick(View v) {
 		Intent i = new Intent(getApplicationContext(),TeacherQuestion.class);
+		
+		i.putExtra("Username", showdatauser);
+		
 		startActivity(i);
 		}
 });
@@ -77,14 +78,7 @@ public class TeacherMenu extends Activity {
 			@Override
 		public void onClick(View v) {
 		
-		
-		
-	
 
-		
-			showdatauser = getIntent().getStringExtra("Username");
-			
-			
 			
 			Log.e("value Intren",String.valueOf(showdatauser));
 

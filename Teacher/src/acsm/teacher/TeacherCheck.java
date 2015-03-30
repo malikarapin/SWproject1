@@ -1,36 +1,20 @@
 package acsm.teacher;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.google.gson.JsonSyntaxException;
-
-import android.R.anim;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -57,13 +40,13 @@ public class TeacherCheck extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher__check);
 		
-String subjectdata = getIntent().getStringExtra("Subject");
+		String subjectdata = getIntent().getStringExtra("Subject");
 		
 		 
 		final String studentid = getIntent().getStringExtra("Username");
 		
 
-		final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);                                 
+		//final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);                                 
 		final EditText passcode = (EditText) findViewById(R.id.passcode);
 
 		try {
@@ -134,7 +117,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
 			e.printStackTrace();
 		}
 		
-		 Calendar c = Calendar.getInstance();
+		 	Calendar c = Calendar.getInstance();
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			final String formattedDate = df.format(c.getTime());
 			//txtuser.setText(" Current : " + formattedDate);
@@ -176,7 +159,6 @@ String subjectdata = getIntent().getStringExtra("Subject");
     		params.add(new BasicNameValuePair("longitude", longitude.toString()));
     		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
     		params.add(new BasicNameValuePair("subject", item.toString()));
-    		
     		
     		params.add(new BasicNameValuePair("passcode", passcode.getText().toString()));
     		

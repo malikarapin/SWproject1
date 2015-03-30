@@ -1,5 +1,8 @@
 package acsm.teacher;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +16,12 @@ public class TeacherQuestion extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.teaxher_question);
+		setContentView(R.layout.teacher_question);
+		
+		
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		final String formattedDate = df.format(c.getTime());
 		
 		Button save = (Button)findViewById(R.id.savequstion);
 		save.setOnClickListener(new OnClickListener() {
@@ -25,15 +33,6 @@ public class TeacherQuestion extends Activity {
 		}
 });
 		
-		Button cc = (Button)findViewById(R.id.btncancelchpw);
-		cc.setOnClickListener(new OnClickListener() {
-			
-			@Override
-		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeacherQuestion.class);
-		startActivity(i);
-		}
-});
 		
 		
 	}
