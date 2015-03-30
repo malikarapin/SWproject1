@@ -62,7 +62,7 @@ public class TeacherMenu extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeaxherQuestion.class);
+		Intent i = new Intent(getApplicationContext(),TeacherQuestion.class);
 		startActivity(i);
 		}
 });
@@ -104,7 +104,9 @@ public class TeacherMenu extends Activity {
 		
 		try {
 			
-			resultServer = getHttpPost(url, params);
+			resultServer = httpconnect.getHttpPost(url, params);
+			
+			
 			
 			
 			Log.e("value in resultServer", String.valueOf(resultServer));
@@ -172,7 +174,8 @@ public class TeacherMenu extends Activity {
 			
 			try {
 				
-				resultServer = getHttpPost(url, params);
+				resultServer = httpconnect.getHttpPost(url, params);
+				
 				
 				
 				Log.e("value in resultServer", String.valueOf(resultServer));
@@ -240,8 +243,7 @@ public class TeacherMenu extends Activity {
  
         alertDialog.show();
 				
-		//Intent i = new Intent(getApplicationContext(),StudentLogin.class);
-		//startActivity(i);
+
 		}
 });
 		
@@ -277,34 +279,4 @@ public class TeacherMenu extends Activity {
  
         alertDialog.show();     
 }
-	public String getHttpPost(String url, List<NameValuePair> params) {
-		StringBuilder str = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpPost httpGet = new HttpPost(url);
-
-		try {
-			httpGet.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) { // Status OK
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					str.append(line);
-				}
-			} else {
-				Log.e("Log", "Failed to download result..");
-			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return str.toString();
-		
-	}
 }

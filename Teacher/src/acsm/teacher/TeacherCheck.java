@@ -63,10 +63,9 @@ String subjectdata = getIntent().getStringExtra("Subject");
 		final String studentid = getIntent().getStringExtra("Username");
 		
 
-		final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);
+		final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);                                 
 		final EditText passcode = (EditText) findViewById(R.id.passcode);
 
-        
 		try {
 			JSONArray JA=new JSONArray(subjectdata);
 			
@@ -154,10 +153,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
                Log.e("Lat&Lon",String.valueOf(latitude));
                Log.e("Lat&Lon",String.valueOf(longitude));
                  
-                //txtpass.setText("lat&lon"+latitude+" " + longitude);
-                // \n is for new line
-               // Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-			
+                			
             }
             
 
@@ -168,7 +164,7 @@ String subjectdata = getIntent().getStringExtra("Subject");
     			
     			@Override
     		public void onClick(View v) {
-    		//Intent i = new Intent(getApplicationContext(),StudentPasscode.class);
+    		
     		
     		
     		String url = "http://acsm.ictte-project.com/insertcheckTeacher.php";
@@ -188,15 +184,10 @@ String subjectdata = getIntent().getStringExtra("Subject");
     		Log.e("Param",String.valueOf(params));
     		
     		
-
-    		String resultServer;
-    		
-    		
-    		
     		try {
     			
-    			resultServer = getHttpPost(url, params);
-    			
+    			String resultServer = httpconnect.getHttpPost(url, params);
+
     			
     			Log.e("value in resultServer",String.valueOf(resultServer));
 
@@ -223,47 +214,9 @@ String subjectdata = getIntent().getStringExtra("Subject");
     					Toast.LENGTH_LONG).show();
     			e.printStackTrace();
     		}
-    		
-    		
-    		
-    		
-    		
 
     		}
     });
-            
-    		
-    		
+            		
 	}	
-	public String getHttpPost(String url, List<NameValuePair> params) {
-		StringBuilder str = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpPost httpGet = new HttpPost(url);
-
-		try {
-			httpGet.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) { // Status OK
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					str.append(line);
-				}
-			} else {
-				Log.e("Log", "Failed to download result..");
-			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return str.toString();
-		
-	}
-	
 }

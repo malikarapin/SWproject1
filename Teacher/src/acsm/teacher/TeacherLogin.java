@@ -1,28 +1,13 @@
 package acsm.teacher;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-
 import acsm.teacher.TeacherMenu;
 import acsm.teacher.R;
 import android.os.Bundle;
@@ -30,17 +15,12 @@ import android.os.StrictMode;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TeacherLogin extends Activity {
@@ -84,11 +64,14 @@ public class TeacherLogin extends Activity {
 				params.add(new BasicNameValuePair("std_id", txtUser.getText().toString()));
 				params.add(new BasicNameValuePair("std_pwd", txtPass.getText().toString()));
 
-				String resultServer;
+				
 
 				try {
 
-					resultServer = getHttpPost(url, params);
+					
+					String resultServer = httpconnect.getHttpPost(url, params);
+					
+					
 					
 					Log.d("resultServer",String.valueOf(resultServer));
 
@@ -140,43 +123,10 @@ public class TeacherLogin extends Activity {
 
 		);
 
-		/*
-		 * TextView t3 = (TextView) findViewById(R.id.linkFG); t3.setText(Html
-		 * .fromHtml(
-		 * "<a href=\"https://passport.psu.ac.th/index.php?content=forgetpass\">Forget Password</a> "
-		 * )); t3.setMovementMethod(LinkMovementMethod.getInstance());
-		 */
+
 	}
 
-	public String getHttpPost(String url, List<NameValuePair> params) {
-		StringBuilder str = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpPost httpGet = new HttpPost(url);
-
-		try {
-			httpGet.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) { // Status OK
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					str.append(line);
-				}
-			} else {
-				Log.e("Log", "Failed to download result..");
-			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return str.toString();
-	}
+	
 	//Detect Back Button
     @Override
     public void onBackPressed() {

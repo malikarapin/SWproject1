@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class TeaxherQuestion extends Activity {
+public class TeacherQuestion extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class TeaxherQuestion extends Activity {
 			
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeaxherQuestion.class);
+		Intent i = new Intent(getApplicationContext(),TeacherQuestion.class);
 		startActivity(i);
 		}
 });

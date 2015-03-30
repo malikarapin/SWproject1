@@ -39,7 +39,7 @@
             android:label="@string/title_activity_teacher__check" >
         </activity>
         <activity
-            android:name=".TeaxherQuestion"
+            android:name=".TeacherQuestion"
             android:label="@string/title_activity_teaxher_question" >
         </activity>
         <activity

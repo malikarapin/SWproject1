@@ -85,9 +85,7 @@ public class TeacherViewCheck extends Activity {
 
         			Log.e("Item",String.valueOf(item));
         			
-        			
-        			
-					
+
         		}
 
 				@Override
