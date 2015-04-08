@@ -26,7 +26,7 @@
             tools:ignore="ScrollViewSize" >
 
             <EditText
-                android:id="@+id/usertlog"
+                android:id="@+id/etxtquestion"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
@@ -41,11 +41,11 @@
                 tools:ignore="TextFields,HardcodedText" />
 
             <EditText
-                android:id="@+id/passtlog"
+                android:id="@+id/ans1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/usertlog"
+                android:layout_below="@+id/etxtquestion"
                 android:layout_marginTop="45dp"
                 android:ems="10"
                 android:hint="Password"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/passtlog"
+                android:layout_below="@+id/ans1"
                 android:layout_marginTop="57dp"
                 android:background="@drawable/custom_btn_seagull"
                 android:text="@string/login_btnlogin"

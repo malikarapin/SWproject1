@@ -18,7 +18,7 @@
     <string name="check_txtpasscode">Passcode</string>
     <string name="check_btnaccept">Accept</string>
     <string name="check_btncancel">Cancel</string>
-    <string name="title_activity_teaxher_question">TeaxherQuestion</string>
+    <string name="title_activity_teacher_question">TeacherQuestion</string>
     <string name="ques_txtques">Question</string>
     <string name="ques_txtans">Answer</string>
     <string name="ques_rdoans">Answer</string>

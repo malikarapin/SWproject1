@@ -64,9 +64,6 @@ public class TeacherCheck extends Activity {
         	}
         	final Spinner sp = (Spinner) findViewById(R.id.spnviewteac);
         	
-        	
-        	
-        	
         	List<String> list = new ArrayList<String>();
         	
         	for(int i=0;i<str2.length;i++)
@@ -148,8 +145,7 @@ public class TeacherCheck extends Activity {
     			@Override
     		public void onClick(View v) {
     		
-    		
-    		
+
     		String url = "http://acsm.ictte-project.com/insertcheckTeacher.php";
     		List<NameValuePair> params = new ArrayList<NameValuePair>(4);
     		

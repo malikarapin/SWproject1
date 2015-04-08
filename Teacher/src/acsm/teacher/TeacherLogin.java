@@ -43,8 +43,8 @@ public class TeacherLogin extends Activity {
 		final AlertDialog.Builder ad = new AlertDialog.Builder(this);
 
 		// txtUsername & txtPassword
-		final EditText txtUser = (EditText) findViewById(R.id.usertlog);
-		final EditText txtPass = (EditText) findViewById(R.id.passtlog);
+		final EditText txtUser = (EditText) findViewById(R.id.etxtquestion);
+		final EditText txtPass = (EditText) findViewById(R.id.ans1);
 		// btnLogin
 		final Button btnLogin = (Button) findViewById(R.id.savequstion);
 		

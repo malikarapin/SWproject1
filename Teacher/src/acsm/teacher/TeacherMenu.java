@@ -60,12 +60,61 @@ public class TeacherMenu extends Activity {
 
 			@Override
 		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),TeacherQuestion.class);
-		
-		i.putExtra("Username", showdatauser);
-		
-		startActivity(i);
-		}
+				
+				
+				Log.e("value Intren",String.valueOf(showdatauser));
+
+				
+				
+				String url = "http://acsm.ictte-project.com/spinnerTeacher.php";
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+				
+				
+				params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
+				
+				Log.d("params", String.valueOf(params));
+
+				
+				
+				
+				
+				try {
+					
+					resultServer = httpconnect.getHttpPost(url, params);
+					
+					
+					
+					
+					Log.e("value in resultServer", String.valueOf(resultServer));
+
+						
+					
+					if (resultServer != null) {
+						Toast.makeText(TeacherMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
+						
+						Intent intentMain = new Intent(TeacherMenu.this,TeacherQuestion.class);
+						
+						
+						intentMain.putExtra("Subject", resultServer);
+						
+						intentMain.putExtra("Username", showdatauser);
+						
+						startActivity(intentMain);
+						
+						
+					}else {
+						Log.d("test bug", "Not pass");
+						Toast.makeText(TeacherMenu.this, "Error",Toast.LENGTH_SHORT).show();
+						
+					} 
+					
+				} catch (JsonSyntaxException e) {
+					Toast.makeText(TeacherMenu.this,
+							"Incorrect Username and Password!",
+							Toast.LENGTH_LONG).show();
+					e.printStackTrace();
+				}
+				}
 });
 		
 		
