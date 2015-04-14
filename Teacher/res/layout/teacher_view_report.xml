@@ -23,34 +23,13 @@
             android:orientation="vertical"
             tools:ignore="ScrollViewSize" >
 
-            <TextView
-                android:id="@+id/colMemberID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/view_txtidnamecoures"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize20" />
-
-            <TextView
-                android:id="@+id/showcount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView3"
-                android:layout_alignRight="@+id/colMemberID"
-                android:text="0"
-                android:textColor="@color/Black"
-                android:textSize="@dimen/textsize20"
-                tools:ignore="HardcodedText" />
-
             <EditText
                 android:id="@+id/addStudentCheck"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/showsubject"
+                android:layout_alignRight="@+id/btnokstu"
                 android:layout_below="@+id/okbackmenu"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
@@ -67,23 +46,13 @@
 
             <TextView
                 android:id="@+id/showsubject"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/colMemberID"
                 android:layout_centerHorizontal="true"
-                android:text="Subject"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize18dip"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/colMemberID"
-                android:layout_below="@+id/showsubject"
-                android:layout_marginTop="16dp"
-                android:text="total"
+                android:gravity="fill_vertical|center"
+                android:hint="Subject"
+                android:maxLines="2"
+                android:scrollbars="vertical"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize18dip" />
 
@@ -102,17 +71,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:layout_alignParentLeft="true"
-                android:paddingTop="15dp"
-                android:layout_below="@+id/showcount" >
-
+                android:layout_below="@+id/showcount"
+                android:paddingTop="15dp" >
             </ListView>
 
             <Button
                 android:id="@+id/btnokstu"
-                android:layout_width="100dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/addStudentCheck"
                 android:layout_below="@+id/ListView1"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/custom_btn_seagull"
@@ -130,7 +97,32 @@
                 android:background="@drawable/custom_btn_seagull"
                 android:text="refresh" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/showsubject"
+                android:layout_marginLeft="37dp"
+                android:layout_marginTop="19dp"
+                android:text="total"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize18dip" />
+
+            <TextView
+                android:id="@+id/showcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/refresh"
+                android:layout_alignTop="@+id/textView3"
+                android:layout_marginRight="35dp"
+                android:text="0"
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textsize20"
+                tools:ignore="HardcodedText" />
+
         </RelativeLayout>
+
     </ScrollView>
 
 </LinearLayout>

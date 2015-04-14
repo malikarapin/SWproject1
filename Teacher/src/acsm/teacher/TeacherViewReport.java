@@ -27,6 +27,7 @@ import org.json.JSONException;
 
 import com.google.gson.JsonSyntaxException;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.SimpleAdapter;
 
@@ -61,6 +62,7 @@ public class TeacherViewReport extends Activity {
 
         
         showsubject.setText(subjectdata);
+        showsubject.setMovementMethod(new ScrollingMovementMethod());
         
         //Time
         Calendar cc = Calendar.getInstance();
@@ -213,6 +215,7 @@ public class TeacherViewReport extends Activity {
 		
 		    			}
 		    					
+		    			
 		    		} catch (JsonSyntaxException e) {
 		    			Toast.makeText(TeacherViewReport.this,
 		    					"Incorrect Username and Password!",
