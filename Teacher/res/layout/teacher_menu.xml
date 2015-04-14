@@ -50,7 +50,7 @@
                 tools:ignore="HardcodedText" />
 
             <Button
-                android:id="@+id/btncancelchpw"
+                android:id="@+id/okbackmenu"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"

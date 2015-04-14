@@ -2,26 +2,12 @@ package acsm.teacher;
 
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
 import com.google.gson.JsonSyntaxException;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
@@ -39,13 +25,23 @@ import android.widget.Toast;
 public class TeacherMenu extends Activity {
 	String showdatauser;
 	
+	String strUsername;
+	
+	private static final String MY_PREFS = "my_prefs";
+	
 	String resultServer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher_menu);
 		
-		showdatauser = getIntent().getStringExtra("Username");
+		//showdatauser = getIntent().getStringExtra("Username");
+		
+		SharedPreferences shared = getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+		
+		strUsername = shared.getString("stringKey", "").toString();
+		  
+		Log.i("SharedPreferences", String.valueOf(strUsername));
 		
 		// Permission StrictMode
 		if (android.os.Build.VERSION.SDK_INT > 12) {
@@ -55,7 +51,7 @@ public class TeacherMenu extends Activity {
 		}
 		
 		
-		Button quize = (Button)findViewById(R.id.btncancelchpw);
+/*		Button quize = (Button)findViewById(R.id.btncancelchpw);
 		quize.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -70,7 +66,7 @@ public class TeacherMenu extends Activity {
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				
 				
-				params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
+				params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(strUsername)));
 				
 				Log.d("params", String.valueOf(params));
 
@@ -92,14 +88,14 @@ public class TeacherMenu extends Activity {
 					if (resultServer != null) {
 						Toast.makeText(TeacherMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
 						
-						Intent intentMain = new Intent(TeacherMenu.this,TeacherQuestion.class);
+						Intent toTeacherQuestion = new Intent(TeacherMenu.this,TeacherQuestion.class);
 						
 						
-						intentMain.putExtra("Subject", resultServer);
+						toTeacherQuestion.putExtra("Subject", resultServer);
 						
-						intentMain.putExtra("Username", showdatauser);
+						//toTeacherQuestion.putExtra("Username", showdatauser);
 						
-						startActivity(intentMain);
+						startActivity(toTeacherQuestion);
 						
 						
 					}else {
@@ -115,7 +111,7 @@ public class TeacherMenu extends Activity {
 					e.printStackTrace();
 				}
 				}
-});
+});*/
 		
 		
 			
@@ -137,14 +133,12 @@ public class TeacherMenu extends Activity {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		
 		
-		params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
+		params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(strUsername)));
 		
 		Log.d("params", String.valueOf(params));
 
 		
-		
-		
-		
+
 		try {
 			
 			resultServer = httpconnect.getHttpPost(url, params);
@@ -164,7 +158,7 @@ public class TeacherMenu extends Activity {
 				
 				intentMain.putExtra("Subject", resultServer);
 				
-				intentMain.putExtra("Username", showdatauser);
+				//intentMain.putExtra("Username", showdatauser);
 				
 				startActivity(intentMain);
 				
@@ -186,7 +180,7 @@ public class TeacherMenu extends Activity {
 			
 			
 });
-		
+		/*
 		//Button to ViewCheck Teacher
 		Button viewcheck1 = (Button)findViewById(R.id.btnviewcheck);
 		viewcheck1.setOnClickListener(new OnClickListener() {
@@ -207,7 +201,7 @@ public class TeacherMenu extends Activity {
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			
 			
-			params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(showdatauser)));
+			params.add(new BasicNameValuePair("Teacher_Name_Thai", String.valueOf(strUsername)));
 			
 			Log.d("params", String.valueOf(params));
 
@@ -233,7 +227,7 @@ public class TeacherMenu extends Activity {
 					
 					ii.putExtra("Subject", resultServer);
 					
-					ii.putExtra("Username", showdatauser);
+					//ii.putExtra("Username", showdatauser);
 					
 					startActivity(ii);
 					
@@ -253,7 +247,7 @@ public class TeacherMenu extends Activity {
 			
 		}
 });
-		
+		*/
 		
 		
 		Button logout = (Button)findViewById(R.id.logout);

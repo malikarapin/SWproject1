@@ -6,15 +6,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.google.gson.JsonSyntaxException;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,9 +34,14 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class TeacherCheck extends Activity {
 
 	String item;
+	
+	String strUsername;
+	private static final String MY_PREFS = "my_prefs";
 
 	protected Object latitude;
 	protected Object longitude;
+	
+	
 	
 	
 	
@@ -40,10 +50,15 @@ public class TeacherCheck extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher__check);
 		
-		String subjectdata = getIntent().getStringExtra("Subject");
+		final String subjectdata = getIntent().getStringExtra("Subject");
 		
 		 
-		final String studentid = getIntent().getStringExtra("Username");
+		//final String studentid = getIntent().getStringExtra("Username");
+		
+		
+		SharedPreferences shared = getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+		
+		strUsername = shared.getString("stringKey", "").toString();
 		
 
 		//final Spinner spinner = (Spinner)findViewById(R.id.spnviewteac);                                 
@@ -139,7 +154,7 @@ public class TeacherCheck extends Activity {
 
             
             
-            Button check = (Button)findViewById(R.id.addstudentid);
+            Button check = (Button)findViewById(R.id.btncheck);
     		check.setOnClickListener(new OnClickListener() {
     			
     			@Override
@@ -147,15 +162,14 @@ public class TeacherCheck extends Activity {
     		
 
     		String url = "http://acsm.ictte-project.com/insertcheckTeacher.php";
-    		List<NameValuePair> params = new ArrayList<NameValuePair>(4);
+    		List<NameValuePair> params = new ArrayList<NameValuePair>();
     		
     		
-    		params.add(new BasicNameValuePair("studentid", studentid.toString()));
+    		params.add(new BasicNameValuePair("studentid", strUsername.toString()));
     		params.add(new BasicNameValuePair("latitude", latitude.toString()));
     		params.add(new BasicNameValuePair("longitude", longitude.toString()));
     		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
     		params.add(new BasicNameValuePair("subject", item.toString()));
-    		
     		params.add(new BasicNameValuePair("passcode", passcode.getText().toString()));
     		
     		
@@ -178,6 +192,16 @@ public class TeacherCheck extends Activity {
     				
     				
     				intentMain.putExtra("Username", resultServer);
+    				
+    				
+    				intentMain.putExtra("subject", item);
+    				
+    				intentMain.putExtra("passcode", passcode.getText().toString());
+    				
+    				
+    				intentMain.putExtra("time", formattedDate.toString());
+    				
+    				
     				
     				
     				

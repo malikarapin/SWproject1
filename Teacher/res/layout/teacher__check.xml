@@ -29,12 +29,12 @@
                 style="@style/btnStyleopal"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_below="@+id/textView1"
+                android:layout_below="@+id/colMemberID"
                 android:layout_marginTop="17dp"
                 />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/colMemberID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -45,7 +45,7 @@
                 android:textSize="@dimen/textsixe18" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/showsubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spnviewteac"
@@ -59,7 +59,7 @@
                 android:id="@+id/passcode"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/textView2"
+                android:layout_below="@+id/showsubject"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_edittext"
@@ -72,7 +72,7 @@
                 android:textSize="@dimen/textsize20" />
 
             <Button
-                android:id="@+id/addstudentid"
+                android:id="@+id/btncheck"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"

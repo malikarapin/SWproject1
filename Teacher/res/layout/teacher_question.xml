@@ -77,7 +77,7 @@
                 android:paddingLeft="@dimen/panding5" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/showsubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView2"
+                android:layout_below="@+id/showsubject"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"

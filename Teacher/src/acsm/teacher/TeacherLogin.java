@@ -3,11 +3,14 @@ package acsm.teacher;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+
 import acsm.teacher.TeacherMenu;
 import acsm.teacher.R;
 import android.os.Bundle;
@@ -15,8 +18,11 @@ import android.os.StrictMode;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +31,13 @@ import android.widget.Toast;
 
 public class TeacherLogin extends Activity {
 	List<String> result;
+	
+	
+	//test SharedPreferences
+	private static final String MY_PREFS = "my_prefs";
 
 	
+		
 	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,10 +61,13 @@ public class TeacherLogin extends Activity {
 		
 		
 		
-		
+		// Get SharedPreferences
+	    final SharedPreferences shared = getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
 
 		
+    
 		
+        
 		// Perform action on click
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 
@@ -82,8 +96,7 @@ public class TeacherLogin extends Activity {
 
 					Log.d("resultServer", String.valueOf(result));
 
-					if (resultServer != null) {
-						Toast.makeText(TeacherLogin.this, "Login OK",
+					if (resultServer != null) {Toast.makeText(TeacherLogin.this, "Login OK",
 								Toast.LENGTH_SHORT).show();
 
 						Intent intentMain = new Intent(TeacherLogin.this,TeacherMenu.class);
@@ -91,10 +104,18 @@ public class TeacherLogin extends Activity {
 						String Username = txtUser.getText().toString();
 						
 						
-						
+						// Save SharedPreferences
+				        Editor editor = shared.edit();
+				        editor.putString("stringKey", txtUser.getText().toString());
+				        editor.commit();
+
+						//view SharedPreferences
+				        String stringValue = shared.getString("stringKey","");
+				        Log.i("LOG_TAG", "String value: " + stringValue);
+				        
 						
 
-						intentMain.putExtra("Username", Username);
+						//intentMain.putExtra("Username", Username);
 						
 					
 

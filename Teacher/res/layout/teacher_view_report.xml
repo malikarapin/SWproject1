@@ -24,7 +24,7 @@
             tools:ignore="ScrollViewSize" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/colMemberID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -34,23 +34,24 @@
                 android:textSize="@dimen/textsize20" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/showcount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView3"
-                android:layout_alignRight="@+id/textView1"
-                android:text="10"
+                android:layout_alignRight="@+id/colMemberID"
+                android:text="0"
                 android:textColor="@color/Black"
+                android:textSize="@dimen/textsize20"
                 tools:ignore="HardcodedText" />
 
             <EditText
-                android:id="@+id/etpasscode"
+                android:id="@+id/addStudentCheck"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/textView2"
-                android:layout_below="@+id/btncancelchpw"
+                android:layout_alignRight="@+id/showsubject"
+                android:layout_below="@+id/okbackmenu"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:gravity="center"
@@ -65,12 +66,12 @@
             </EditText>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/showsubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView1"
+                android:layout_below="@+id/colMemberID"
                 android:layout_centerHorizontal="true"
-                android:text="Project I"
+                android:text="Subject"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize18dip"
                 tools:ignore="HardcodedText" />
@@ -79,14 +80,15 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView1"
-                android:layout_below="@+id/textView2"
+                android:layout_alignLeft="@+id/colMemberID"
+                android:layout_below="@+id/showsubject"
                 android:layout_marginTop="16dp"
-                android:text="@string/view_count"
-                android:textColor="@color/black" />
+                android:text="total"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize18dip" />
 
             <Button
-                android:id="@+id/addstudentid"
+                android:id="@+id/btnaddstu"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -95,26 +97,38 @@
                 android:background="@drawable/custom_btn_shakespeare"
                 android:text="@string/cview_btnviewadd" />
 
-            <GridView
-                android:id="@+id/gridView1"
+            <ListView
+                android:id="@+id/ListView1"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView4"
-                android:layout_marginTop="14dp"
-                android:numColumns="2" >
-            </GridView>
+                android:paddingTop="15dp"
+                android:layout_below="@+id/showcount" >
+
+            </ListView>
 
             <Button
-                android:id="@+id/btncancelchpw"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnokstu"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/gridView1"
+                android:layout_alignRight="@+id/addStudentCheck"
+                android:layout_below="@+id/ListView1"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/custom_btn_seagull"
                 android:text="OK" />
+
+            <Button
+                android:id="@+id/refresh"
+                style="@drawable/custom_btn_seagull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/btnokstu"
+                android:layout_alignBottom="@+id/btnokstu"
+                android:layout_alignLeft="@+id/btnaddstu"
+                android:layout_alignRight="@+id/btnaddstu"
+                android:background="@drawable/custom_btn_seagull"
+                android:text="refresh" />
 
         </RelativeLayout>
     </ScrollView>
