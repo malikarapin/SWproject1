@@ -115,7 +115,7 @@ public class TeacherLogin extends Activity {
 				        
 						
 
-						//intentMain.putExtra("Username", Username);
+						intentMain.putExtra("Username", Username);
 						
 					
 

@@ -20,21 +20,28 @@
 
     <Spinner
         android:id="@+id/spnviewteac"
-        android:layout_width="match_parent"
+        android:layout_width="190dp"
         android:layout_height="45dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_btn_seagull" />
 
-    <GridView
-        android:id="@+id/gridView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+    <ListView
+        android:id="@+id/listviewteac"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/spnviewteac"
-        android:layout_marginTop="34dp"
-        android:numColumns="3" >
-    </GridView>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btnviewcheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/listviewteac"
+        android:layout_alignTop="@+id/spnviewteac"
+        android:background="@drawable/custom_btn_shakespeare"
+        android:text="OK" />
 
 </RelativeLayout>

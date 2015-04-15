@@ -83,11 +83,9 @@ public class TeacherViewReport extends Activity {
 		params.add(new BasicNameValuePair("time_check", time.toString()));
         
 		
-		//JSONArray data = null;
-        
+	
         	try {
 			
-        		//String resultServer = httpconnect.getHttpPost(url, params);
         		
         		JSONArray data = new JSONArray(httpconnect.getHttpPost(url, params));
 			

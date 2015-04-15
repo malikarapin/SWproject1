@@ -35,7 +35,7 @@ public class TeacherMenu extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher_menu);
 		
-		//showdatauser = getIntent().getStringExtra("Username");
+		showdatauser = getIntent().getStringExtra("Username");
 		
 		SharedPreferences shared = getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
 		
@@ -117,7 +117,7 @@ public class TeacherMenu extends Activity {
 			
 		
 		
-		Button check = (Button)findViewById(R.id.savequstion);
+		/*Button check = (Button)findViewById(R.id.savequstion);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -179,8 +179,8 @@ public class TeacherMenu extends Activity {
 	
 			
 			
-});
-		/*
+});*/
+		
 		//Button to ViewCheck Teacher
 		Button viewcheck1 = (Button)findViewById(R.id.btnviewcheck);
 		viewcheck1.setOnClickListener(new OnClickListener() {
@@ -227,7 +227,10 @@ public class TeacherMenu extends Activity {
 					
 					ii.putExtra("Subject", resultServer);
 					
-					//ii.putExtra("Username", showdatauser);
+					ii.putExtra("Username", showdatauser);
+					
+					
+					Log.i("Teacher ID is", String.valueOf(showdatauser));
 					
 					startActivity(ii);
 					
@@ -247,7 +250,7 @@ public class TeacherMenu extends Activity {
 			
 		}
 });
-		*/
+		
 		
 		
 		Button logout = (Button)findViewById(R.id.logout);
