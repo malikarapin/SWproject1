@@ -5,39 +5,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import com.google.gson.JsonSyntaxException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -174,6 +150,9 @@ public class TeacherViewCheck extends Activity {
 							map = new HashMap<String, String>();
 							map.put("Date_Time", c.getString("Date_Time"));
 							map.put("Pass_Code", c.getString("Pass_Code"));
+							
+							map.put("Teacher_Id", c.getString("Teacher_Id"));
+							map.put("Subject_Name_Eng", c.getString("Subject_Name_Eng"));
 							MyArrList.add(map);	
 							
 						}
@@ -193,8 +172,10 @@ public class TeacherViewCheck extends Activity {
 							public void onItemClick(AdapterView<?> myAdapter, View myView,
 									int position, long mylng) {
 				
-								String sTime = MyArrList.get(position).get("Date_Time").toString();
-								String sPassCode = MyArrList.get(position).get("Pass_Code").toString();
+								final String sTime = MyArrList.get(position).get("Date_Time").toString();
+								final String sPassCode = MyArrList.get(position).get("Pass_Code").toString();
+								final String sTeacherId = MyArrList.get(position).get("Teacher_Id").toString();
+								final String sSubject = MyArrList.get(position).get("Subject_Name_Eng").toString();
 							
 								
 				                //String sMemberID = ((TextView) myView.findViewById(R.id.ColMemberID)).getText().toString();
@@ -207,7 +188,7 @@ public class TeacherViewCheck extends Activity {
 								
 								viewDetail.setTitle("CheckDetail");
 								viewDetail.setMessage("Date Time : " + sTime + "\n"
-										+ "Passcode : " + sPassCode);
+										+ "Passcode : " + sPassCode + "\n"+ "Teacher_Id : " + sTeacherId + "\n"+ "Subject : " + sSubject );
 								viewDetail.setPositiveButton("OK",
 										new DialogInterface.OnClickListener() {
 											public void onClick(DialogInterface dialog,
@@ -216,6 +197,47 @@ public class TeacherViewCheck extends Activity {
 												dialog.dismiss();
 											}
 										});
+								viewDetail.setNegativeButton("Delete",
+						                new DialogInterface.OnClickListener() {
+						                    public void onClick(DialogInterface dialog,    int which) {
+						                      	
+						                    	 String url = "http://acsm.ictte-project.com/select-delete-row.php";
+						     			        List<NameValuePair> params = new ArrayList<NameValuePair>();
+						     			        
+						     					params.add(new BasicNameValuePair("TeacherId", sTeacherId.toString()));
+						     					params.add(new BasicNameValuePair("Subject", sSubject.toString()));
+						     					params.add(new BasicNameValuePair("PassCode", sPassCode.toString()));
+						     					params.add(new BasicNameValuePair("DateTime", sTime.toString()));
+						     			        
+						     			        
+						     			        	try {
+						     						
+						     			        		String resultServer = httpconnect.getHttpPost(url, params);
+						     			        		
+						     			        		if (resultServer != null) {
+						     								
+						     			        			Toast.makeText(TeacherViewCheck.this, "Delete Successful",Toast.LENGTH_SHORT).show();
+						     			        			 dialog.cancel();
+						     							}  else {
+						     								Toast.makeText(TeacherViewCheck.this, "Delete Unsuccessful",Toast.LENGTH_SHORT).show();
+						     			        			 dialog.cancel();
+						     							}
+						     			    			
+						     					
+						     		
+						     		
+						     		} catch (Exception e) {
+						     			// TODO Auto-generated catch block
+						     			e.printStackTrace();
+						     		}
+						                    	
+						                    	
+						                    	
+						                    	
+						                    	/*  //คลิกไม่ cancel dialog
+						                        dialog.cancel();*/
+						                    }
+						                });
 								viewDetail.show();
 
 							}
