@@ -214,7 +214,7 @@ public class TeacherViewCheck extends Activity {
 						     						
 						     			        		String resultServer = httpconnect.getHttpPost(url, params);
 						     			        		
-						     			        		if (resultServer != null) {
+						     			        		if (resultServer != "0") {
 						     								
 						     			        			Toast.makeText(TeacherViewCheck.this, "Delete Successful",Toast.LENGTH_SHORT).show();
 						     			        			 dialog.cancel();
