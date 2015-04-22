@@ -35,260 +35,219 @@ import android.widget.Toast;
 public class StudentMenu extends Activity {
 
 	List<String> result;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.student_menu);
-		
-		
+
 		// Permission StrictMode
-				if (android.os.Build.VERSION.SDK_INT > 12) {
-					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-							.permitAll().build();
-					StrictMode.setThreadPolicy(policy);
-				}
-				
-		Button checkm = (Button)findViewById(R.id.btnsubmitcheck);
+		if (android.os.Build.VERSION.SDK_INT > 12) {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+					.permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
+
+		// Button Function Check
+		/*Button checkm = (Button) findViewById(R.id.btnsubmitcheck);
 		checkm.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
-		public void onClick(View v) {
+			public void onClick(View v) {
 
-		
-		String showdatauser = getIntent().getStringExtra("Username");
+				String showdatauser = getIntent().getStringExtra("Username");
 
-		
-		
-		String url = "http://acsm.ictte-project.com/spinner.php";
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		
-		
-		params.add(new BasicNameValuePair("student", showdatauser.toString()));
-		
-		
+				String url = "http://acsm.ictte-project.com/spinner.php";
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-		//String resultServer;
-		
-		
-		
-		try {
-			
-			String resultServer = httpconnect.getHttpPost(url, params);
-			
-			//resultServer = getHttpPost(url, params);
-			
-			
-			Log.e("value in resultServer",String.valueOf(params));
+				params.add(new BasicNameValuePair("student", showdatauser
+						.toString()));
 
-				
-			
-			if (resultServer != null) {
-				Toast.makeText(StudentMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
-				
-				Intent intentMain = new Intent(StudentMenu.this,StudentCheck.class);
-				
-				
-				intentMain.putExtra("Subject", resultServer);
-				
-				intentMain.putExtra("Username", showdatauser);
-				
-				
-				
-				
-				startActivity(intentMain);
-				
-				
-				Log.e("inrent to check", String.valueOf(resultServer));
-				Log.e("submit", String.valueOf(showdatauser));
-				
-			} 
-		} catch (JsonSyntaxException e) {
-			Toast.makeText(StudentMenu.this,
-					"Incorrect Username and Password!",
-					Toast.LENGTH_LONG).show();
-			e.printStackTrace();
-		}
-		
-		
-	
-		}
-});
-		
-		Button quest = (Button)findViewById(R.id.button2);
-		quest.setOnClickListener(new OnClickListener() {
-			
-			@Override
-		public void onClick(View v) {
-		Intent i = new Intent(getApplicationContext(),StudentQuestion.class);
-		startActivity(i);
-		}
-});
-		
-		Button logout = (Button)findViewById(R.id.button3);
-		logout.setOnClickListener(new OnClickListener() {
-			
-			@Override
-		public void onClick(View v) {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
-		alertDialog.setTitle("Confirm Logout...");
-        alertDialog.setMessage("Do you want to Logout");
-        alertDialog.setIcon(R.drawable.ic_launcher);
-        alertDialog.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        //คลิกใช่ ออกจากโปรแกรม
-                        //finish();
-                        Intent i = new Intent(getApplicationContext(),StudentLogin.class);
-                		startActivity(i);
-                        StudentMenu.super.finishAffinity();
-                    }
-                });
- 
-        alertDialog.setNegativeButton("NO",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,    int which) {
-                        //คลิกไม่ cancel dialog
-                        dialog.cancel();
-                    }
-                });
- 
-        alertDialog.show();
-				
-		//Intent i = new Intent(getApplicationContext(),StudentLogin.class);
-		//startActivity(i);
-		}
-});
-		Button viewcount = (Button)findViewById(R.id.viewcount);
-		viewcount.setOnClickListener(new OnClickListener() {
-			
-			@Override
-		public void onClick(View v) {
-		//Intent i = new Intent(getApplicationContext(),StudentViewattend.class);
-		
-			String showdatauser = getIntent().getStringExtra("Username");
+				// String resultServer;
 
-		
-		
-		String url = "http://acsm.ictte-project.com/spinner.php";
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		
-		
-		params.add(new BasicNameValuePair("student", showdatauser.toString()));
-		
-		
+				try {
 
-		//String resultServer;
-		
-		
-		
-		try {
-			
-			String resultServer = httpconnect.getHttpPost(url, params);
-			
-			//resultServer = getHttpPost(url, params);
-			
-			
-			Log.e("value in resultServer",String.valueOf(params));
+					String resultServer = httpconnect.getHttpPost(url, params);
 
-				
-			
-			if (resultServer != null) {
-				Toast.makeText(StudentMenu.this, "Stand By",Toast.LENGTH_SHORT).show();
-				
-				Intent intentMain2 = new Intent(StudentMenu.this,StudentViewattend.class);
-				
-				
-				intentMain2.putExtra("Subject", resultServer);
-				
-				intentMain2.putExtra("Username", showdatauser);
-				
-				
-				
-				
-				startActivity(intentMain2);
-				
-				
-				Log.e("inrent to check", String.valueOf(resultServer));
-				Log.e("submit", String.valueOf(showdatauser));
-				
-			} 
-		} catch (JsonSyntaxException e) {
-			Toast.makeText(StudentMenu.this,
-					"Incorrect Username and Password!",
-					Toast.LENGTH_LONG).show();
-			e.printStackTrace();
-		}
-		
-		
-	
-		}
-		
+					// resultServer = getHttpPost(url, params);
 
-});	
-	}
-	//Detect Back Button
-    @Override
-    public void onBackPressed() {
- 
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentMenu.this);
- 
-        alertDialog.setTitle("Confirm Exit...");
-        alertDialog.setMessage("Do you want to quit");
-        alertDialog.setIcon(R.drawable.ic_launcher);
- 
-        alertDialog.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        //คลิกใช่ ออกจากโปรแกรม
-                        finish();
-                        StudentMenu.super.finishAffinity();
-                    }
-                });
- 
-        alertDialog.setNegativeButton("NO",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,    int which) {
-                        //คลิกไม่ cancel dialog
-                        dialog.cancel();
-                    }
-                });
- 
-        alertDialog.show();
-}
+					Log.e("value in resultServer", String.valueOf(params));
 
-    
-	/*public String getHttpPost(String url, List<NameValuePair> params) {
-		StringBuilder str = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpPost httpGet = new HttpPost(url);
+					if (resultServer != null) {
+						Toast.makeText(StudentMenu.this, "Stand By",
+								Toast.LENGTH_SHORT).show();
 
-		try {
-			httpGet.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) { // Status OK
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					str.append(line);
+						Intent intentMain = new Intent(StudentMenu.this,
+								StudentCheck.class);
+
+						intentMain.putExtra("Subject", resultServer);
+
+						intentMain.putExtra("Username", showdatauser);
+
+						startActivity(intentMain);
+
+						Log.e("inrent to check", String.valueOf(resultServer));
+						Log.e("submit", String.valueOf(showdatauser));
+
+					}
+				} catch (JsonSyntaxException e) {
+					Toast.makeText(StudentMenu.this,
+							"Incorrect Username and Password!",
+							Toast.LENGTH_LONG).show();
+					e.printStackTrace();
 				}
-			} else {
-				Log.e("Log", "Failed to download result..");
+
 			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return str.toString();
+		});*/
 		
-	}*/
-    
+		// Function Question
+		/*Button quest = (Button) findViewById(R.id.button2);
+		quest.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(),
+						StudentQuestion.class);
+				startActivity(i);
+			}
+		});*/
+
+		// Button Logout
+		/*Button logout = (Button) findViewById(R.id.button3);
+		logout.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+						StudentMenu.this);
+				alertDialog.setTitle("Confirm Logout...");
+				alertDialog.setMessage("Do you want to Logout");
+				alertDialog.setIcon(R.drawable.ic_launcher);
+				alertDialog.setPositiveButton("YES",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// คลิกใช่ ออกจากโปรแกรม
+								// finish();
+								Intent i = new Intent(getApplicationContext(),
+										StudentLogin.class);
+								startActivity(i);
+								StudentMenu.super.finishAffinity();
+							}
+						});
+
+				alertDialog.setNegativeButton("NO",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// คลิกไม่ cancel dialog
+								dialog.cancel();
+							}
+						});
+
+				alertDialog.show();
+			}
+		});*/
+
+		// Button Function View
+		Button viewcount = (Button) findViewById(R.id.viewcount);
+		viewcount.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				String showdatauser = getIntent().getStringExtra("Username");
+
+				String url = "http://acsm.ictte-project.com/spinner.php";
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+				params.add(new BasicNameValuePair("student", showdatauser
+						.toString()));
+
+				try {
+
+					String resultServer = httpconnect.getHttpPost(url, params);
+
+					Log.e("value in resultServer", String.valueOf(params));
+
+					if (resultServer != null) {
+						Toast.makeText(StudentMenu.this, "Stand By",
+								Toast.LENGTH_SHORT).show();
+
+						Intent intentMain2 = new Intent(StudentMenu.this,
+								StudentViewattend.class);
+
+						intentMain2.putExtra("Subject", resultServer);
+
+						intentMain2.putExtra("Username", showdatauser);
+
+						startActivity(intentMain2);
+
+						Log.e("inrent to check", String.valueOf(resultServer));
+						Log.e("submit", String.valueOf(showdatauser));
+
+					}
+				} catch (JsonSyntaxException e) {
+					Toast.makeText(StudentMenu.this,
+							"Incorrect Username and Password!",
+							Toast.LENGTH_LONG).show();
+					e.printStackTrace();
+				}
+
+			}
+
+		});
+	}
+
+	// Detect Back Button
+	@Override
+	public void onBackPressed() {
+
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+				StudentMenu.this);
+
+		alertDialog.setTitle("Confirm Exit...");
+		alertDialog.setMessage("Do you want to quit");
+		alertDialog.setIcon(R.drawable.ic_launcher);
+
+		alertDialog.setPositiveButton("YES",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						// คลิกใช่ ออกจากโปรแกรม
+						finish();
+						StudentMenu.super.finishAffinity();
+					}
+				});
+
+		alertDialog.setNegativeButton("NO",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						// คลิกไม่ cancel dialog
+						dialog.cancel();
+					}
+				});
+
+		alertDialog.show();
+	}
+
+	/*
+	 * public String getHttpPost(String url, List<NameValuePair> params) {
+	 * StringBuilder str = new StringBuilder(); HttpClient client = new
+	 * DefaultHttpClient(); HttpPost httpGet = new HttpPost(url);
+	 * 
+	 * try { httpGet.setEntity(new UrlEncodedFormEntity(params)); HttpResponse
+	 * response = client.execute(httpGet); StatusLine statusLine =
+	 * response.getStatusLine(); int statusCode = statusLine.getStatusCode(); if
+	 * (statusCode == 200) { // Status OK HttpEntity entity =
+	 * response.getEntity(); InputStream content = entity.getContent();
+	 * BufferedReader reader = new BufferedReader( new
+	 * InputStreamReader(content)); String line; while ((line =
+	 * reader.readLine()) != null) { str.append(line); } } else { Log.e("Log",
+	 * "Failed to download result.."); } } catch (ClientProtocolException e) {
+	 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); }
+	 * return str.toString();
+	 * 
+	 * }
+	 */
 
 }

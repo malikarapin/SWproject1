@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -57,6 +58,8 @@ public class StudentViewattend extends Activity {
 
 		String subjectdata = getIntent().getStringExtra("Subject");
 
+		
+		//Function Spinner
 		try {
 			JSONArray JA = new JSONArray(subjectdata);
 
@@ -114,8 +117,9 @@ public class StudentViewattend extends Activity {
 			e.printStackTrace();
 		}
 
-		Button quest = (Button) findViewById(R.id.btnviewcount);
-		quest.setOnClickListener(new OnClickListener() {
+		//Button View 
+		Button btnview = (Button) findViewById(R.id.btnviewcount);
+		btnview.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -128,72 +132,50 @@ public class StudentViewattend extends Activity {
 				params.add(new BasicNameValuePair("student", showdatauser.toString()));
 				params.add(new BasicNameValuePair("subject", item.toString()));
 
-				//String resultServer;
+				
 
 				txtview = (TextView) findViewById(R.id.txtview);
 
 				try {
-
-					String resultServer = httpconnect.getHttpPost(url, params);
 					
-					//resultServer = getHttpPost(url, params);
-
-					Log.e("value in resultServer", String.valueOf(resultServer));
-
-					if (resultServer != null) {
-						Toast.makeText(StudentViewattend.this, "Stand By",
-								Toast.LENGTH_SHORT).show();
-
-						Intent intentMain = new Intent(StudentViewattend.this,
-								StudentCheck.class);
-
-						txtview.setText(resultServer);
-					}
-
-					Log.e("inrent to check", String.valueOf(resultServer));
-					Log.e("submit", String.valueOf(showdatauser));
-
-				} catch (JsonSyntaxException e) {
-					Toast.makeText(StudentViewattend.this,
-							"Incorrect Username and Password!",
-							Toast.LENGTH_LONG).show();
-					e.printStackTrace();
+	        		//String resultServer = httpconnect.getHttpPost(url, params);
+	        		
+				JSONArray data = new JSONArray(httpconnect.getHttpPost(url, params));
+				
+				final ArrayList<HashMap<String, String>> MyArrList = new ArrayList<HashMap<String, String>>();
+				HashMap<String, String> map;
+				
+				for(int i = 0; i < data.length(); i++){
+	                JSONObject c = data.getJSONObject(i);
+	                
+	    			map = new HashMap<String, String>();
+	    			map.put("Student_Id", c.getString("Student_Id"));
+	    			map.put("Date_Time", c.getString("Date_Time"));
+	    			MyArrList.add(map);
+	    			
 				}
+				
+				int count = data.length();
+				Log.i("data length", String.valueOf(data.length()));
+				
+				showcount.setText(String.valueOf(count));
+				
+				
+				SimpleAdapter sAdap;
+		        sAdap = new SimpleAdapter(TeacherViewReport.this, MyArrList, R.layout.view_report_column,
+		                new String[] {"Student_Id", "Date_Time"}, new int[] {R.id.colMemberID, R.id.colName});      
+		        lisView1.setAdapter(sAdap);
 
+
+
+//startActivity(refresh);
+} catch (JSONException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+	}
 			}
 
 		});
 	}
-
-	/*public String getHttpPost(String url, List<NameValuePair> params) {
-		StringBuilder str = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpPost httpGet = new HttpPost(url);
-
-		try {
-			httpGet.setEntity(new UrlEncodedFormEntity(params));
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) { // Status OK
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					str.append(line);
-				}
-			} else {
-				Log.e("Log", "Failed to download result..");
-			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return str.toString();
-
-	}*/
-
 }
