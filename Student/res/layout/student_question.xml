@@ -48,7 +48,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/subject"
                 android:layout_marginTop="16dp"
-                
+                android:hint="Question"
                 android:textColor="@color/Black" />
 
             <Button
@@ -65,32 +65,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/subject" >
+                android:layout_below="@+id/question"
+                android:layout_marginTop="14dp" >
 
                 <RadioButton
                     android:id="@+id/a0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="52dp"
-                     />
+                    android:hint="Choice1" />
 
                 <RadioButton
                     android:id="@+id/a1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                     />
+                    android:hint="Choice2" />
 
                 <RadioButton
                     android:id="@+id/a2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:hint="Choice3" />
 
                 <RadioButton
                     android:id="@+id/a3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:hint="Choice4" />
+
             </RadioGroup>
 
         </RelativeLayout>

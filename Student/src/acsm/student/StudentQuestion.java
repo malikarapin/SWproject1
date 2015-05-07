@@ -1,10 +1,9 @@
 package acsm.student;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -22,10 +21,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SimpleAdapter;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,20 +32,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+
 
 public class StudentQuestion extends Activity {
 
-	/*
-	 * RadioButton answer1 = null; RadioButton answer2 = null; RadioButton
-	 * answer3 = null; RadioButton answer4 = null; RadioGroup answers = null;
-	 * TextView question;
-	 */
+	int pos1;
 
-	int questionNumber = 0;
 
-	String questionValue, option1Value, option2Value, option3Value,
-			option4Value;
 
 	String item;
 
@@ -59,6 +50,16 @@ public class StudentQuestion extends Activity {
 		final String subjectdata = getIntent().getStringExtra("Subject");
 
 		final String studentid = getIntent().getStringExtra("Username");
+		
+		
+		final TextView question = (TextView) findViewById(R.id.question);
+		final RadioButton answer1 = (RadioButton) findViewById(R.id.a0);
+		final RadioButton answer2 = (RadioButton) findViewById(R.id.a1);
+		final RadioButton answer3 = (RadioButton) findViewById(R.id.a2);
+		final RadioButton answer4 = (RadioButton) findViewById(R.id.a3);
+		
+		final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioG1);
+		
 
 		try {
 			JSONArray JA = new JSONArray(subjectdata);
@@ -72,6 +73,7 @@ public class StudentQuestion extends Activity {
 				str1[i] = json.getString("Subject_Code");
 				str2[i] = json.getString("Subject_Name_Eng");
 			}
+
 			final Spinner sp = (Spinner) findViewById(R.id.subject);
 			List<String> list = new ArrayList<String>();
 
@@ -117,22 +119,18 @@ public class StudentQuestion extends Activity {
 			e.printStackTrace();
 		}
 
-		/*
-		 * Button save = (Button)findViewById(R.id.btnsubmitcheck);
-		 * save.setOnClickListener(new OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { Intent i = new
-		 * Intent(getApplicationContext(),StudentMenu.class); startActivity(i);
-		 * } });
-		 */
+		
+		
+		 
 
+		
 		// Btuton Select Question
 		Button selectSuject = (Button) findViewById(R.id.selectsubject);
 		selectSuject.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				String url = "http://acsm.ictte-project.com/sentQuestionFromStudent.php";
+				String url = "http://acsm.ictte-project.com/sentSelectQuestionFromStudent.php";
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 
 				params.add(new BasicNameValuePair("subject", item.toString()));
@@ -147,11 +145,7 @@ public class StudentQuestion extends Activity {
 
 					Log.i("Show ResultServer", String.valueOf(data));
 
-					final TextView question = (TextView) findViewById(R.id.question);
-					final RadioButton answer1 = (RadioButton) findViewById(R.id.a0);
-					final RadioButton answer2 = (RadioButton) findViewById(R.id.a1);
-					final RadioButton answer3 = (RadioButton) findViewById(R.id.a2);
-					final RadioButton answer4 = (RadioButton) findViewById(R.id.a3);
+					
 
 					for (int i = 0; i < data.length(); i++) {
 
@@ -174,19 +168,97 @@ public class StudentQuestion extends Activity {
 
 						answer4.setText(c_4);
 					}
+					
+					
 
-				} catch (JsonSyntaxException e) {
-					Toast.makeText(StudentQuestion.this,
-							"Incorrect Username and Password!",
-							Toast.LENGTH_LONG).show();
-					e.printStackTrace();
+					
+
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+					
+					question.setText("Question");
 
+					answer1.setText("Choice1");
+
+					answer2.setText("Choice2");
+
+					answer3.setText("Choice3");
+
+					answer4.setText("Choice4");
+					
+					Toast.makeText(StudentQuestion.this, "There are no questions in this course",Toast.LENGTH_SHORT).show();
+					
+				}
+				
 			}
 		});
-	}
+		
+		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(RadioGroup group, int checkedId) {
+					// TODO Auto-generated method stub
+					
+				    	//Method 2 For Getting Index of RadioButton
+				   	 int pos1=radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
 
+				    	Toast.makeText(getBaseContext(), "You Select Choice "+String.valueOf(pos1+1),
+						Toast.LENGTH_SHORT).show();
+				}
+			});
+		
+		
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		final String formattedDate = df.format(c.getTime());
+		
+		 Button save = (Button)findViewById(R.id.btnsubmitcheck);
+		  save.setOnClickListener(new OnClickListener() {
+		  
+		  @Override public void onClick(View v) {
+			  
+			  AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentQuestion.this);
+				alertDialog.setTitle("Confirm Select Choice...");
+				alertDialog.setMessage("You Want Confirm Answer");
+				alertDialog.setIcon(R.drawable.ic_launcher);
+				alertDialog.setPositiveButton("YES",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int which) {
+								
+								String url = "http://acsm.ictte-project.com/sentAnswerFromStudent.php";
+								List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+								params.add(new BasicNameValuePair("subject", item.toString()));
+								
+								params.add(new BasicNameValuePair("studentID", studentid.toString()));
+								
+								params.add(new BasicNameValuePair("datatime", formattedDate.toString()));
+								
+								params.add(new BasicNameValuePair("answer", String.valueOf(pos1+1)));
+
+								Log.e("param", String.valueOf(params));
+								
+								Intent intentMain = new Intent(StudentQuestion.this,StudentMenu.class);
+								
+								startActivity(intentMain);
+							}
+						});
+
+				alertDialog.setNegativeButton("NO",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// คลิกไม่ cancel dialog
+								dialog.cancel();
+							}
+						});
+
+				alertDialog.show();
+			  
+			  
+		  } });
+		
+		
+	}
 }
