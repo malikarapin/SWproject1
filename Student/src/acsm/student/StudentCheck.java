@@ -170,8 +170,7 @@ public class StudentCheck extends Activity {
 
     		//String resultServer;
     		
-    		
-    		
+
     		try {
     			
     			String resultServer = httpconnect.getHttpPost(url, params);

@@ -48,14 +48,16 @@ public class StudentMenu extends Activity {
 			StrictMode.setThreadPolicy(policy);
 		}
 
+		final String showdatauser = getIntent().getStringExtra("Username");
+		
 		// Button Function Check
-		/*Button checkm = (Button) findViewById(R.id.btnsubmitcheck);
+		Button checkm = (Button) findViewById(R.id.btnsubmitcheck);
 		checkm.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				String showdatauser = getIntent().getStringExtra("Username");
+				
 
 				String url = "http://acsm.ictte-project.com/spinner.php";
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -98,22 +100,58 @@ public class StudentMenu extends Activity {
 				}
 
 			}
-		});*/
+		});
 		
 		// Function Question
-		/*Button quest = (Button) findViewById(R.id.button2);
+		Button quest = (Button) findViewById(R.id.button2);
 		quest.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(),
-						StudentQuestion.class);
-				startActivity(i);
+				String url = "http://acsm.ictte-project.com/spinner.php";
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+				params.add(new BasicNameValuePair("student", showdatauser
+						.toString()));
+
+				// String resultServer;
+
+				try {
+
+					String resultServer = httpconnect.getHttpPost(url, params);
+
+					// resultServer = getHttpPost(url, params);
+
+					Log.e("value in resultServer", String.valueOf(params));
+
+					if (resultServer != null) {
+						Toast.makeText(StudentMenu.this, "Stand By",
+								Toast.LENGTH_SHORT).show();
+
+						Intent intentMain = new Intent(StudentMenu.this,
+								StudentQuestion.class);
+
+						intentMain.putExtra("Subject", resultServer);
+
+						intentMain.putExtra("Username", showdatauser);
+
+						startActivity(intentMain);
+
+						Log.e("inrent to check", String.valueOf(resultServer));
+						Log.e("submit", String.valueOf(showdatauser));
+
+					}
+				} catch (JsonSyntaxException e) {
+					Toast.makeText(StudentMenu.this,
+							"Incorrect Username and Password!",
+							Toast.LENGTH_LONG).show();
+					e.printStackTrace();
+				}
 			}
-		});*/
+		});
 
 		// Button Logout
-		/*Button logout = (Button) findViewById(R.id.button3);
+		Button logout = (Button) findViewById(R.id.button3);
 		logout.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -147,7 +185,7 @@ public class StudentMenu extends Activity {
 
 				alertDialog.show();
 			}
-		});*/
+		});
 
 		// Button Function View
 		Button viewcount = (Button) findViewById(R.id.viewcount);
@@ -229,25 +267,5 @@ public class StudentMenu extends Activity {
 
 		alertDialog.show();
 	}
-
-	/*
-	 * public String getHttpPost(String url, List<NameValuePair> params) {
-	 * StringBuilder str = new StringBuilder(); HttpClient client = new
-	 * DefaultHttpClient(); HttpPost httpGet = new HttpPost(url);
-	 * 
-	 * try { httpGet.setEntity(new UrlEncodedFormEntity(params)); HttpResponse
-	 * response = client.execute(httpGet); StatusLine statusLine =
-	 * response.getStatusLine(); int statusCode = statusLine.getStatusCode(); if
-	 * (statusCode == 200) { // Status OK HttpEntity entity =
-	 * response.getEntity(); InputStream content = entity.getContent();
-	 * BufferedReader reader = new BufferedReader( new
-	 * InputStreamReader(content)); String line; while ((line =
-	 * reader.readLine()) != null) { str.append(line); } } else { Log.e("Log",
-	 * "Failed to download result.."); } } catch (ClientProtocolException e) {
-	 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); }
-	 * return str.toString();
-	 * 
-	 * }
-	 */
 
 }

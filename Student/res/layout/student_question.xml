@@ -24,38 +24,6 @@
             android:orientation="vertical"
             tools:ignore="ScrollViewSize" >
 
-            <DigitalClock
-                android:id="@+id/digitalClock1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="DigitalClock"
-                android:textColor="@color/Black"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/linkFG"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/digitalClock1"
-                android:layout_below="@+id/digitalClock1"
-                android:layout_marginTop="20dp"
-                android:text="@string/question_txtquestion"
-                android:textColor="@color/Black" />
-
-            <TextView
-                android:id="@+id/timecount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/linkFG"
-                android:layout_below="@+id/linkFG"
-                android:layout_marginTop="22dp"
-                android:text="@string/question_txttimecount"
-                tools:ignore="HardcodedText" />
-
             <Button
                 android:id="@+id/btnsubmitcheck"
                 android:layout_width="match_parent"
@@ -66,38 +34,63 @@
                 android:text="@string/question_btnsubmit"
                 android:textColor="@color/Black" />
 
-            <RadioGroup
-                android:id="@+id/radioG1"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/subject"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/subject"
+                android:layout_marginTop="16dp"
+                
+                android:textColor="@color/Black" />
+
+            <Button
+                android:id="@+id/selectsubject"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/subject"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/timecount" >
+                android:text="OK" />
+
+            <RadioGroup
+                android:id="@+id/radioG1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/subject" >
 
                 <RadioButton
-                    android:id="@+id/radioButton1"
+                    android:id="@+id/a0"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="52dp"
-                    android:text="@string/question_txtans1" />
+                     />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/a1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/question_txtans2" />
+                     />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/a2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/question_txtans3" />
+                    />
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/a3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/question_txtans4" />
+                    />
             </RadioGroup>
 
         </RelativeLayout>
