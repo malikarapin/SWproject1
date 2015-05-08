@@ -51,7 +51,7 @@ public class TeacherMenu extends Activity {
 		}
 		
 		
-/*		Button quize = (Button)findViewById(R.id.btncancelchpw);
+		Button quize = (Button)findViewById(R.id.okbackmenu);
 		quize.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -93,7 +93,7 @@ public class TeacherMenu extends Activity {
 						
 						toTeacherQuestion.putExtra("Subject", resultServer);
 						
-						//toTeacherQuestion.putExtra("Username", showdatauser);
+						toTeacherQuestion.putExtra("Username", showdatauser);
 						
 						startActivity(toTeacherQuestion);
 						
@@ -111,13 +111,13 @@ public class TeacherMenu extends Activity {
 					e.printStackTrace();
 				}
 				}
-});*/
+});
 		
 		
 			
 		
 		
-		/*Button check = (Button)findViewById(R.id.savequstion);
+		Button check = (Button)findViewById(R.id.savequstion);
 		check.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -179,7 +179,7 @@ public class TeacherMenu extends Activity {
 	
 			
 			
-});*/
+});
 		
 		//Button to ViewCheck Teacher
 		Button viewcheck1 = (Button)findViewById(R.id.btnviewcheck);

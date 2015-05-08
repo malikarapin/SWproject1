@@ -63,19 +63,6 @@
                 android:paddingLeft="@dimen/panding5"
                 tools:ignore="TextFields" />
 
-            <EditText
-                android:id="@+id/questime"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ans4"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rounded_edittext"
-                android:ems="10"
-                android:hint="@string/ques_txttime"
-                android:inputType="number"
-                android:maxLength="2"
-                android:paddingLeft="@dimen/panding5" />
-
             <TextView
                 android:id="@+id/showsubject"
                 android:layout_width="wrap_content"
@@ -102,16 +89,6 @@
 
                 <requestFocus />
             </EditText>
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/questime"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@+id/questime"
-                android:text="@string/ques_txtminute"
-                android:textSize="@dimen/textsize15dip" />
 
             <Button
                 android:id="@+id/savequstion"

@@ -47,7 +47,7 @@ public class TeacherQuestion extends Activity {
 		final EditText ans2 = (EditText) findViewById(R.id.ans2);
 		final EditText ans3 = (EditText) findViewById(R.id.ans3);
 		final EditText ans4 = (EditText) findViewById(R.id.ans4);
-		final EditText counttime = (EditText) findViewById(R.id.questime);
+		
 		                             
 		
 
@@ -131,7 +131,6 @@ public class TeacherQuestion extends Activity {
 	    		params.add(new BasicNameValuePair("teacid", studentid.toString()));
 	    		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
 	    		params.add(new BasicNameValuePair("subject", item.toString()));
-	    		
 	    		params.add(new BasicNameValuePair("question", question.getText().toString()));
 	    		params.add(new BasicNameValuePair("ans1", ans1.getText().toString()));
 	    		params.add(new BasicNameValuePair("ans2", ans2.getText().toString()));
@@ -149,24 +148,17 @@ public class TeacherQuestion extends Activity {
 	    			
 	    			 resultServer = httpconnect.getHttpPost(url, params);
 
-	    			
 	    			Log.d("value in resultServer",String.valueOf(resultServer));
 
-	    				
-	    			
 	    			if (resultServer != null) {
 	    				Toast.makeText(TeacherQuestion.this, "Stand By",Toast.LENGTH_SHORT).show();
 	    				
 	    				Intent intentMain = new Intent(TeacherQuestion.this,TeacherMenu.class);
-	    				
-	    				
+
 	    				//intentMain.putExtra("Username", resultServer);
-	    				
-	    				
-	    				
+
 	    				startActivity(intentMain);
-	    				
-	    				
+
 	    			}
 	    					
 	    		} catch (JsonSyntaxException e) {
@@ -178,7 +170,5 @@ public class TeacherQuestion extends Activity {
 
 	    		}
 });
-		
-	
 	}
 }
