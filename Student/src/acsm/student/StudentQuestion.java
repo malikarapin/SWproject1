@@ -201,10 +201,9 @@ public class StudentQuestion extends Activity {
 					// TODO Auto-generated method stub
 					
 				    	//Method 2 For Getting Index of RadioButton
-				   	 int pos1=radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
+				   	 pos1=radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
 
-				    	Toast.makeText(getBaseContext(), "You Select Choice "+String.valueOf(pos1+1),
-						Toast.LENGTH_SHORT).show();
+				    	Toast.makeText(getBaseContext(), "You Select Choice "+String.valueOf(pos1+1),Toast.LENGTH_SHORT).show();
 				}
 			});
 		
@@ -217,48 +216,56 @@ public class StudentQuestion extends Activity {
 		  save.setOnClickListener(new OnClickListener() {
 		  
 		  @Override public void onClick(View v) {
-			  
-			  AlertDialog.Builder alertDialog = new AlertDialog.Builder(StudentQuestion.this);
-				alertDialog.setTitle("Confirm Select Choice...");
-				alertDialog.setMessage("You Want Confirm Answer");
+
+				
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+						StudentQuestion.this);
+
+				alertDialog.setTitle("Confirm Answer...");
+				alertDialog.setMessage("Do you want confirm answer");
 				alertDialog.setIcon(R.drawable.ic_launcher);
+
 				alertDialog.setPositiveButton("YES",
 						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int which) {
+							public void onClick(DialogInterface dialog, int which) {
 								
-								String url = "http://acsm.ictte-project.com/sentAnswerFromStudent.php";
-								List<NameValuePair> params = new ArrayList<NameValuePair>();
+								  String url = "http://acsm.ictte-project.com/sentAnswerFromStudent.php";
+									List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-								params.add(new BasicNameValuePair("subject", item.toString()));
-								
-								params.add(new BasicNameValuePair("studentID", studentid.toString()));
-								
-								params.add(new BasicNameValuePair("datatime", formattedDate.toString()));
-								
-								params.add(new BasicNameValuePair("answer", String.valueOf(pos1+1)));
+									params.add(new BasicNameValuePair("subject", item.toString()));
+									
+									params.add(new BasicNameValuePair("studentID", studentid.toString()));
+									
+									params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
+									
+									params.add(new BasicNameValuePair("answer", String.valueOf(pos1+1)));
 
-								Log.e("param", String.valueOf(params));
-								
-								Intent intentMain = new Intent(StudentQuestion.this,StudentMenu.class);
-								
-								startActivity(intentMain);
+									Log.e("param", String.valueOf(pos1));
+									
+									
+									try {
+										String resultServer = httpconnect.getHttpPost(url, params);
+										
+									Intent intentMain = new Intent(StudentQuestion.this,StudentMenu.class);
+									
+									startActivity(intentMain);
+									
+									}catch (Exception e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+										}
 							}
 						});
 
 				alertDialog.setNegativeButton("NO",
 						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
+							public void onClick(DialogInterface dialog, int which) {
 								// คลิกไม่ cancel dialog
 								dialog.cancel();
 							}
 						});
 
 				alertDialog.show();
-			  
-			  
 		  } });
-		
-		
 	}
 }
