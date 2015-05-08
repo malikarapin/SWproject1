@@ -16,6 +16,8 @@ import com.google.gson.JsonSyntaxException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +33,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class TeacherQuestion extends Activity {
 	String item;
+	 int selectedPosition;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,10 +51,6 @@ public class TeacherQuestion extends Activity {
 		final EditText ans2 = (EditText) findViewById(R.id.ans2);
 		final EditText ans3 = (EditText) findViewById(R.id.ans3);
 		final EditText ans4 = (EditText) findViewById(R.id.ans4);
-		
-		                             
-		
-
 		try {
 			JSONArray JA=new JSONArray(subjectdata);
 			
@@ -96,13 +96,10 @@ public class TeacherQuestion extends Activity {
         			Toast.makeText(getApplicationContext(), item,Toast.LENGTH_LONG).show();
 
         			Log.e("Item",String.valueOf(item));
-			
         		}
-
 				@Override
 				public void onNothingSelected(AdapterView<?> parent) {
-					// TODO Auto-generated method stub
-					
+					// TODO Auto-generated method stub	
 				}
         	});
 
@@ -110,7 +107,6 @@ public class TeacherQuestion extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		 	Calendar c = Calendar.getInstance();
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			final String formattedDate = df.format(c.getTime());
@@ -122,52 +118,87 @@ public class TeacherQuestion extends Activity {
 			@Override
 		public void onClick(View v) {
 				
+				  final String[] choice = {"1", "2", "3", "4"};
+				  
+				 
+
+				  AlertDialog.Builder builder = new AlertDialog.Builder(TeacherQuestion.this);
+				  builder.setTitle("Please select the correct answer.");
+				  builder.setSingleChoiceItems(choice, 0, new DialogInterface.OnClickListener() {
+				      public void onClick(DialogInterface dialog, int choice1) {
+				    	  
+				   Toast.makeText(getApplicationContext(),"You choose this choice " +choice[choice1], Toast.LENGTH_SHORT).show();
+				   
+				   
+				   selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
+				   
+				      }
+				  });
+				  
+				  builder.setPositiveButton("Yes",
+				    new DialogInterface.OnClickListener() {
+				     public void onClick(DialogInterface dialog, int choice1) {
+				    	 
+				    	 String url = "http://acsm.ictte-project.com/insertquestion.php";
+				    		
+				    		List<NameValuePair> params = new ArrayList<NameValuePair>();
+				    		
+				    		params.add(new BasicNameValuePair("teacid", studentid.toString()));
+				    		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
+				    		params.add(new BasicNameValuePair("subject", item.toString()));
+				    		params.add(new BasicNameValuePair("question", question.getText().toString()));
+				    		params.add(new BasicNameValuePair("ans1", ans1.getText().toString()));
+				    		params.add(new BasicNameValuePair("ans2", ans2.getText().toString()));
+				    		params.add(new BasicNameValuePair("ans3",ans3.getText().toString()));
+				    		params.add(new BasicNameValuePair("ans4", ans4.getText().toString()));
+				    		
+				    		params.add(new BasicNameValuePair("answer", Integer.toString(selectedPosition)));
+				    		
+
+				    		Log.e("Param",String.valueOf(params));
+				    		
+				    		String resultServer;
+				    		
+				    		try {
+				    			
+				    			 resultServer = httpconnect.getHttpPost(url, params);
+
+				    			Log.d("value in resultServer",String.valueOf(resultServer));
+
+				    			if (resultServer.equals("Success")) {
+				    				Toast.makeText(TeacherQuestion.this, "Create Question Success",Toast.LENGTH_SHORT).show();
+				    				
+				    				Intent intentMain = new Intent(TeacherQuestion.this,TeacherMenu.class);
+
+				    				Log.i("check", String.valueOf(resultServer));
+
+				    				startActivity(intentMain);
+
+				    				
+				    			}else {
+				    				Toast.makeText(TeacherQuestion.this, "Create Question Unsuccess",Toast.LENGTH_SHORT).show();
+								}
+				    					
+				    		} catch (JsonSyntaxException e) {
+				    			Toast.makeText(TeacherQuestion.this,
+				    					"Incorrect Username and Password!",
+				    					Toast.LENGTH_LONG).show();
+				    			e.printStackTrace();
+				    		}
+				    	 
+				    	 
+				      Toast.makeText(TeacherQuestion.this, "Success", Toast.LENGTH_SHORT).show();
+				     }
+				    });
+				  builder.setNegativeButton("No",
+				    new DialogInterface.OnClickListener() {
+				     public void onClick(DialogInterface dialog, int id) {
+				      Toast.makeText(TeacherQuestion.this, "Fail", Toast.LENGTH_SHORT).show();
+				     }
+				    });
+				  AlertDialog alert = builder.create();
+				  alert.show();
 				
-	    		String url = "http://acsm.ictte-project.com/insertquestion.php";
-	    		
-	    		List<NameValuePair> params = new ArrayList<NameValuePair>();
-	    		
-	    		
-	    		params.add(new BasicNameValuePair("teacid", studentid.toString()));
-	    		params.add(new BasicNameValuePair("datetime", formattedDate.toString()));
-	    		params.add(new BasicNameValuePair("subject", item.toString()));
-	    		params.add(new BasicNameValuePair("question", question.getText().toString()));
-	    		params.add(new BasicNameValuePair("ans1", ans1.getText().toString()));
-	    		params.add(new BasicNameValuePair("ans2", ans2.getText().toString()));
-	    		params.add(new BasicNameValuePair("ans3",ans3.getText().toString()));
-	    		params.add(new BasicNameValuePair("ans4", ans4.getText().toString()));
-	    		
-	    		//params.add(new BasicNameValuePair("conttime", String.valueOf(counttime)));
-
-
-	    		Log.e("Param",String.valueOf(params));
-	    		
-	    		String resultServer;
-	    		
-	    		try {
-	    			
-	    			 resultServer = httpconnect.getHttpPost(url, params);
-
-	    			Log.d("value in resultServer",String.valueOf(resultServer));
-
-	    			if (resultServer != null) {
-	    				Toast.makeText(TeacherQuestion.this, "Stand By",Toast.LENGTH_SHORT).show();
-	    				
-	    				Intent intentMain = new Intent(TeacherQuestion.this,TeacherMenu.class);
-
-	    				//intentMain.putExtra("Username", resultServer);
-
-	    				startActivity(intentMain);
-
-	    			}
-	    					
-	    		} catch (JsonSyntaxException e) {
-	    			Toast.makeText(TeacherQuestion.this,
-	    					"Incorrect Username and Password!",
-	    					Toast.LENGTH_LONG).show();
-	    			e.printStackTrace();
-	    		}
-
 	    		}
 });
 	}
